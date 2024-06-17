@@ -1,0 +1,24 @@
+{% extends "BasePainel.html" %}
+{% load static %}
+
+{% block main %}
+
+<div class="container m-auto mt-3"> 
+    <div class="container d-flex">
+        <div>
+            <img src="{% static image %}" alt="">
+        </div>
+    <div class="ms-2">
+    <h3>{{titulo}}</h3>
+    <p>{{descricao}}
+    </p>
+</div>
+</div>
+<div class="card m-auto shadow">
+    <div class="col-10  mt-4 m-auto">
+        {{ guia.guia | safe }}
+    </div>
+</div>
+</div>
+
+{% endblock main %}

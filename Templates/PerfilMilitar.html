@@ -1,0 +1,76 @@
+{% extends "BaseSite.html" %}
+{% load static %}
+
+{% block header %}
+<title>{{perfil.username}} - Exército Alemão - Habbo Hotel ©</title>
+<link rel="icon" type="img/x-icon" href="{% static 'aberto.png'%} ">
+{% endblock header %}
+
+{% block topo %}
+<div class="container d-flex mt-3">
+    <div>
+        <img src="{% static 'busca.gif'%}" alt="">
+    </div>
+<div class="ms-2 text-light">
+<h3>Perfil</h3>
+<p>{{perfil.patente}} - {{perfil.username}}</p>
+</div>
+</div>
+{% endblock topo %}
+
+{% block main %}
+<div class="card mb-3 m-2" style="background: #202020">
+    <div class="container m-auto">
+        <div class=" col-md-10 mb-3 mt-3 m-auto col-12 ">
+            <div class="card m-1" style='background:#181818;'>
+                <div class="row">
+                <div class="col-md-4 col-4 text-center">
+                    <img class="px" width="140px" src="http://www.habbo.com.br/habbo-imaging/avatarimage?&user={{ perfil.username }}&action=std&direction=2&head_direction=3&img_format=png&gesture=sml&frame=1&headonly=0&size=l" style="position: relative; top: -20px; " alt="...">
+                </div>
+                    <div class="m-auto col-md-8 col-8">
+                <ul class="list-group m-1">
+                    <li class="list-group-item text-light border-0" style="background: #202020">Patente: {{perfil.patente}}</li>
+                    </ul>
+                    {% if perfil.siglas %}
+                                <ul class="list-group m-1" style="background: #202020">
+                                    <li class="list-group-item text-light border-0" style="background: #202020">Sigla: {{ perfil.siglas }}</li>
+                                </ul>
+                            {% endif %}
+                    <ul class="list-group m-1" style="background: #202020">
+                        <li class="list-group-item text-light border-0" style="background: #202020">Status: {{perfil.status}}</li>
+                        </ul>
+                        <ul class="list-group m-1" style="background: #202020">
+                            <li class="list-group-item text-light border-0" style="background: #202020">Data: {{perfil.data}}</li>
+                            </ul>
+                            <ul class="list-group m-1" style="background: #202020">
+                                <li class="list-group-item text-light border-0" style="background: #202020">Responsável: {{perfil.responsavel_promocao}}</li>
+                                </ul>
+            </div>
+        </div>
+            </div>
+        </div>
+    </div>
+</div>
+        {% if emblemas %}
+        <div class="card m-2" style="background: #181818">
+            <div class="container d-flex mt-4 mb-3"> 
+                <div>
+                  <img class="px" width="26px" height="41px" src="{% static 'emblema.png'%}" alt="">
+                  </div>
+                <div class="ms-2">
+                <h3 class="text-light">Emblemas</h3>
+                </div>
+        </div>
+        <div class="container d-flex">
+            {% for emblema in emblemas %}
+    <div class="card col-12 col-md-4 mb-3 m-auto" style="background-color: #202020;">
+        <img src="{{ emblema.emblema.icone.url }}" class="m-auto mt-2 px" width="80px" alt="...">
+        <div class="card-body">
+          <h5 class="card-title text-center text-light">{{ emblema.emblema.titulo }}</h5>
+        </div>
+      </div>
+        {% endfor %}
+        </div>
+    </div>
+        {% endif %}
+{% endblock main %}

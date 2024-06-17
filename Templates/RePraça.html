@@ -1,0 +1,24 @@
+{% extends "BasePainel.html" %}
+{% load static %}
+
+{% block main %}
+<div class="container mt-3 m-auto">
+<div class='row'>
+  <div class="mt-3 m-auto col-11 col-md-7 order-2 order-md-1">
+    <div class="container d-flex">
+      <div>
+          <img src="{% static 're.gif'%}" alt="">
+      </div>
+  <div class="ms-2">
+  <h3>Meus Recrutamentos </h3>
+  <p>Fique atento ao abrir seus RE's, sempre verifique corretamente qual o Oficial responsável.
+  </p>
+</div>
+</div>
+<p class="d-inline-flex gap-1 m-sm-auto mb-2" >
+<a href="{% url 'ReAbrir'%}" class="btn btn-danger m-sm-auto"> Abrir RE +</a>
+</p>
+</div>
+</div>
+</div>
+{% endblock main %}

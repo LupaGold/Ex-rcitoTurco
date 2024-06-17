@@ -1,0 +1,533 @@
+{% load static %}
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exército Alemão - Habbo Hotel ©</title>
+    <link rel="icon" type="img/x-icon" href="{% static 'aberto.png' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <style>
+        .px {
+            image-rendering: pixelated;
+            image-rendering: -o-crisp-edges;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+          }
+        .bg-al {
+            background-color: #202020;
+        }
+        .bg-cubos {
+            background-color: #181818;
+            background-image:  linear-gradient(30deg, #202020 12%, transparent 12.5%, transparent 87%, #202020 87.5%, #202020), linear-gradient(150deg, #202020 12%, transparent 12.5%, transparent 87%, #202020 87.5%, #202020), linear-gradient(30deg, #202020 12%, transparent 12.5%, transparent 87%, #202020 87.5%, #202020), linear-gradient(150deg, #202020 12%, transparent 12.5%, transparent 87%, #202020 87.5%, #202020), linear-gradient(60deg, #20202077 25%, transparent 25.5%, transparent 75%, #20202077 75%, #20202077), linear-gradient(60deg, #20202077 25%, transparent 25.5%, transparent 75%, #20202077 75%, #20202077);
+            background-size: 80px 140px;
+            background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+        }
+        .dropdown-item:hover {
+            background-color: #181818;
+            color: black;
+        }
+        .dest-p {
+            background-color: #970808;
+            background-image:  linear-gradient(30deg, #8a0606 12%, transparent 12.5%, transparent 87%, #8a0606 87.5%, #8a0606), linear-gradient(150deg, #8a0606 12%, transparent 12.5%, transparent 87%, #8a0606 87.5%, #8a0606), linear-gradient(30deg, #8a0606 12%, transparent 12.5%, transparent 87%, #8a0606 87.5%, #8a0606), linear-gradient(150deg, #8a0606 12%, transparent 12.5%, transparent 87%, #8a0606 87.5%, #8a0606), linear-gradient(60deg, #8a060677 25%, transparent 25.5%, transparent 75%, #8a060677 75%, #8a060677), linear-gradient(60deg, #8a060677 25%, transparent 25.5%, transparent 75%, #8a060677 75%, #8a060677);
+            background-size: 34px 60px;
+            background-position: 0 0, 0 0, 17px 30px, 17px 30px, 0 0, 17px 30px;
+        }
+        .dest-ofc {
+            background-color: #d8b500;
+            background-image:  linear-gradient(30deg, #cdab00 12%, transparent 12.5%, transparent 87%, #cdab00 87.5%, #cdab00), linear-gradient(150deg, #cdab00 12%, transparent 12.5%, transparent 87%, #cdab00 87.5%, #cdab00), linear-gradient(30deg, #cdab00 12%, transparent 12.5%, transparent 87%, #cdab00 87.5%, #cdab00), linear-gradient(150deg, #cdab00 12%, transparent 12.5%, transparent 87%, #cdab00 87.5%, #cdab00), linear-gradient(60deg, #cdab0077 25%, transparent 25.5%, transparent 75%, #cdab0077 75%, #cdab0077), linear-gradient(60deg, #cdab0077 25%, transparent 25.5%, transparent 75%, #cdab0077 75%, #cdab0077);
+            background-size: 34px 60px;
+            background-position: 0 0, 0 0, 17px 30px, 17px 30px, 0 0, 17px 30px;
+        }
+        .card-al {
+            background-color: #202020;
+        }
+        .img-al {
+            width:502.5px;
+            height:312.5px;
+            position: relative;
+            top: -30px;
+            left: -30px;
+        }
+        .icon-al {
+            width: 0px;
+            height: 0px;
+            position: relative;
+            left: 0px;
+        }
+        .text-al {
+        font-size: 0px;
+        }
+        .iconhonraria {
+          position:relative;
+          right: -55px;
+        }
+        @media (max-width: 720px) {
+            .img-al{
+            width:0px;
+            height:0px;
+        }
+        .iconhonraria {
+          position:relative;
+          right: -170px;
+        }
+        .card-al {
+            background-color: #202020;
+        
+        }
+        .icon-al {
+            width: 117px;
+            height: 117px;
+            position: relative;
+            left: 0px;
+        }
+        .text-al {
+        font-size: 26px;
+        }
+        }
+    </style>
+</head>
+<body class="bg-cubos">
+    <nav class="navbar navbar-expand-lg" data-bs-theme="dark" style="background-color: #202020; border-bottom: #181818 2px solid;">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon text-light"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active text-light" aria-current="page" href="{% url "PáginaPrincipal" %}">Principal</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active text-light" aria-current="page" href="{% if hierarquia %} {% for pag in hierarquia %}{% url 'PaginaUrl' pag.slug %}{% endfor %}{% endif %}">Hierarquia</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active text-light" aria-current="page" href="{% if TeamSpeak %} {% for pag in TeamSpeak %}{% url 'PaginaUrl' pag.slug %}{% endfor %}{% endif %}">Team Speak</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="active nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Escolas e Institutos
+                </a>
+                <ul class="dropdown-menu bg-al">
+                  {% if ei %}
+                  {% for pag in ei %}
+                  <li><a class="dropdown-item text-light" href="{% url "PaginaUrl" pag.slug %}">{{pag.titulo}}</a></li>
+                {% endfor %}
+                {% else %}
+                  <li><a class="dropdown-item text-light" href="#">Sem registros!</a></li>
+                {% endif %}
+                </ul>
+              </li>
+              <li class="nav-item dropdown ">
+                <a class="active nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Companhias
+                </a>
+                <ul class="dropdown-menu bg-al">
+                  {% comment %} <li><a class="dropdown-item text-light" href="#">1° Companhia</a></li> {% endcomment %}
+                    <li><a class="dropdown-item text-light" href="{% url "SegundaCIA" %}">Segunda Companhia</a></li>
+                    {% comment %} <li><a class="dropdown-item text-light" href="#">3° Companhia</a></li> {% endcomment %}
+                  </ul>
+              </li>
+              <li class="nav-item dropdown ">
+                <a class="active nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Honrados
+                </a>
+                <ul class="dropdown-menu bg-al">
+                  <li><a class="dropdown-item text-light" href="{% url 'Aposentados'%}">Aposentados</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown ">
+                <a class="active nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Apostilas
+                </a>
+                <ul class="dropdown-menu bg-al">
+                  {% if apostilas %}
+                  {% for pag in apostilas %}
+                  <li><a class="dropdown-item text-light" href="{% url "PaginaUrl" pag.slug %}">{{pag.titulo}}</a></li>
+                  {% endfor %}
+                  {% else %}
+                  <li><a class="dropdown-item text-light" href="#">Sem registros!</a></li>
+                  {% endif %}
+                </ul>
+              </li>
+              <li class="nav-item dropdown ">
+                <a class="active nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Alistados
+                </a>
+                <ul class="dropdown-menu bg-al">
+                  <li><a class="dropdown-item text-light" href="{% url "PraçasEOficiais" %}">Praças e Oficiais</a></li>
+                  <li><a class="dropdown-item text-light" href="{% url "Demitidos" %}">Demitidos</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown ">
+                <a class="active nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Grupos
+                </a>
+                <ul class="dropdown-menu bg-al">
+                  {% if grupos %}
+                  {% for pag in grupos %}
+                  <li><a class="dropdown-item text-light" href="{% url "PaginaUrl" pag.slug %}">{{pag.titulo}}</a></li>
+                  {% endfor %}
+                  {% endif %}
+                  <li><a class="dropdown-item text-light" href="{% url "JornalAlemao" %}">Jornal Alemão</a></li>
+                </ul>
+              </li>
+              <div class="d-flex ms-5">
+                <a class="btn text-light" style="background-color: #ae0909;" href="{% url 'PrincipalPainel' %}">Painel</a>
+            </div>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="container d-flex mt-3">
+        <div>
+            <img src="{% static 'bandeira-al.png'%}" alt="">
+        </div>
+    <div class="ms-2 text-light">
+    <h3> Página Principal</h3>
+    <p>Da alma, a lealdade. Do compromisso, a honra.</p>
+</div>
+</div>
+      <div class="row m-auto col-md-10 col-12 mb-3">
+        <div class="col-12 col-md-8 m-auto">
+            <div class="col-12 text-center">
+                <div class="card-al rounded col-10 text-center m-auto p-3">
+                    <img src="{% static 'aberto.png'%}" class="px m-auto mb-3 icon-al" alt="..." >
+                    <h1 class="text-light text-al">EXÉRCITO ALEMÃO</h1>
+                <img src="{% static 'exal.png'%}" class="px m-auto ms-3 mb-3 img-al" alt="..." >
+            </div>
+            </div>
+            <div class="container d-flex mb-1 mb-lg-0 mt-4 ">
+                <div>
+                    <img src="{% static 'busca.gif'%}" alt="">
+                </div>
+            <div class="ms-2 text-light">
+            <h3>Busca militar</h3>
+            <p>Você pode pesquisar em nossos registros aqui.</p>
+        </div>
+    </div>
+    <div class="card-header rounded p-2" style="background-color: #181818;">
+
+    </div>
+    <div class="container card m-auto shadow mb-3" style="background: #202020">
+        <form class='input-group mt-2 mb-2' method="get">
+            <input class='form-control' type="text" name="search" style='background:#f8f9fa;' placeholder="Digite o nick do militar">
+            <button style="background: #181818" class='btn' type="submit">
+                <i>
+                    <img width="35px" src="{% static "lupa.gif" %}" alt="">
+                  </i>
+            </button>
+        </form>
+</div>
+  {% if busca %}
+  <div class='container card bg-al shadown'>
+  {% if militar %}
+  <p class="m-1 text-light"><strong> Resultado da Busca: </strong></p>
+  
+      {% for user in militar %}
+      <div class="card mb-3 bg-cubos shadow">
+          <div class="row g-0">
+            <div class="col-xl-4 m-auto align-items-center">
+              <div>
+              <div class="rounded-circle m-auto border border-3 border-dark m-1" style="background: url(https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user={{user.username}}&direction=2&head_direction=3&size=l&action=std) center 35% no-repeat, url({% static 'albandeira.png'%}) center center no-repeat; width: 140px; height: 140px;">	
+              </div></div>              
+      </div>
+            <div class="col-md-8">
+              <div class="card-body text-light">
+                  <p> <strong> Nickname: </strong> {{user.username}}</p>
+                  <p> <strong> Patente: </strong> {{user.patente}}</p>
+                  {% if user.siglas %}
+                  <p> <strong> Sigla: </strong> {{user.siglas}}</p>
+                  {% endif %}
+                  <p> <strong> Responsável pela promoção: </strong> <br>{{user.responsavel_promocao}}</p>
+                  <p> <strong> Data: </strong> {{user.data}}</p>
+                  <p> <strong> Status: </strong> {{user.status}}</p>
+                  {% if user.status == 'Demitido' or user.status == 'Exilado' %}
+                      <p><strong>Motivo:</strong> {{ user.demissao_motivo }}.</p>
+                  {% endif %}
+                  {% if honrarias %}
+                  <div class="row col-10 mb-3">
+                    <p> <strong> Honrarias: </strong></p>
+                    {% for honraria in honrarias %}
+                    <div class='col-3'>
+                      <img src="{{honraria.honraria.icone.url}}" class="m-auto ms-2" alt="{{honraria.honraria}}" width='66.6px' height='18.3px'>
+                    </div>
+                    {% endfor %}
+                  </div>
+                  {% endif %}
+                  <a class="btn m-1 text-light" style="background-color: #ae0909;" href="{% url "PerfilMilitar" user.slug %}">Acessar Perfil</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+      {% else %}
+      <div class="alert alert-danger m-auto mt-3 mb-3 col-12 text-center" role="alert">
+        Militar não encontrado!
+      </div>
+        
+{% endif %}
+</div>
+{% endif %}
+<div class="container d-flex mb-2 mb-lg-0 mt-4 ">
+    <div>
+        <img src="{% static 'jornal.png'%}" alt="">
+    </div>
+        <div class="ms-2 text-light">
+        <h3>Notícias</h3>
+        <p>Fica antenado as notícias do Exército Alemão!</p>
+        </div>
+        </div>
+        {% if noticias %}
+        <div class="card col-12 bg-al mb-3">
+          <img src="{{ noticias.imagem.url }}" class="card-img-top" alt="...">
+          <div class="card-body text-light">
+            <h5 class="card-title">{{noticias.titulo}}</h5>
+            <p class="card-text">{{noticias.descricao}}</p>
+            <p class="card-text"><small class="text-light"> Postado em {{noticias.datatime}} por {{noticias.solicitante.patente}} {{noticias.solicitante.username}}.</small></p>
+          </div>
+        </div>
+        {% else %}
+        <div class="alert alert-danger m-auto mt-3" role="alert">
+          Sem postagens recentes!
+        </div>
+        {% endif %}
+        <nav class="col-12 card bg-al mt-3 mb-3 shadow text-center">
+          <div class="container" style="position: relative; top: 50px;">
+            <div class="card-header" > <div style="position: relative; top: -30px;"><img class="px mt-3" src="{% static 'oficiais.png'%}" alt="" width="78px" height="78px">
+        <strong><h3 class="text-light " aria-current="page">Oficiais</h3></strong> </div></div>
+        <div class="mt-2">
+          {% if militares %}
+              {% for militar in militares %}
+              {% if militar.patente == 'Marechal ★★★★★' %}
+              <a ><img data-placement='bottom' data-toggle='tooltip' src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{militar.username}}' title='{{militar.patente}}, {{militar.username}}'/></a>
+              {% endif %}
+              {% endfor %}
+              {% for militar in militares %}
+              {% if militar.patente == 'General-de-Exército ★★★★' %}
+              <a ><img data-placement='bottom' data-toggle='tooltip' src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{militar.username}}' title='{{militar.patente}}, {{militar.username}}'/></a>
+              {% endif %}
+              {% endfor %}
+              {% for militar in militares %}
+              {% if militar.patente == 'General-de-Divisão ★★★' %}
+              <a ><img data-placement='bottom' data-toggle='tooltip' src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{militar.username}}' title='{{militar.patente}}, {{militar.username}}'/></a>
+              {% endif %}
+              {% endfor %}
+              {% for militar in militares %}
+              {% if militar.patente == 'General-de-Brigada ★★' %}
+              <a ><img data-placement='bottom' data-toggle='tooltip' src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{militar.username}}' title='{{militar.patente}}, {{militar.username}}'/></a>
+              {% endif %}
+              {% endfor %}
+              <div style="position: relative; top: -50px;">
+              {% for militar in militares %}
+              {% if militar.patente == 'Coronel ★' %}
+              <a ><img data-placement='bottom' data-toggle='tooltip' src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{militar.username}}' title='{{militar.patente}}, {{militar.username}}'/></a>
+              {% endif %}
+              {% endfor %}
+              {% for militar in militares %}
+              {% if militar.patente == 'Tenente-Coronel' %}
+              <a ><img  data-placement='bottom' data-toggle='tooltip' src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{militar.username}}' title='{{militar.patente}}, {{militar.username}}'/></a>
+              {% endif %}
+              {% endfor %}
+              {% for militar in militares %}
+              {% if militar.patente == 'Major' %}
+              <a ><img  data-placement='bottom' data-toggle='tooltip' src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{militar.username}}' title='{{militar.patente}}, {{militar.username}}'/></a>
+              {% endif %}
+              {% endfor %}
+            </div>
+            <div style="position: relative; top: -100px;">
+              {% for militar in militares %}
+              {% if militar.patente == 'Capitão' %}
+              <a ><img  data-placement='bottom' data-toggle='tooltip' src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{militar.username}}' title='{{militar.patente}}, {{militar.username}}'/></a>
+              {% endif %}
+              {% endfor %}
+            </div>
+              <div style="position: relative; top: -150px;">
+              {% for militar in militares %}
+              {% if militar.patente == 'Primeiro Tenente' %}
+              <a ><img  data-placement='bottom' data-toggle='tooltip' src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{militar.username}}' title='{{militar.patente}}, {{militar.username}}'/></a>
+              {% endif %}
+              {% endfor %}
+              {% for militar in militares %}
+              {% if militar.patente == 'Segundo Tenente' %}
+              <a ><img data-placement='bottom' data-toggle='tooltip' src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{militar.username}}' title='{{militar.patente}}, {{militar.username}}'/></a>
+              {% endif %}
+              {% endfor %}
+              {% for militar in militares %}
+              {% if militar.patente == 'Aspirante-a-Oficial' %}
+              <a ><img  data-placement='bottom' data-toggle='tooltip' src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{militar.username}}' title='{{militar.patente}}, {{militar.username}}'/></a>
+              {% endif %}
+              {% endfor %}
+              </div>
+              {% else %}
+              <div class="alert alert-danger m-auto mt-3" role="alert">
+                Sem Oficiais registrados!
+              </div>
+              {% endif %}
+      </div>
+      </div>
+      </nav>
+        </div>
+        
+        <div class="col-12 col-md-4">
+            <div class="container d-flex">
+                <div>
+                    <img src="{% static 'trofeu.png'%}" alt="">
+                </div>
+            <div class="ms-2 text-light">
+            <h3>Destaques</h3>
+            <p>Frase parabenizando os destaques!</p>
+        </div>
+    </div>
+    <div class="container">
+    <div class="card col-12 col-md-12 shadow m-auto mt-1 bg-al shadow dest-ofc">
+        <div class="d-flex m-1">
+        <div class="card mt-2 mb-2 shadow ms-3 bg-al bg-opacity-50" style="background-color: #d8b500;">
+            <div class="rounded-circle m-auto" style="background: url(https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user={{destofc.militar.username}}&direction=2&head_direction=2&size=l&headonly=1) center center no-repeat; width: 80px; height: 80px;">	
+            </div>                
+        </div>
+        <div class="text-light text-center m-auto">
+            <strong><p class="text-center mt-2" style="font-size:20px;">Oficial Destaque</p></strong>
+        <strong><p class="text-center" style="position: relative; top: -10px; font-size:15px;">{{destofc.militar.username}}</p></strong>
+        </div>
+    </div>
+    </div>
+    <div class="card col-12 col-md-12 shadow m-auto mt-1 bg-al shadow dest-p" >
+        <div class="d-flex m-1">
+        <div class="card mt-2 mb-2 shadow ms-3 bg-al bg-opacity-50" style="background-color: #970808;">
+            <div class="rounded-circle m-auto" style="background: url(https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user={{destpraca.militar.username}}&direction=2&head_direction=2&size=l&headonly=1) center center no-repeat; width: 80px; height: 80px;">	
+            </div>                
+        </div>
+        <div class="text-light text-center m-auto">
+            <strong><p class="text-center mt-2" style="font-size:20px;">Praça Destaque</p></strong>
+        <strong><p class="text-center" style="position: relative; top: -10px; font-size:15px;">{{destpraca.militar.username}}</p></strong>
+        </div>
+    </div>
+    </div>
+</div>
+<div class="container d-flex mt-4">
+    <div>
+        <img src="{% static 'atalhos.png'%}" alt="">
+    </div>
+<div class="ms-2 text-light">
+<h3>Atalhos</h3>
+<p>Acesse para se manter atualizado!</p>
+</div>
+        </div>
+        <div class="container">
+            <a class="d-flex card col-lg-12 col-md-12 col-12 shadow m-auto mt-1 action-text text-decoration-none bg-al" href="{% url "SegundaCIA" %}">
+                <div class="d-flex">
+                    <div class="col-4 mt-2 mb-2">
+                        <div class="rounded-circle m-auto px" style="background: url({% static 'relt.png'%}) center center no-repeat; width: 60px; height: 60px;">	
+                        </div> 
+                    </div>
+                    <div class="text-light col-8">
+                        <h5 class="text-center mt-4 me-5">Treinamentos</h5>
+                    </div>
+                </div>
+            </a>
+            <a class="d-flex card col-lg-12 col-md-12 col-12 shadow m-auto mt-1 action-text text-decoration-none bg-al" href="">
+                <div class="d-flex">
+                    <div class="col-4 mt-2 mb-2">
+                        <div class="rounded-circle m-auto px" style="background: url({% static 'usaveis.gif'%}) center center no-repeat; width: 60px; height: 60px;">	
+                        </div> 
+                    </div>
+                    <div class="text-light col-8">
+                        <h5 class="text-center mt-4 me-5">Fardamentos</h5>
+                    </div>
+                </div>
+            </a>
+            <a class="d-flex card col-lg-12 col-md-12 col-12 shadow m-auto mt-1 action-text text-decoration-none bg-al" href="{% url "LoginPainel" %}">
+                <div class="d-flex">
+                    <div class="col-4 mt-2 mb-2">
+                        <div class="rounded-circle m-auto px" style="background: url({% static 'cadeado.gif'%}) center center no-repeat; width: 60px; height: 60px;">	
+                        </div> 
+                    </div>
+                    <div class="text-light col-8">
+                        <h5 class="text-center mt-4 me-5">Login</h5>
+                    </div>
+                </div>
+            </a>
+    </div>
+    <div class="container d-flex mt-4">
+      <div>
+          <img src="{% static 'cofre.gif'%}" alt="">
+      </div>
+  <div class="ms-2 text-light">
+  <h3>Exclusivo</h3>
+  <p>Adquira pacotes e tenha acesso a itens exclusivos!</p>
+  </div>
+          </div>
+          <div class="container">
+            <div class="d-flex card col-lg-12 col-md-12 col-12 shadow m-auto mt-1 action-text text-decoration-none bg-al" href="">
+              <div class="d-flex mb-2">
+                  <div class="col-4 mt-2 mb-2">
+                      <div class="rounded-circle m-auto px" style="background: url({% static 'vip.png'%}) center center no-repeat; width: 60px; height: 60px; transform:scale(2.0); position: relative; top:50px">	
+                      </div> 
+                  </div>
+                  <div class="text-light col-8">
+                      <h5 class="mt-2">SEJA VIP</h5>
+                      <p class="card-text mb-1"><small>Seja dono de uma sala particular no servidor de TeamSpeak 3 do Exército Alemão, Acesso VIP a eventos externos e internos, e várias outras novidades. Fale com o Alto Comando e adquira essa exclusividade.</small></p>
+                  </div>
+              </div>
+          </div>
+          <div class="d-flex card col-lg-12 col-md-12 col-12 shadow m-auto mt-1 action-text text-decoration-none bg-al" href="">
+            <div class="d-flex mb-2">
+                <div class="col-4 mt-2 mb-2">
+                    <div class="rounded-circle m-auto px" style="background: url({% static 'acionistas.png'%}) center center no-repeat; width: 60px; height: 60px; transform:scale(2.0); position: relative; top:35px">	
+                    </div> 
+                </div>
+                <div class="text-light col-8">
+                    <h5 class="mt-2">ADQUIRA ACIONISTA!</h5>
+                    <p class="card-text mb-1"><small>Receba porcentagens em vendas de Patrocinadores, Pack 1 2 e 3. Faça o seu dinheiro ser bem investido e tenha grandes retornos além de benefícios exclusivos!</small></p>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex card col-lg-12 col-md-12 col-12 shadow m-auto mt-1 action-text text-decoration-none bg-al" href="">
+          <div class="d-flex mb-2">
+              <div class="col-4 mt-2 mb-2">
+                  <div class="rounded-circle m-auto px" style="background: url({% static 'patrocinadores.png'%}) center center no-repeat; width: 60px; height: 60px; transform:scale(2.0); position: relative; top:40px">	
+                  </div> 
+              </div>
+              <div class="text-light col-8">
+                  <h5 class="mt-2">ADQUIRA PATROCINADOR!</h5>
+                  <p class="card-text mb-1"><small>Apoie o Ex.AL, tenha acesso a novos fardamentos, grupos e muito mais! Tudo por 25 câmbios. Fale com um membro do Alto Comando.</small></p>
+              </div>
+          </div>
+      </div>
+          </div>
+          <div class="container d-flex mt-4">
+            <div>
+                <img src="{% static 'frank.png'%}" alt="">
+            </div>
+        <div class="ms-2 text-light">
+        <h3>Novos membros</h3>
+        <p>Sejam bem-vindos ao Exército Alemão!</p>
+        </div>
+                </div>
+        <div class="card bg-al">
+          <div class="mb-3 m-auto">
+            {% if ultimosalistados %}
+          {% for novosmembros in ultimosalistados %}
+          <a><img data-placement='bottom' data-toggle='tooltip' src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{novosmembros.username}}' title='{{novosmembros.patente}}, {{novosmembros.username}}'/></a>
+          {% endfor %}
+          {% else %}
+          <div class="alert alert-danger m-auto mt-3" role="alert">
+            Sem alistamentos recentes!
+          </div>
+              {% endif %}
+        </div>
+        </div>
+      </div>
+    </div>
+    <footer class="py-2 text-center bg-al shadow">
+      <img src="{% static 'aberto.png'%}" class="px m-auto mt-3" alt="..." width="80px" height="80px" >
+      <hr class="text-light m-auto col-10 mt-3 mb-3">
+      <p class="text-light col-10 m-auto">Este site não é de propriedade ou operado pela Sulake Corporation Oy e não é parte do Habbo Hotel ®.</p>
+      <p class="text-light col-10 m-auto mb-3">
+        Desenvolvido por Natazinho. © 2024 Exército Alemão Habbo - Marechal Einloft - Habbo.com.br.
+    </p>
+    </footer>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

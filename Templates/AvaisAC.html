@@ -1,0 +1,88 @@
+{% extends "BasePainel.html" %}
+{% load static %}
+
+{% block main %}
+<div class="container mt-3 m-auto">
+    <div class="row">
+  <div class="mt-3 m-auto col-11 col-md-7 order-2 order-md-1">
+    <div class="container d-flex mb-3">
+        <div>
+            <img src="{% static 'ja.png'%}" alt="">
+        </div>
+    <div class="ms-2">
+    <h3>Todos os Avais</h3>
+</div>
+</div>
+    {% if avais %}
+    {% for aval in avais %}
+    <div class="card mb-3 m-auto shadow col-12">
+        <div class="row g-0">
+          <div class="col-md-4 text-center" >
+            <img class="mb-auto" src="https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user={{ aval.solicitante.username}}&direction=2&head_direction=2&size=l&action=std" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body mt-3">
+            <p class="card-text"><strong> Solicitante: </strong>{{aval.solicitante.patente}}, {{aval.solicitante.username}}</p>
+              <p class="card-text"><strong> Motivo: </strong>{{aval.motivo}}</p>
+              <p class="card-text"><strong> Duração: </strong>{{aval.duracao}}</p>
+              <p class="card-text"><strong> Início: </strong>{{aval.data}}</p>
+              <p class="card-text"><strong> Fim: </strong>{{aval.data2}}</p>
+              <p class="card-text"><small class="text-body-secondary">Enviado em {{aval.datatime}}</small></p>
+              <span class="badge {% if aval.status == 'Aprovado' %} text-bg-success {% elif aval.status == 'Reprovado' %} text-bg-danger {% elif aval.status == 'Em análise...' %} text-bg-secondary {% endif %}">{{aval.status}}</span>
+              <br><hr><div class="d-flex">
+                {% if aval.status == 'Em análise...' or aval.status == 'Reprovado' %}
+                <form class="m-1" action="{% url 'AprovarAval' aval.id %}" method="post">
+                    {% csrf_token %}
+                    <button class="btn btn-success btn-sm" type="submit">Aprovar</button>
+                </form>
+                    {% endif %}
+                    {% if aval.status == 'Em análise...' or aval.status == 'Aprovado' %}
+                    <form class="m-1" action="{% url 'RejeitarAval' aval.id %}" method="post">
+                    {% csrf_token %}
+                    <button class="btn btn-danger btn-sm" type="submit">Reprovar</button>
+                </form>{% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <br>
+    {% endfor %}
+    {% else %}
+    <div class="alert alert-secondary mx-auto text-center mt-3" role="alert">
+      Sem resultado para a busca!
+    </div>   
+    {% endif %}
+  </div>
+  <div class="col-11 col-md-5 order-1 order-md-2 mx-auto">
+    <div class="container d-flex mt-4"> 
+        <div>
+          <img class="px" src="{% static 'dados.gif'%}" alt="">
+          </div>
+        <div class="ms-2">
+        <h3>Informações</h3>
+        </div>
+      </div>
+      <form class="input-group mt-3" method="get">
+        <input class='form-control' type="text" name="q" placeholder="Pesquisar por nickname">
+        <button class=" btn text-light" style="background:#202020;" type=" submit">
+            <i class='icon'>
+                <img width="35px" src="{% static "lupa.gif" %}" alt="">
+              </i></button>
+    </form>
+    <a class="d-flex card col-lg-12 col-md-12 col-12 shadow m-auto mt-1 action-text text-decoration-none bg-al" href="">
+        <div class="d-flex">
+            <div class="col-4 mt-2 mb-2">
+                <div class="rounded-circle m-auto px" style="background: url({% static 'JA.png'%}) center center no-repeat; width: 60px; height: 60px;">	
+                </div> 
+            </div>
+            <div class="text-light col-8">
+                <h5 class="text-center mt-4 me-5">Total de Avais: <span class="badge text-bg-secondary">{{total}}</span>
+                </h5>
+            </div>
+        </div>
+    </a>
+  </div>
+</div>
+</div>
+{% endblock main %}

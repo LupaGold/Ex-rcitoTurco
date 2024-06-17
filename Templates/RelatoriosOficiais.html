@@ -1,0 +1,120 @@
+{% extends "BasePainel.html" %}
+{% load static %}
+
+{% block main %}
+<div class="container mt-3 m-auto">
+<div class='row'>
+  <div class="mt-3 m-auto col-11 col-md-7 order-2 order-md-1">
+    <div class="container d-flex">
+      <div>
+          <img src="{% static 'relatorio.png'%}" alt="">
+      </div>
+  <div class="ms-2">
+  <h3>Todos os Relatórios de Treinamento</h3>
+</div>
+</div>
+    {% if relatorios %}
+    {% for relatorio in relatorios %}
+        <a class="card m-1 p-3 text-light text-decoration-none mb-3" style="background-color: #202020;" data-bs-toggle="collapse" href="#{{relatorio.pk}}" role="button" aria-expanded="false" aria-controls="{{relatorio.pk}}">
+            <div class="d-flex">
+                <div class="col-2 mt-md-3 mt-5 mb-2">
+                    <div class="rounded-circle m-auto px border border-1 border-light" style="background: url(https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user={{relatorio.solicitante.username}}&direction=2&head_direction=2&size=m&headonly=1) center center no-repeat; width: 40px; height: 40px;transform: scale(2.0);">	
+                    </div> 
+                </div>
+                <div class="col-8">
+                    <div class="container text-light">
+                        <h5>Treinamento {{relatorio.treinamento}}</h5>
+                        <p>Enviado por {{relatorio.solicitante.patente}}, {{relatorio.solicitante.username}}</p>
+                        <p><small>{{relatorio.data}}</small></p>
+                        <p>
+                        <span class="badge {% if relatorio.status == 'Aprovado' %} text-bg-success {% elif relatorio.status == 'Reprovado' %} text-bg-danger {% elif relatorio.status == 'Em análise...' %} text-bg-secondary {% endif %}">{{relatorio.status}}</span>
+                        {% if relatorio.aprovador %} por {{ relatorio.aprovador.patente}} {{ relatorio.aprovador.username}}{% endif %} <br> {% if relatorio.motivo%} <strong> Motivo:</strong> {{ relatorio.motivo}} {% endif %}</p>
+                    </div>
+                </div>
+            </div>
+        </a>
+      <div class="collapse" id="{{relatorio.pk}}">
+        <div class="card card-body">
+          <strong>Data:</strong> {{relatorio.data}} <br>
+          <strong>Oficial responsável:</strong>{{relatorio.ofc.patente}} {{relatorio.ofc.username}} <br>
+          <strong>Treinador:</strong> {{relatorio.treinador}} <br>
+          {% if relatorio.aux_patente != None %}
+          <strong>Auxiliar/Relator:</strong> {{relatorio.auxiliar}} <br>
+          {% endif %}
+          <strong>Treinamento:</strong> {{relatorio.treinamento}} <br>
+          <strong>Sala:</strong> {{relatorio.sala}} <br>
+          <strong>Nome dos treinados: </strong>
+          {{ relatorio.treinados}}<br>
+          <br>
+          - Às {{relatorio.hora_ino}}, o Treinamento {{relatorio.treinamento}} deu início, com {{relatorio.alistado_cont}} {{relatorio.categoria}}.<br>
+          {% if relatorio.reprovacoes != '- Às [xx:xx], o Patente Fulano, foi reprovado. Motivo: Saiu durante o treinamento.' and relatorio.reprovacoes != None %}
+          <hr>
+          {{relatorio.reprovacoes}}<br>
+          <hr>
+          {% endif %}
+          - Às [21:15], o Treinamento {{relatorio.treinamento}} teve seu fim, com {{relatorio.reprovado_cont}} aprovado(s).<br>
+          {% if relatorio.aprovados != ' '%}
+          <hr>
+          <strong>Nome dos aprovados:</strong><br>
+          {{relatorio.aprovados}} <br>
+          <hr>
+          {% endif %}
+          {% if relatorio.obs != None %}
+          <strong>Observações:</strong><br>
+          {{relatorio.obs}}
+          {% endif %}
+          <div class='d-flex'>
+          {% if relatorio.status == 'Em análise...' or relatorio.status == 'Reprovado' %}
+          <form class="m-1" action="{% url 'AprovarRelatorio' relatorio.id %}" method="post">
+              {% csrf_token %}
+              <button class="btn btn-success btn-sm" type="submit">Aprovar</button>
+          </form>
+              {% endif %}
+              {% if relatorio.status == 'Em análise...' or relatorio.status == 'Aprovado' %}
+              <form class="m-1" action="{% url 'ReprovarRelatorio' relatorio.id %}" method="post">
+              {% csrf_token %}
+              <button class="btn btn-danger btn-sm" type="submit">Reprovar</button>
+          </form>{% endif %}
+        </div>
+        </div>
+      </div>
+      {% endfor %}
+      {% else %}
+      <div class="alert alert-secondary mx-auto text-center mt-3" role="alert">
+        Sem resultado para a busca!
+      </div>
+      {% endif %}
+    </div>
+  <div class='col-11 col-md-5 order-1 order-md-2 mx-auto'> 
+    <div class="container d-flex mt-4"> 
+      <div>
+        <img class="px" src="{% static 'dados.gif'%}" alt="">
+        </div>
+      <div class="ms-2">
+      <h3>Informações</h3>
+      </div>
+    </div>
+    <form class="input-group mt-3" method="get">
+        <input class='form-control' type="text" name="q" placeholder="Pesquisar por nickname">
+        <button class=" btn text-light" style="background:#202020;" type=" submit">
+            <i class='icon'>
+                <img width="35px" src="{% static "lupa.gif" %}" alt="">
+              </i></button>
+    </form>
+    <div class="card mt-3" style="background-color: #202020;">
+      <div class="mt-2 mb-2 list-group list-group-flush text-center rounded m-auto col-10">
+        <li class="list-group-item">Total de treinamentos: 
+            <span class="badge text-bg-dark text-light rounded-pill">{{ total }}</span></li>
+    </div>
+    <hr class="text-light m-auto col-10">
+    <div class="m-auto mt-3 mb-3">
+    {% for item in contador %}
+    <li class="list-group-item text-light mb-2" style="background: #202020"> {% if item.treinamento == 'Básico I'%} <img class="px" src="{% static 't1.gif'%}" alt=""> {% elif item.treinamento == 'Básico II' %} <img class="px" src="{% static 't2.gif'%}" alt=""> {% elif item.treinamento == 'Complementar I' %} <img class="px" src="{% static 't3.gif'%}" alt=""> {% elif item.treinamento == 'Complementar II' %} <img class="px" src="{% static 't4.gif'%}" alt=""> {% endif %} Treinamento {{ item.treinamento }}: 
+      <span class="badge text-bg-light  rounded-pill" style="background: #202020">{{ item.total }}</span></li>
+    {% endfor %}
+    </div>
+  </div>
+    </div>
+</div>
+</div>
+{% endblock main %}

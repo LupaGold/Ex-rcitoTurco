@@ -1,0 +1,25 @@
+{% extends "BaseSite.html" %}
+{% load static %}
+
+{% block header %}
+<title>{{item.titulo}} - Exército Alemão - Habbo Hotel ©</title>
+<link rel="icon" type="img/x-icon" href="{{item.icone.url}}">
+{% endblock header %}
+
+{% block topo %}
+<div class="container d-flex mt-3">
+    <div>
+        <img src="{{item.icone.url}}" alt="">
+    </div>
+<div class="ms-2 text-light">
+<h3>{{item.titulo}}</h3>
+<p>{{item.descricao}}</p>
+</div>
+</div>
+{% endblock topo %}
+
+{% block main %}
+<div class="container m-2"> 
+{{item.texto | safe }}
+</div>
+{% endblock main %}

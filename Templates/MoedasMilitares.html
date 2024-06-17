@@ -1,0 +1,114 @@
+{% extends "BasePainel.html" %}
+{% load static %}
+
+{% block main %}
+<div class="container mt-3 m-auto">
+   <div class="row">
+    <div class="col-md-7 col-11 order-2 order-md-1">
+        <div class="container d-flex mb-3">
+            <div>
+                <img src="{% static 'moedas.png'%}" alt="">
+            </div>
+        <div class="ms-2">
+        <h3>Militares Moedas</h3>
+    </div>
+    </div>
+    <div class="row">
+        {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <div class="alert alert-secondary text-center">{{ message }}</div>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% if militares %}
+    {% for militar in militares %}
+    <div class="card mb-3 m-auto shadow col-11">
+        <div class="row g-0">
+          <div class="col-md-4 text-center" >
+            <img class="mb-auto" src="https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user={{ militar.username}}&direction=2&head_direction=2&size=l&action=std" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body mt-3">
+            <p class="card-text"><strong> Militar: </strong>{{militar.patente}}, {{militar.username}}</p>
+            <div class=" d-flex">
+                <div class="text-center">
+                    <p><strong> Moedas: </strong>{{ militar.moedas }}</p>
+                </div>
+                <div>
+                    <img src="{% static 'moedaloja.png'%}" alt="">
+                </div>
+        </div>
+            <hr>
+              <div class="row">
+                    <form class="mb-3 form-group form-rel" action="{{ add_moedas_url }}" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <input type="hidden" name="user_id" value="{{ militar.id }}">
+
+                        <div class="row">
+                            <div class="col">
+                                <input class="form-control form-control-sm" type="number" name="amount" step="0.01" placeholder="Quantidade de moedas">
+                            </div>
+                            <div class="col">
+                                <button class="btn btn-success btn-sm" type="submit">Adicionar Moedas</button>
+                            </div>
+                        </div>
+                    </form>
+                  </div>
+                    <form class="mb-3 form-group form-rel" action="{{ remove_moedas_url }}" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <input type="hidden" name="user_id" value="{{ militar.id }}">
+                        <div class="row">
+                            <div class="col">
+                                <input class="form-control form-control-sm" type="number" name="amount" step="0.01" placeholder="Quantidade de moedas">
+                            </div>
+                            <div class="col">
+                                <button class="btn btn-danger btn-sm" type="submit">Remover Moedas</button>
+                            </div>
+                        </div>
+                    </form>
+              </div>
+            </div>
+          </div>
+        </div>
+    <br>
+    {% endfor %}
+    {% else %}
+    <div class="alert alert-secondary mx-auto text-center mt-3" role="alert">
+        Sem resultado para a busca!
+      </div>   
+      {% endif %}
+    </div>
+   </div>
+   <div class="col-md-5 col-11 order-1 order-md-2">
+    <div class="container mb-3 d-flex mt-4"> 
+        <div>
+          <img class="px" src="{% static 'destaque.png'%}" alt="">
+          </div>
+        <div class="ms-2">
+        <h3>Informações</h3>
+        </div>
+      </div>
+      <form class="input-group mt-3" method="get">
+        <input class='form-control' type="text" name="q" placeholder="Pesquisar por nickname">
+        <button class=" btn text-light" style="background:#202020;" type=" submit">
+            <i class='icon'>
+                <img width="35px" src="{% static "lupa.gif" %}" alt="">
+              </i></button>
+    </form>
+      <a class="d-flex card col-lg-12 col-md-12 col-12 shadow m-auto mt-1 action-text text-decoration-none bg-al" href="">
+        <div class="d-flex">
+            <div class="col-4 mt-2 mb-2">
+                <div class="rounded-circle m-auto px" style="background: url({% static 'moedas.png'%}) center center no-repeat; width: 60px; height: 60px;">	
+                </div> 
+            </div>
+            <div class="text-light col-8">
+                <h5 class="text-center mt-4 me-5">Minhas moedas: <span class="badge text-bg-danger">{{request.user.moedas}}</span>
+                </h5>
+            </div>
+        </div>
+    </a>
+   </div>
+</div>
+</div>
+{% endblock main %}

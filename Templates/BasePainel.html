@@ -1,0 +1,499 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel - Exército Alemão - Habbo Hotel ©</title>
+    {% block title %}{% endblock title %}
+    <link rel="icon" type="img/x-icon" href="{% static 'aberto.png' %}">
+    <link href="{% static 'style.css' %}" rel="stylesheet">
+    <link href="/static/django_ckeditor_5/dist/styles.css" media="all" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+      .fa-solid {
+        font-size: 26px;
+    }
+
+    .fa-solid[data-count]:after {
+        transform: scale(0.5);
+        position: absolute;
+        right: 0%;
+        top: 1%;
+        content: attr(data-count);
+        font-size: 36%;
+        padding: .6em;
+        border-radius: 999px;
+        line-height: .75em;
+        color: white;
+        background: rgba(255, 0, 0, .85);
+        text-align: center;
+        min-width: 2em;
+        font-weight: bold;
+    }
+      #notificationIcon {
+        color: white;
+      }
+      #notificationIcon.has-notifications {
+        color: red; 
+      }
+      .bg-al {
+        background-color: #202020;
+    }
+    .bg-cubos {
+        background-color: #181818;
+        background-image:  linear-gradient(30deg, #202020 12%, transparent 12.5%, transparent 87%, #202020 87.5%, #202020), linear-gradient(150deg, #202020 12%, transparent 12.5%, transparent 87%, #202020 87.5%, #202020), linear-gradient(30deg, #202020 12%, transparent 12.5%, transparent 87%, #202020 87.5%, #202020), linear-gradient(150deg, #202020 12%, transparent 12.5%, transparent 87%, #202020 87.5%, #202020), linear-gradient(60deg, #20202077 25%, transparent 25.5%, transparent 75%, #20202077 75%, #20202077), linear-gradient(60deg, #20202077 25%, transparent 25.5%, transparent 75%, #20202077 75%, #20202077);
+        background-size: 80px 140px;
+        background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+    }
+    </style>
+    <body style="background: #e8e8e8;">
+        <div class="sidebar close">
+          <div class="logo-details">
+            <div class="image-perfil">
+            <div class="rounded-circle border border-3 border-light m-auto" style="background: url(https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user={{ request.user.username}}&direction=2&head_direction=2&size=l&action=std) center 35% no-repeat, url({% static 'bgfloresta.png'%}) center center no-repeat; width: 90px; height: 90px;">	
+            </div>
+            <strong><p class="text-center text-light">{{ request.user.username}}</p></strong>
+            <p class="text-center text-light" style="position: relative; top: -20px;">{{ request.user.patente}}</p>
+          </div>
+        </div>
+          <ul class="nav-links">
+            <li>
+              <a href="{% url "PrincipalPainel" %}">
+                <i class='bx'>
+                  <img width="35px" src="{% static "home.png" %}" alt="">
+                </i>
+                <span class="link_name">Principal</span>
+              </a>
+              <ul class="sub-menu blank">
+                <li><a class="link_name" href="#">Principal</a></li>
+              </ul>
+            </li>
+            {% if OFC or AC %}
+            <li class="mt-2">
+              <div class="iocn-link">
+                <a href="#">
+                  <i class='bx'>
+                    <img class="px" width="41px" src="{% static "uniforme.png" %}" alt="">
+                  </i>
+                  <span class="link_name">Militares</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow' ></i>
+              </div>
+              <ul class="sub-menu">
+                <li><a class="link_name" href="#">Militares</a></li>
+                <li><a href="{% url "MilitaresLista" %}">Lista</a></li>
+                <li><a href="{% url "RegistrarMilitar" %}">Registrar +</a></li>
+                {% if AC %}
+                <li><a href="{% url "CriarDestaquePraça" %}">Destaque Praça</a></li>
+                <li><a href="{% url "CriarDestaqueOficial" %}">Destaque Oficial</a></li>
+                <li><a href="#">Redefinir Patente</a></li>
+                {% endif %}
+              </ul>
+            </li>
+            {% endif %}
+            <li class="mt-2">
+              <div class="iocn-link">
+                <a href="#">
+                  <i class='bx'>
+                    <img class="px" width="35px" src="{% static "ja.png" %}" alt="">
+                  </i>
+                  <span class="link_name">Avais</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow' ></i>
+              </div>
+              <ul class="sub-menu">
+                <li><a class="link_name" href="#">Avais</a></li>
+                <li><a href="{% url "AvalPraça" %}">Meus Avais</a></li>
+                <li><a href="{% url "RegistrarAval" %}">Abrir Aval +</a></li>
+                {% if AC %}
+                <li><a href="{% url "AvalAC" %}">Todos os Avais</a></li>
+                {% endif %}
+              </ul>
+            </li>
+            <li class="mt-2">
+              <div class="iocn-link">
+                <a href="#">
+                  <i class='bx'>
+                    <img class="px" width="35px" src="{% static "relatorio.png" %}" alt="">
+                  </i>
+                  <span class="link_name">Relatórios</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow' ></i>
+              </div>
+              <ul class="sub-menu">
+                <li><a class="link_name" href="#">Relatórios</a></li>
+                <li><a href="{% url "RelatoriosDeTreinamento" %}">Meus Relatórios</a></li>
+                <li><a href="{% url "RegistrarRelatorio" %}">Registrar Relatório +</a></li>
+                {% if OFC or AC %}
+                <li><a href="{% url "RelatoriosOficiais" %}">Todos os Relatórios</a></li>
+                {% endif %}
+              </ul>
+            </li>
+            <li class="mt-2">
+              <div class="iocn-link">
+                <a href="#">
+                  <i class='bx'>
+                    <img class="px" width="37px" src="{% static "loja.png" %}" alt="">
+                  </i>
+                  <span class="link_name">Loja</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow' ></i>
+              </div>
+              <ul class="sub-menu">
+                <li><a class="link_name" href="#"></a></li>
+                <li><a href="{% url "LojaEmblemas" %}">Emblemas</a></li>
+                <li><a href="{% url "MoedasLoja" %}">Moedas</a></li>
+                {% if AC %}
+                <li><a href="{% url "RegistrarEmblema" %}">Registrar Emblema</a></li>
+                <li><a href="{% url "EditarEmblemas" %}">Editar Emblemas</a></li>
+                <li><a href="#">Saques</a></li>
+                <li><a href="{% url "MoedasMilitares" %}">Moedas Militares</a></li>
+                {% endif %}
+              </ul>
+            </li>
+            {% if SUP or RSUP or LSUP or AC %}
+              <li class="mt-2">
+                <div class="iocn-link">
+                  <a href="#">
+                    <i class='bx'>
+                      <img class="px" width="39px" src="{% static "Supervisores.png" %}" alt="">
+                    </i>
+                    <span class="link_name">Supervisores</span>
+                  </a>
+                  <i class='bx bxs-chevron-down arrow' ></i>
+                </div>
+                <ul class="sub-menu">
+                  <li><a class="link_name" href="#">Supervisores</a></li>
+                  <li><a href="{% url "SupervisoresPraça" %}">Minhas Ações</a></li>
+                  <li><a href="{% url "GuiaSupervisores" %}">Guia</a></li>
+                  {% if RSUP or LSUP or AC %}
+                  <li><a href="{% url "SupervisoresOficial" %}">Todas as Ações</a></li>
+                  <li><a href="{% url "PermissõesSup" %}">Alterar Permissão</a></li>
+                  {% endif %}
+                  {% if LSUP or AC %}
+                  <li><a href="{% url "GuiaSupervisoresEditar" guiasup.pk %}">Alterar Guia</a></li>
+                  <li><a href="{% url "SupervisorDestaque" %}">Alterar Destaque</a></li>
+                  {% endif %}
+                </ul>
+              </li>
+              {% endif %}
+              {% if AJD or RAJD or LAJD or AC %}
+              <li class="mt-2">
+                <div class="iocn-link">
+                  <a href="#">
+                    <i class='bx'>
+                      <img class="px" width="39px" src="{% static "ajudantes.png" %}" alt="">
+                    </i>
+                    <span class="link_name">Ajudantes</span>
+                  </a>
+                  <i class='bx bxs-chevron-down arrow' ></i>
+                </div>
+                <ul class="sub-menu">
+                  <li><a class="link_name" href="#">Ajudantes</a></li>
+                  <li><a href="{% url "AjudantesPraça" %}">Minhas Ações</a></li>
+                  <li><a href="{% url "GuiaAjudantes" %}">Guia</a></li>
+                  {% if RAJD or LAJD or AC%}
+                  <li><a href="{% url "AjudantesOficial" %}">Todas as Ações</a></li>
+                  <li><a href="{% url "PermissoesAjd" %}">Alterar Permissão</a></li>
+                  {% endif %}
+                  {% if LAJD or AC %}
+                  <li><a href="{% url "GuiaAjudantesEditar" guiaajd.pk %}">Alterar Guia</a></li>
+                  <li><a href="{% url "AjudantesDestaque" %}">Alterar Destaque</a></li>
+                  {% endif %}
+                </ul>
+              </li>
+              {% endif %}
+              {% if R2CIA or L2CIA or AC %}
+            <li class="mt-2">
+              <div class="iocn-link">
+                <a href="#">
+                  <i class='bx'>
+                    <img class="px" width="39px" src="{% static "2cia.gif" %}" alt="">
+                  </i>
+                  <span class="link_name">Segunda Companhia</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow' ></i>
+              </div>
+              <ul class="sub-menu">
+                
+                <li><a class="link_name" href="#"></a></li>
+                <li><a href="{% url "Relatório2CIA" %}">Avaliações</a></li>
+                <li><a href="{% url "AvaliaçãoTP" %}">TP's</a></li>
+                {% if AC or L2CIA %}
+                <li><a href="{% url "CriarDestaque" %}">Alterar Destaque</a></li>
+                {% endif %}
+              </ul>
+            </li>
+            {% endif %}
+            {% if M3CIA or L3CIA or AC %}
+            <li class="mt-2">
+              <div class="iocn-link">
+                <a href="#">
+                  <i class='bx'>
+                    <img class="px" width="39px" src="{% static "3cia.gif" %}" alt="">
+                  </i>
+                  <span class="link_name">Terceira Companhia</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow' ></i>
+              </div>
+              <ul class="sub-menu">
+                
+                <li><a class="link_name" href="#"></a></li>
+                <li><a href="{% url "Relatório3CIA" %}">Relatórios</a></li>
+                <li><a href="{% url "Doação3CIA" %}">Doações</a></li>
+                {% if AC or L3CIA %}
+                <li><a href="{% url "CriarDestaque3CIA" %}">Alterar Destaque</a></li>
+                {% endif %}
+              </ul>
+            </li>
+            {% endif %}
+              {% comment %} {% if JORNALISTA or AC %}
+              <li class="mt-2">
+                <div class="iocn-link">
+                  <a href="#">
+                    <i class='bx'>
+                      <img class="px" width="41px" src="{% static "jornal.png" %}" alt="">
+                    </i>
+                    <span class="link_name">Jornal</span>
+                  </a>
+                  <i class='bx bxs-chevron-down arrow' ></i>
+                </div>
+                <ul class="sub-menu">
+                  <li><a class="link_name" href="#">Jornal</a></li>
+                  <li><a href="#">Postagens</a></li>
+                  {% if LJORNALISTA or AC %}
+                  <li><a href="#">Alterar Permissão</a></li>
+                  {% endif %}
+                </ul>
+              </li>
+              {% endif %} {% endcomment %}
+            <li class="mt-2">
+              <div class="iocn-link">
+                <a href="#">
+                  <i class='bx'>
+                    <img class="px" width="35px" src="{% static "config.png" %}" alt="">
+                  </i>
+                  <span class="link_name">Configuração</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow' ></i>
+              </div>
+              <ul class="sub-menu">
+                <li><a class="link_name" href="#">Configuração</a></li>
+                <li><a href="{% url "AlterarSenha" %}">Alterar Senha</a></li>
+                <li><a href="#">Perfil</a></li>
+              </ul>
+            </li>
+              <li class="mt-2">
+                <a href="{% url "Logout" %}">
+                  <i class='bx'>
+                    <img class="px" width="40px" src="{% static "logout.png" %}" alt="">
+                  </i>
+                  <span class="link_name">Sair</span>
+                </a>
+                <ul class="sub-menu blank">
+                  <li><a class="link_name" href="">Sair</a></li>
+                </ul>
+              </li>
+      </ul>
+        </div>
+        
+        <section class="home-section">
+          <nav class="navbar bg-nav">
+            <div class="container-fluid">
+                <div class="home-content">
+                  <i class='bx bx-menu text-light' ></i>
+                </div>
+                <div class="d-flex">
+                  <div class="container">
+                      <span class="fa fa-bell mt-4" id="notificationIcon" style="transform: scale(2);" data-bs-toggle="collapse" href="#notifyCollapse" role="button" aria-expanded="false" aria-controls="notifyCollapse">
+                        <i id="bellCount" class="fa-solid" data-count="0" ></i>
+                      </span>
+                  </div>
+                  <div class="container mt-2 me-2">
+                    <h4><span class="badge" style="background-color: gold; position: relative; left: 20px;">{{request.user.moedas}}  <img src="{% static 'carteira.gif' %}" alt="">
+                    </span></h4>
+                  </div>
+                </div>
+            </div>
+          </nav>
+          <audio id="notificationSound" src="{% static 'notify.mp3' %}" preload="auto"></audio>
+          <div class="container">
+            <div class="collapse" id="notifyCollapse">
+              <div class="card card-body col-12 shadow m-auto mt-3"tabindex="-1">
+              <div class="container text-center" id='notify'>
+              </div>
+              <hr class="text-light">
+              <button class="btn btn-danger" id="clearButton" style="display: none;">
+                Limpar Notificações
+              </button>
+            </div>
+          </div>
+          </div>
+          {% block main %}
+          {% endblock main %}
+        </section>
+        <script src="/static/django_ckeditor_5/dist/bundle.js"></script>
+        <script>
+          // Função para recuperar as notificações armazenadas no armazenamento local
+          function getStoredNotifications() {
+              const storedNotifications = localStorage.getItem('notifications');
+              return storedNotifications ? JSON.parse(storedNotifications) : [];
+          }
+      
+          // Função para salvar as notificações no armazenamento local
+          function saveNotifications(notifications) {
+              localStorage.setItem('notifications', JSON.stringify(notifications));
+          }
+      
+          // Array para armazenar as notificações não lidas
+          let unreadNotifications = getStoredNotifications();
+      
+          // Inicializa um objeto WebSocket com a URL adequada
+          const notifySocket = new WebSocket(
+              'ws://'
+              + window.location.host
+              + '/ws/notify/'
+          );
+      
+          // Função chamada quando a conexão do WebSocket é aberta
+          notifySocket.onopen = function (e) {
+              console.log('Socket conectado com sucesso.');
+          };
+      
+          // Função chamada quando a conexão do WebSocket é fechada inesperadamente
+          notifySocket.onclose = function (e) {
+              console.log('Socket fechado inesperadamente');
+          };
+      
+          // Função chamada ao receber uma mensagem através do WebSocket
+          notifySocket.onmessage = function (e) {
+              const data = JSON.parse(e.data);
+              const message = data.message;
+              const notificationSound = document.getElementById('notificationSound');
+              notificationSound.play();
+      
+              // Adiciona a nova mensagem à lista de notificações não lidas
+              unreadNotifications.push(message);
+      
+              // Salva as notificações no armazenamento local
+              saveNotifications(unreadNotifications);
+      
+              // Atualiza a interface do usuário para refletir a nova notificação
+              updateUI();
+          };
+      
+          // Função para atualizar a interface do usuário com as notificações não lidas
+          function updateUI() {
+              // Limpa a lista de notificações na interface do usuário
+              const notifyList = document.getElementById('notify');
+              notifyList.innerHTML = '';
+      
+              if (unreadNotifications.length === 0) {
+                  // Se não houver notificações, exibe o alerta
+                  const alertDiv = document.createElement('div');
+                  alertDiv.className = 'alert alert-secondary';
+                  alertDiv.setAttribute('role', 'alert');
+                  alertDiv.textContent = 'Nenhuma notificação encontrada!';
+                  notifyList.appendChild(alertDiv);
+      
+                  // Esconde o botão de limpar notificações
+                  document.getElementById('clearButton').style.display = 'none';
+              } else {
+                  // Adiciona cada notificação não lida à lista na interface do usuário
+                  unreadNotifications.forEach(function(message) {
+                      const newLi = document.createElement('div');
+                      const newAnchor = document.createElement('div');
+                      newAnchor.className = 'alert alert-secondary';
+                      newAnchor.href = '#';
+      
+                      // Adiciona a imagem padrão à notificação
+                      const img = document.createElement('img');
+                      img.src = '{% static 'aviso.png' %}';
+                      img.className = 'm-1 mb-2';
+                      img.alt = 'Imagem padrão';
+                      newAnchor.appendChild(img);
+      
+                      // Adiciona o texto da mensagem à notificação
+                      const messageText = document.createTextNode(message);
+                      newAnchor.appendChild(messageText);
+      
+                      newLi.appendChild(newAnchor);
+                      notifyList.appendChild(newLi);
+                  });
+      
+                  // Mostra o botão de limpar notificações
+                  document.getElementById('clearButton').style.display = 'block';
+              }
+      
+              // Atualiza o contador de notificações
+              document.getElementById('bellCount').setAttribute('data-count', unreadNotifications.length);
+          }
+      
+          // Função para limpar todas as notificações
+          function clearNotifications() {
+              // Limpa a lista de notificações não lidas
+              unreadNotifications = [];
+              saveNotifications(unreadNotifications);
+      
+              // Atualiza a interface do usuário
+              updateUI();
+          }
+      
+          // Ao carregar a página, atualiza a interface do usuário com as notificações armazenadas
+          window.addEventListener('load', function() {
+              updateUI();
+          });
+      
+          // Adiciona um evento de clique ao botão de limpar notificações
+          document.getElementById('clearButton').addEventListener('click', function() {
+              clearNotifications();
+          });
+      </script>
+        <script>
+        let arrow = document.querySelectorAll(".arrow");
+        for (var i = 0; i < arrow.length; i++) {
+          arrow[i].addEventListener("click", (e)=>{
+         let arrowParent = e.target.parentElement.parentElement;
+         arrowParent.classList.toggle("showMenu");
+          });
+        }
+        let sidebar = document.querySelector(".sidebar");
+        let sidebarBtn = document.querySelector(".bx-menu");
+        console.log(sidebarBtn);
+        sidebarBtn.addEventListener("click", ()=>{
+          sidebar.classList.toggle("close");
+        });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+      </body>
+</html>
+
+<!-- <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  <div>
+    <i id="bellCount" class="fa-solid" data-count="0" style="position: relative; right: 14px; top: -30px ;"></i>
+    <img class="px" src="{% static 'notify.png'%}" alt="" style="transform: scale(2);">
+  </div>
+  </a>
+</a>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"><img src="{% static 'aviso.png'%}" alt="" class="m-1 mb-3 me-3">Notificações</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div id="notify" class="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="clearButton" class="btn btn-secondary">Limpar Notificações</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div> -->

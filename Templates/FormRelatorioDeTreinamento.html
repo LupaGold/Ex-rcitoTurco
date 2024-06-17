@@ -1,0 +1,162 @@
+{% extends "BasePainel.html" %}
+{% load static %}
+
+{% block main %}
+
+<div class="container m-auto mt-3"> 
+    <div class="container d-flex">
+        <div>
+            <img src="{% static image %}" alt="">
+        </div>
+    <div class="ms-2">
+    <h3>{{titulo}}</h3>
+    <p>{{descricao}}
+    </p>
+</div>
+</div>
+    <div class="card m-auto mb-3 shadow text-light" style="background-color: #202020;">
+        <form class="m-2" method="post">
+            {% csrf_token %}
+            <p>Data: <span id="data-id">{{ form.instance.data }}</span></p>
+            {% if form.errors %}
+                <ul class="errorlist">
+                {% for field_errors in form.errors.values %}
+                    {% for error in field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+                </ul>
+            {% endif %}
+            <div class="form-group form-rel">
+                <label class="form-label">Oficial Responsável:</label>
+                {{ form.ofc }}
+            </div>
+        
+            <div class="form-group form-rel">
+                <label class="form-label mt-1">Treinador:</label>
+                <div class="row">
+                    <div class="col">
+                        {{ form.treinador }}
+                    </div>
+                    <div class="col">
+                        
+                    </div>
+                </div>
+            </div>
+        
+            <div class="form-group form-rel" id="camposAuxiliares">
+                <label class="form-label mt-1">Auxiliar:</label>
+                <div class="row">
+                    <div class="col">
+                        {{ form.auxiliar }}
+                    </div>
+                    <div class="col">
+                    </div>
+                </div>
+            </div>
+        
+            <input type="checkbox" id="mostrarAuxiliares"> Sem Auxiliar
+            <div class="form-group form-rel">
+                <label class="form-label mt-1">Sala de treinamento:</label>
+                <div class="row">
+                    <div class="col">
+                        {{ form.treinamento }}
+                    </div>
+                    <div class="col">
+                        {{ form.sala }}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group form-rel">
+                <label class="form-label">Nome dos treinados: (Um abaixo do outro com um hífen antes do nick)</label>
+                {{ form.treinados }}
+            </div>
+        
+            <br>
+        
+            <div class="form-group form-rel">
+                <div class="input-group">
+                    <span class="input-group-text">Às</span>
+                    {{ form.hora_ino }}
+                    <span class="input-group-text">o Treinamento deu início, com</span>
+                    {{ form.alistado_cont }}
+                    {{ form.categoria }}
+                </div>
+            </div>
+        
+            <div class="form-group form-rel" id="campoReprovacoes">
+                <label class="form-label mt-1" for="reprovacoes">Reprovações:</label>
+                {{ form.reprovacoes }}
+            </div>
+        
+            <input type="checkbox" id="ocultarReprovacoes"> Este treino não teve reprovados.
+        
+            <div class="form-group form-rel">
+                <div class="input-group">
+                    <span class="input-group-text">Às</span>
+                    {{ form.hora_fim }}
+                    <span class="input-group-text">o Treinamento teve seu fim, com</span>
+                    {{ form.reprovado_cont }}
+                </div>
+            </div>
+            <div class="form-group form-rel" id="campoAprovados">
+                <label class="form-label mt-1" for="aprovados">Aprovados:</label>
+                {{ form.aprovados }}
+            </div>
+        
+            <input type="checkbox" id="ocultarAprovados"> Este treino não teve aprovados.
+
+            <div class="form-group form-rel">
+                <label class="form-label">Observações:</label>
+                {{ form.obs }}
+            </div>
+        
+            <div class="d-flex justify-content-end">
+                <button class="btn text-light m-2 mb-3" type="submit" style="background-color:#ae0909;">Registrar</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const inputReprovacoes = document.getElementById('id_reprovacoes');
+        inputReprovacoes.value = '- Às [xx:xx], o Patente Fulano, foi reprovado. Motivo: Saiu durante o treinamento.';
+        
+        const checkbox = document.getElementById('ocultarReprovacoes');
+        const campoReprovacoes = document.getElementById('campoReprovacoes');
+
+        checkbox.addEventListener('change', function() {
+            if (this.checked) {
+                campoReprovacoes.style.display = 'none';
+                inputReprovacoes.value = '';
+            } else {
+                campoReprovacoes.style.display = 'block';
+                inputReprovacoes.value = '- Às [xx:xx], o Patente Fulano, foi reprovado. Motivo: Saiu durante o treinamento.';
+            }
+        });
+    });
+</script>
+  <script>
+    const checkbox = document.getElementById('mostrarAuxiliares');
+    const camposAuxiliares = document.getElementById('camposAuxiliares');
+
+    checkbox.addEventListener('change', function() {
+        if (this.checked) {
+            camposAuxiliares.style.display = 'none';
+        } else {
+            camposAuxiliares.style.display = 'block';
+        }
+    });
+</script>
+<script>
+    const camposAprovados = document.getElementById('campoAprovados');
+
+    document.getElementById('ocultarAprovados').addEventListener('change', function() {
+        if (this.checked) {
+            camposAprovados.style.display = 'none';
+        } else {
+            camposAprovados.style.display = 'block';
+        }
+    });
+</script>
+{% endblock main %}
