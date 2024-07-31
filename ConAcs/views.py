@@ -387,7 +387,7 @@ class ResetarSenha(LoginRequiredMixin, View):
         limite_patente = LIMITES_REBAIXAMENTO.get(solicitante_patente)
         
         if not limite_patente:
-            messages.error(request, 'Você não tem permissão para rebaixar usuários.')
+            messages.error(request, 'Você não tem permissão para resetar a senha desse usuários.')
             return redirect('MilitaresLista')
         
         # Verificar a patente atual do usuário
@@ -406,7 +406,7 @@ class ResetarSenha(LoginRequiredMixin, View):
             return redirect('MilitaresLista')
         
         # Rebaixar o usuário para a patente anterior
-        user.set_password('AL1234')
+        user.set_password('123')
         user.save()
-        messages.success(request, f'Usuário {user.username} teve sua senha resetada para AL1234.')
+        messages.success(request, f'Usuário {user.username} teve sua senha resetada para 123.')
         return redirect('MilitaresLista')
