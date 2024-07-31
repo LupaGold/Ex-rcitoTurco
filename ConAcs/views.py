@@ -74,7 +74,6 @@ PROMOCAO = {
 
 # Limites de promoção com base na patente do solicitante
 LIMITES_PROMOCAO = {
-    'Segundo Tenente': 'Aluno',
     'Segundo Tenente': 'Terceiro Sargento',
     'Primeiro Tenente': 'Segundo Sargento',
     'Major': 'Primeiro Sargento',

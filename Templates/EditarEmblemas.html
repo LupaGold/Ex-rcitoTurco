@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block main %}
-<div class="container mt-3 m-auto">
+<div class="container mt-3 m-auto text-light">
    <div class="row">
     <div class="col-md-7 col-11 m-auto order-2 order-md-1">
         <div class="container d-flex mb-3">
@@ -23,7 +23,7 @@
     {% endif %}
     {% if emblemas %}
     {% for emblema in emblemas %}
-    <div class="card col-12 col-md-5 mb-3 m-auto">
+    <div class="card col-12 col-md-5 mb-3 m-auto bg-br text-light">
         <img src="{{ emblema.icone.url }}" class="m-auto mt-2 px" width="80px" alt="...">
         <div class="card-body">
           <h5 class="card-title text-center">{{ emblema.titulo }}</h5>
@@ -38,7 +38,7 @@
     </div>
 </div>
 <div class='d-flex justify-content-center'>
-    <a class='btn btn-dark' href='{% url "EditarEmblema" emblema.pk %}'>Editar</a>
+    <a class='btn' style='background:silver;' href='{% url "EditarEmblema" emblema.pk %}'>Editar</a>
         </div>
     </div>
       </div>
@@ -61,12 +61,12 @@
       </div>
       <form class="input-group mt-3" method="get">
         <input class='form-control' type="text" name="q" placeholder="Pesquisar por titulo">
-        <button class=" btn text-light" style="background:#202020;" type=" submit">
+        <button class=" btn text-light bg-br" type=" submit">
             <i class='icon'>
                 <img width="35px" src="{% static "lupa.gif" %}" alt="">
               </i></button>
     </form>
-      <a class="d-flex card col-lg-12 col-md-12 col-12 shadow m-auto mt-1 action-text text-decoration-none bg-al" href="">
+      <a class="d-flex card col-lg-12 col-md-12 col-12 shadow m-auto mt-1 action-text text-decoration-none bg-br" href="">
         <div class="d-flex">
             <div class="col-4 mt-2 mb-2">
                 <div class="rounded-circle m-auto px" style="background: url({% static 'destaque.png'%}) center center no-repeat; width: 60px; height: 60px;">	

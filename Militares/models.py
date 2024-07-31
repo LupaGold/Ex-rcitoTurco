@@ -38,7 +38,7 @@ class MilitarUsuario(AbstractUser):
         max_length=150,
         unique=True,
         validators=[RegexValidator(
-            regex=r'^[a-zA-Z0-9@_:.,-]+$',
+            regex=r'^[a-zA-Z0-9@_:.,\-!]+$',
             message=_('Enter a valid username. This value may contain only letters (uppercase and lowercase), numbers, @, :, -, and _ characters.'),
             code='invalid_username',
         )],

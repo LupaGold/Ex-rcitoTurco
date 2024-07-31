@@ -132,8 +132,8 @@ class RegistrarRelatorioAjudante(PatenteRequiredMixin,CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["titulo"] = 'Registrar ação de Ajudante!'
-        context["image"] = 'ajudantes.png'
+        context["titulo"] = 'Registrar ação de Helper!'
+        context["image"] = 'ajudantes.gif'
         context["descricao"] = 'Verifique todos os campos antes de enviar o relatório!'
         return context
     

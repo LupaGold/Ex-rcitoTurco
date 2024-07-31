@@ -9,7 +9,7 @@ from Painel.models import DestaqueOficial, DestaquePraça
 class LoginForm(AuthenticationForm):
     username = forms.CharField(label='Nickname',widget=forms.TextInput(attrs={'class': 'form-control','placeholder':'Digite seu nick'}))
     password = forms.CharField(label='Senha',widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder':'Digite sua senha'}))
-    captcha = ReCaptchaField(label='')
+    # captcha = ReCaptchaField(label='')
 
 class CustomPasswordChangeForm(PasswordChangeForm):
     old_password = forms.CharField(label='Senha antiga',widget=forms.PasswordInput(attrs={'class': 'form-control'}))

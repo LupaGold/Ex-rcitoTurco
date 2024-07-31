@@ -1,13 +1,17 @@
 {% extends "BasePainel.html" %}
 {% load static %}
 {% block main %}
-
-<div class="container m-auto mt-3"> 
+<style>
+    .silver {
+        background: silver;
+    }
+</style>
+<div class="container m-auto mt-3 text-light"> 
     <div class="row">
     <div class="col-12 col-md-7 order-2 order-md-1">
     <div class="container mb-2 d-flex">
         <div>
-            <img src="{% static 'supervisores.png' %}" alt="">
+            <img src="{% static 'ajudantes.gif' %}" alt="">
         </div>
     <div class="ms-2">
     <h3>Gerenciar Permissões</h3>
@@ -17,7 +21,7 @@
 </div>
 {% if militares %}
 {% for militar in militares %}
-            <div class="card mb-3 m-auto shadow col-11">
+            <div class="card mb-3 m-auto shadow col-11 bg-br text-light">
                 <div class="row mb-3 g-0">
                   <div class="col-md-4 text-center" >
                     <img class="mb-auto" src="https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user={{ militar.username}}&direction=2&head_direction=2&size=l&action=std" class="img-fluid rounded-start" alt="...">
@@ -31,7 +35,7 @@
                         {% if not militar.is_sup %}
                             <form class='m-1' method="post" action="{% url 'AdicionarAjd' militar.id %}">
                                 {% csrf_token %}
-                                <button type="submit" class="btn btn-success btn-sm">Ajudante</button>
+                                <button type="submit" class="btn silver btn-sm">Ajudante</button>
                             </form>
                             {% else %}
                             <form class='m-1' method="post" action="{% url 'RemoverAjd' militar.id %}">
@@ -44,7 +48,7 @@
                         {% if not militar.is_rsup %}
                             <form class='m-1' method="post" action="{% url 'AdicionarRAjd' militar.id %}">
                                 {% csrf_token %}
-                                <button type="submit" class="btn btn-success btn-sm">Responsável</button>
+                                <button type="submit" class="btn silver btn-sm">Responsável</button>
                             </form>
                             {% else %}
                             <form class='m-1' method="post" action="{% url 'RemoverRAjd' militar.id %}">
@@ -57,7 +61,7 @@
                         {% if not militar.is_lsup %}
                             <form class='m-1' method="post" action="{% url 'AdicionarLAjd' militar.id %}">
                                 {% csrf_token %}
-                                <button type="submit" class="btn btn-success btn-sm">Líder</button>
+                                <button type="submit" class="btn silver btn-sm">Líder</button>
                             </form>
                             {% else %}
                             <form class='m-1' method="post" action="{% url 'RemoverLAjd' militar.id %}">
@@ -73,7 +77,7 @@
                     </div>
             {% endfor %}
             {% else %}
-    <div class="alert alert-secondary mx-auto text-center mt-3" role="alert">
+    <div class="alert alert-success mx-auto text-center mt-3" role="alert">
         Sem resultado para a busca!
       </div>   
       {% endif %}
@@ -89,7 +93,7 @@
       </div>
       <form class="input-group mt-3" method="get">
         <input class='form-control' type="text" name="q" placeholder="Pesquisar por nickname">
-        <button class=" btn text-light" style="background:#202020;" type=" submit">
+        <button class=" btn text-light" style="background:#2C4C00;" type=" submit">
             <i class='icon'>
                 <img width="35px" src="{% static "lupa.gif" %}" alt="">
               </i></button>

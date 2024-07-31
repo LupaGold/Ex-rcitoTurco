@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block main %}
-<div class="container mt-3 m-auto">
+<div class="container text-light mt-3 m-auto">
    <div class="row">
     <div class="col-md-7 col-11 m-auto order-2 order-md-1">
         <div class="container d-flex mb-3">
@@ -18,12 +18,12 @@
         {% if messages %}
     <ul>
         {% for message in messages %}
-        <div class="alert alert-secondary text-center">{{ message }}</div>
+        <div class="alert alert-success text-center text-center">{{ message }}</div>
         {% endfor %}
     </ul>
     {% endif %}
     {% for emblema in emblemas %}
-    <div class="card col-12 col-md-5 mb-3 m-auto">
+    <div class="card col-12 col-md-5 mb-3 m-auto bg-br text-light">
         <img src="{{ emblema.icone.url }}" class="m-auto mt-2 px" width="80px" alt="...">
         <div class="card-body">
           <h5 class="card-title text-center">{{ emblema.titulo }}</h5>
@@ -40,7 +40,7 @@
     {% if emblema.id not in emblemas_comprados %}
         <form action="{% url 'ComprarEmblema' emblema.id %}" class="justify-content-center d-flex" method="post">
             {% csrf_token %}
-            <button class="btn btn-sm btn-dark" type="submit">Comprar</button>
+            <button class="btn btn-sm" style='background:silver;' type="submit">Comprar</button>
         </form>
     {% else %}
     <div class="justify-content-center d-flex">
@@ -61,7 +61,7 @@
         <h3>Informações</h3>
         </div>
       </div>
-      <a class="d-flex card col-lg-12 col-md-12 col-12 shadow m-auto mt-1 action-text text-decoration-none bg-al" href="">
+      <a class="d-flex card col-lg-12 col-md-12 col-12 shadow m-auto mt-1 action-text text-decoration-none bg-br" href="">
         <div class="d-flex">
             <div class="col-4 mt-2 mb-2">
                 <div class="rounded-circle m-auto px" style="background: url({% static 'destaque.png'%}) center center no-repeat; width: 60px; height: 60px;">	

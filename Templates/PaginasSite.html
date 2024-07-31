@@ -7,7 +7,7 @@
 {% endblock header %}
 
 {% block topo %}
-<div class="container d-flex mt-3">
+<div class="container  d-flex mt-3">
     <div>
         <img src="{{item.icone.url}}" alt="">
     </div>
@@ -19,7 +19,7 @@
 {% endblock topo %}
 
 {% block main %}
-<div class="container m-2"> 
+<div class="container m-2 justify-content-center"> 
 {{item.texto | safe }}
 </div>
 {% endblock main %}

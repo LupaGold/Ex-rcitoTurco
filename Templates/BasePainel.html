@@ -5,9 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel - Exército Alemão - Habbo Hotel ©</title>
-    {% block title %}{% endblock title %}
-    <link rel="icon" type="img/x-icon" href="{% static 'aberto.png' %}">
+    <title>Painel - Exército Brasileiro - Habbo Hotel ©</title>
+    <link rel="icon" type="img/x-icon" href="{% static 'aberto.gif' %}">
     <link href="{% static 'style.css' %}" rel="stylesheet">
     <link href="/static/django_ckeditor_5/dist/styles.css" media="all" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -40,17 +39,17 @@
       #notificationIcon.has-notifications {
         color: red; 
       }
-      .bg-al {
-        background-color: #202020;
+      .bg-br {
+        background-color: #2C4C00;
     }
     .bg-cubos {
-        background-color: #181818;
-        background-image:  linear-gradient(30deg, #202020 12%, transparent 12.5%, transparent 87%, #202020 87.5%, #202020), linear-gradient(150deg, #202020 12%, transparent 12.5%, transparent 87%, #202020 87.5%, #202020), linear-gradient(30deg, #202020 12%, transparent 12.5%, transparent 87%, #202020 87.5%, #202020), linear-gradient(150deg, #202020 12%, transparent 12.5%, transparent 87%, #202020 87.5%, #202020), linear-gradient(60deg, #20202077 25%, transparent 25.5%, transparent 75%, #20202077 75%, #20202077), linear-gradient(60deg, #20202077 25%, transparent 25.5%, transparent 75%, #20202077 75%, #20202077);
-        background-size: 80px 140px;
-        background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+        background-color: #467c00;
+        background-image:  linear-gradient(30deg, #4a8100 12%, transparent 12.5%, transparent 87%, #4a8100 87.5%, #4a8100), linear-gradient(150deg, #4a8100 12%, transparent 12.5%, transparent 87%, #4a8100 87.5%, #4a8100), linear-gradient(30deg, #4a8100 12%, transparent 12.5%, transparent 87%, #4a8100 87.5%, #4a8100), linear-gradient(150deg, #4a8100 12%, transparent 12.5%, transparent 87%, #4a8100 87.5%, #4a8100), linear-gradient(60deg, #4a810077 25%, transparent 25.5%, transparent 75%, #4a810077 75%, #4a810077), linear-gradient(60deg, #4a810077 25%, transparent 25.5%, transparent 75%, #4a810077 75%, #4a810077);
+        background-size: 60px 105px;
+        background-position: 0 0, 0 0, 30px 53px, 30px 53px, 0 0, 30px 53px;
     }
     </style>
-    <body style="background: #e8e8e8;">
+    <body class="bg-cubos">
         <div class="sidebar close">
           <div class="logo-details">
             <div class="image-perfil">
@@ -90,7 +89,7 @@
                 {% if AC %}
                 <li><a href="{% url "CriarDestaquePraça" %}">Destaque Praça</a></li>
                 <li><a href="{% url "CriarDestaqueOficial" %}">Destaque Oficial</a></li>
-                <li><a href="#">Redefinir Patente</a></li>
+                <li><a href="#">RE's</a></li>
                 {% endif %}
               </ul>
             </li>
@@ -155,12 +154,38 @@
                 {% endif %}
               </ul>
             </li>
+            {% if MNT or RMNT or LMNT or AC %}
+              <li class="mt-2">
+                <div class="iocn-link">
+                  <a href="#">
+                    <i class='bx'>
+                      <img class="px" width="39px" src="{% static "monitores.gif" %}" alt="">
+                    </i>
+                    <span class="link_name">Monitores</span>
+                  </a>
+                  <i class='bx bxs-chevron-down arrow' ></i>
+                </div>
+                <ul class="sub-menu">
+                  <li><a class="link_name" href="#">Monitores</a></li>
+                  <li><a href="{% url "MonitoresPraça" %}">Minhas Ações</a></li>
+                  <li><a href="{% url "GuiaMonitores" %}">Guia</a></li>
+                  {% if RMNT or LMNT or AC %}
+                  <li><a href="{% url "MonitoresOficial" %}">Todas as Ações</a></li>
+                  <li><a href="{% url "Permissoesmnt" %}">Alterar Permissão</a></li>
+                  {% endif %}
+                  {% if LMNT or AC %}
+                  <li><a href="{% url "EditarGuiaMonitores" guiamon.pk %}">Alterar Guia</a></li>
+                  <li><a href="{% url "MonitorDestaqueCriar" %}">Alterar Destaque</a></li>
+                  {% endif %}
+                </ul>
+              </li>
+              {% endif %}
             {% if SUP or RSUP or LSUP or AC %}
               <li class="mt-2">
                 <div class="iocn-link">
                   <a href="#">
                     <i class='bx'>
-                      <img class="px" width="39px" src="{% static "Supervisores.png" %}" alt="">
+                      <img class="px" width="39px" src="{% static "supervisores.gif" %}" alt="">
                     </i>
                     <span class="link_name">Supervisores</span>
                   </a>
@@ -186,9 +211,9 @@
                 <div class="iocn-link">
                   <a href="#">
                     <i class='bx'>
-                      <img class="px" width="39px" src="{% static "ajudantes.png" %}" alt="">
+                      <img class="px" width="39px" src="{% static "ajudantes.gif" %}" alt="">
                     </i>
-                    <span class="link_name">Ajudantes</span>
+                    <span class="link_name">Helpers</span>
                   </a>
                   <i class='bx bxs-chevron-down arrow' ></i>
                 </div>
@@ -308,11 +333,11 @@
                   <i class='bx bx-menu text-light' ></i>
                 </div>
                 <div class="d-flex">
-                  <div class="container">
+                  <!-- <div class="container">
                       <span class="fa fa-bell mt-4" id="notificationIcon" style="transform: scale(2);" data-bs-toggle="collapse" href="#notifyCollapse" role="button" aria-expanded="false" aria-controls="notifyCollapse">
                         <i id="bellCount" class="fa-solid" data-count="0" ></i>
                       </span>
-                  </div>
+                  </div> -->
                   <div class="container mt-2 me-2">
                     <h4><span class="badge" style="background-color: gold; position: relative; left: 20px;">{{request.user.moedas}}  <img src="{% static 'carteira.gif' %}" alt="">
                     </span></h4>
@@ -321,7 +346,7 @@
             </div>
           </nav>
           <audio id="notificationSound" src="{% static 'notify.mp3' %}" preload="auto"></audio>
-          <div class="container">
+          <!-- <div class="container">
             <div class="collapse" id="notifyCollapse">
               <div class="card card-body col-12 shadow m-auto mt-3"tabindex="-1">
               <div class="container text-center" id='notify'>
@@ -332,7 +357,7 @@
               </button>
             </div>
           </div>
-          </div>
+          </div> -->
           {% block main %}
           {% endblock main %}
         </section>

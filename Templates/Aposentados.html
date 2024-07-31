@@ -2,8 +2,8 @@
 {% load static %}
 
 {% block header %}
-<title>Aposentados - Exército Alemão - Habbo Hotel ©</title>
-    <link rel="icon" type="img/x-icon" href="{% static 'aposentados.png' %}">
+<title>Aposentados - Exército Brasileiro - Habbo Hotel ©</title>
+    <link rel="icon" type="img/x-icon" href="{% static 'aposentados.gif' %}">
 {% endblock header %}
 
 
@@ -11,7 +11,7 @@
 {% block topo %}
 <div class="container d-flex mt-3">
     <div>
-        <img src="{% static 'aposentados.png'%}" alt="">
+        <img src="{% static 'aposentados.gif'%}" alt="">
     </div>
 <div class="ms-2 text-light">
 <h3>Aposentados</h3>
@@ -24,7 +24,7 @@
     <div class="container mt-5 mb-4 text-light">
         <div class="row">
             {% for aposentado in aposentados %}
-            <div class='border border-dark col-5 rounded mb-2 m-auto text-center shadow' style="background-color: #181818;">
+            <div class=' col-5 rounded mb-2 m-auto text-center shadow' style="background-color: #467c00;">
                 <img data-bs-toggle="tooltip" data-bs-placement="top" title="{{aposentado.patente}} {{aposentado.username}}" width="64" height="110" src="https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user={{ aposentado.username}}&direction=2&head_direction=2&size=sm&action=std" class="rounded-start px m-auto" >
                 <strong><p style="font-size:25px; position: relative; top: 20px;"> {{aposentado.username}}</p></strong> <br>
                 <p style="font-size:20px; position: relative; top: -20px;"> {{aposentado.patente}}</p>

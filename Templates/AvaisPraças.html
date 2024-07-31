@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block main %}
-<div class="container mt-3 m-auto">
+<div class="container mt-3 m-auto text-light">
     <div class="container d-flex">
         <div>
             <img src="{% static 'ja.png'%}" alt="">
@@ -17,10 +17,10 @@
     <a class="btn btn-secondary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
       Informações
     </a>
-    <a href="{% url 'RegistrarAval'%}" class="btn btn-danger m-sm-auto"> Registrar Aval</a>
+    <a href="{% url 'RegistrarAval'%}" class="btn m-sm-auto" style='background:silver;'> Registrar Aval</a>
   </p>
   <div class="collapse" id="collapseExample" >
-    <div class="card card-body m-auto text-light mb-3 mt-2" style="background-color: #202020;">
+    <div class="card card-body m-auto text-light mb-3 mt-2" style="background-color: #2C4C00;">
         Insira seus dados corretamente para concluir o aval.
         Caso você insira sem precisar estará sujeito a punições. <br>
         O dia de ida e de retorno também deve ser cumprido, caso contrário o militar está sujeito a ser retirado de todos os grupos externos participantes. <br>
@@ -31,7 +31,7 @@
   <div class="mt-3">
     {% if avais %}
     {% for aval in avais %}
-    <div class="card mb-3 m-auto shadow col-12">
+    <div class="card text-light mb-3 m-auto shadow col-12" style="background-color: #2C4C00;">
         <div class="row g-0">
           <div class="col-md-4 text-center" >
             <img class="mb-auto" src="https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user={{ aval.solicitante.username}}&direction=2&head_direction=2&size=l&action=std" class="img-fluid rounded-start" alt="...">
@@ -42,7 +42,7 @@
               <p class="card-text"><strong> Duração: </strong>{{aval.duracao}}</p>
               <p class="card-text"><strong> Início: </strong>{{aval.data}}</p>
               <p class="card-text"><strong> Fim: </strong>{{aval.data2}}</p>
-              <p class="card-text"><small class="text-body-secondary">Enviado em {{aval.datatime}}</small></p>
+              <p class="card-text"><small class="text-body-light">Enviado em {{aval.datatime}}</small></p>
               <span class="badge {% if aval.status == 'Aprovado' %} text-bg-success {% elif aval.status == 'Reprovado' %} text-bg-danger {% elif aval.status == 'Em análise...' %} text-bg-secondary {% endif %}">{{aval.status}}</span>
             </div>
           </div>

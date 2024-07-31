@@ -133,7 +133,7 @@ class RegistrarRelatorioSupervisor(PatenteRequiredMixin,CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["titulo"] = 'Registrar ação de Supervisor!'
-        context["image"] = 'supervisores.png'
+        context["image"] = 'supervisores.gif'
         context["descricao"] = 'Verifique todos os campos antes de enviar o relatório!'
         return context
     

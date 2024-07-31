@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block main %}
-<div class="container mt-3 m-auto">
+<div class="container mt-3 m-auto text-light">
    <div class="row">
     <div class="col-md-7 col-11 order-2 order-md-1">
         <div class="container d-flex mb-3">
@@ -23,7 +23,7 @@
     {% endif %}
     {% if militares %}
     {% for militar in militares %}
-    <div class="card mb-3 m-auto shadow col-11">
+    <div class="card mb-3 m-auto shadow col-11 bg-br text-light">
         <div class="row g-0">
           <div class="col-md-4 text-center" >
             <img class="mb-auto" src="https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user={{ militar.username}}&direction=2&head_direction=2&size=l&action=std" class="img-fluid rounded-start" alt="...">
@@ -91,12 +91,12 @@
       </div>
       <form class="input-group mt-3" method="get">
         <input class='form-control' type="text" name="q" placeholder="Pesquisar por nickname">
-        <button class=" btn text-light" style="background:#202020;" type=" submit">
+        <button class=" btn text-light bg-br" type=" submit">
             <i class='icon'>
                 <img width="35px" src="{% static "lupa.gif" %}" alt="">
               </i></button>
     </form>
-      <a class="d-flex card col-lg-12 col-md-12 col-12 shadow m-auto mt-1 action-text text-decoration-none bg-al" href="">
+      <a class="d-flex card col-lg-12 col-md-12 col-12 shadow m-auto mt-1 action-text text-decoration-none bg-br" href="">
         <div class="d-flex">
             <div class="col-4 mt-2 mb-2">
                 <div class="rounded-circle m-auto px" style="background: url({% static 'moedas.png'%}) center center no-repeat; width: 60px; height: 60px;">	

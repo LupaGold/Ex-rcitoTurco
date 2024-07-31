@@ -4,6 +4,7 @@ from Site.models import PaginaSite
 from Supervisores.models import GuiaSupervisores
 from Ajudantes.models import GuiaAjudantes
 from Painel.models import DestaqueOficial, DestaquePraça
+from Monitores.models import GuiaMonitores
 
 class UpdateLastAccessMiddleware:
     def __init__(self, get_response):
@@ -57,6 +58,7 @@ class GroupContextMiddleware(MiddlewareMixin):
         response.context_data['TeamSpeak'] = PaginaSite.objects.all().filter(categoria='Team Speak')
         response.context_data['guiasup'] = GuiaSupervisores.objects.last()
         response.context_data['guiaajd'] = GuiaAjudantes.objects.last()
+        response.context_data['guiamon'] = GuiaMonitores.objects.last()
         response.context_data['destpraca'] = DestaquePraça.objects.last()
         response.context_data['destofc'] = DestaqueOficial.objects.last()
         return response
