@@ -156,7 +156,7 @@
                   <li><a class="dropdown-item text-light" href="{% url "PaginaUrl" pag.slug %}">{{pag.titulo}}</a></li>
                   {% endfor %}
                   {% endif %}
-                  <li><a class="dropdown-item text-light" href="{% url "JornalAlemao" %}">Jornal Alemão</a></li>
+                  <li><a class="dropdown-item text-light" href="{% url "JornalAlemao" %}">Jornal Brasileiro</a></li>
                 </ul>
               </li>
               <div class="d-flex ms-5">
@@ -182,7 +182,7 @@
                 </div>
             <div class="ms-2 text-light">
             <h3>Destaques</h3>
-            <p>Frase parabenizando os destaques!</p>
+            <p>Parabéns aos destaques semanais!</p>
         </div>
     </div>
     <div class="container">
@@ -269,7 +269,8 @@
           <div class="mb-3 m-auto">
             {% if ultimosalistados %}
           {% for novosmembros in ultimosalistados %}
-          <a><img data-placement='bottom' data-toggle='tooltip' src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{novosmembros.username}}' title='{{novosmembros.patente}}, {{novosmembros.username}}'/></a>
+          <a><img data-bs-toggle="tooltip" data-bs-placement="bottom"
+            data-bs-custom-class="custom-tooltip" data-bs-title="{{novosmembros.patente}}, {{novosmembros.username}}" src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{novosmembros.username}}'/></a>
           {% endfor %}
           {% else %}
               <div class="alert alert-danger text-center m-auto mt-3" role="alert">
@@ -285,9 +286,12 @@
       <hr class="text-light m-auto col-10 mt-3 mb-3">
       <p class="text-light col-10 m-auto">Este site não é de propriedade ou operado pela Sulake Corporation Oy e não é parte do Habbo Hotel ®.</p>
       <p class="text-light col-10 m-auto mb-3">
-        Desenvolvido por ,Lucasz. © 2024 Exército Brasileiro Habbo - Marechal Einloft - Habbo.com.br.
+        Desenvolvido por ,Lucasz. © 2024 Exército Brasileiro Habbo - Marechal D.Pedro - Habbo.com.br.
     </p>
     </footer>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>      <script>
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+      </script>
+    </body>
 </html>

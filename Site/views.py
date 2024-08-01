@@ -9,6 +9,8 @@ from Honrarias.models import HonrariaMilitar
 from Militares.models import MilitarUsuario
 from Loja.models import EmblemaCompra
 from ConAcs.views import PatenteRequiredMixin
+from Treinamentos.models import RelatoriosDeTreinamento
+from Recrutamento.models import Re
 
 #Viw da página principal do site
 class SitePrincipal(TemplateView):
@@ -214,6 +216,9 @@ class PerfilMilitar(DetailView):
         # Obtenha os emblemas comprados pelo militar
         emblemas_comprados = EmblemaCompra.objects.filter(solicitante=militar)
         # Adicione os emblemas ao contexto
+        context['treinamentos'] = RelatoriosDeTreinamento.objects.filter(treinador=militar.username).count()
+        context['re'] = Re.objects.filter(militar=militar.username).count
         context['emblemas'] = emblemas_comprados
         context["ultimosalistados"] = MilitarUsuario.objects.order_by('-id')[:5]
         return context
+    

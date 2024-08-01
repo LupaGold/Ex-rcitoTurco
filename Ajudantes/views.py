@@ -98,36 +98,12 @@ class RegistrarRelatorioAjudante(PatenteRequiredMixin,CreateView):
     template_name = 'Form.html'
     success_url = reverse_lazy('AjudantesPraça')
 
-    def send_notifications(self, relatorio):
-        channel_layer = get_channel_layer()
-        
-        # Obter os grupos RAJD e LAJD
-        rajd_group = Group.objects.get(name='RAJD')
-        lajd_group = Group.objects.get(name='LAJD')
-
-        # Obter os usuários nos grupos
-        rajd_users = rajd_group.user_set.all()
-        lajd_users = lajd_group.user_set.all()
-        
-        usuarios = set(rajd_users).union(set(lajd_users))
-
-        message = f"Atenção uma ação de ajudante foi enviada por {relatorio.solicitante.username}."
-
-        for usuario in usuarios:
-            async_to_sync(channel_layer.group_send)(
-                f"user_{usuario.id}",
-                {
-                    "type": "send_notification",
-                    "message": message,
-                }
-            )
     
     def form_valid(self, form):
         sup = form.save(commit=False)
         sup.solicitante = self.request.user
         sup.data = timezone.now()
         sup.save()
-        self.send_notifications(sup)
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):

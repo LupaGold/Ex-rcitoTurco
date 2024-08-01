@@ -340,21 +340,6 @@ class SaqueMoedas(PatenteRequiredMixin, View):
 
             # Cria a compra do emblema
             MoedaSaqueMoedaValor.objects.create(solicitante=usuario, icone=moeda, status='Em processamento...', datatime=timezone.now())
-            # Filtrar usuários com as patentes desejadas
-            patentes_desejadas = ['Coronel ★', 'General-de-Brigada ★★', 'General-de-Divisão ★★★', 'General-de-Exército ★★★★']
-            usuarios = User.objects.filter(patente__in=patentes_desejadas)
-            
-            # Enviar notificações via Channels
-            channel_layer = get_channel_layer()
-            
-            for usuario in usuarios:
-                async_to_sync(channel_layer.group_send)(
-                    f"user_{usuario.id}",
-                    {
-                        "type": "send_notification",
-                        "message": f"Atenção {usuario.username} realizou um saque de {moeda.titulo} {moeda.moedas}."
-                    }
-                )
 
         messages.success(request, 'Saque realizado com sucesso!')
         return redirect(reverse('MoedasLoja'))

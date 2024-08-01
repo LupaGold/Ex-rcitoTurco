@@ -1,0 +1,72 @@
+{% extends "BasePainel.html" %}
+{% load static %}
+
+{% block main %}
+<div class="container text-light mt-3 m-auto mb-3">
+<div class='row'>
+  <div class="mt-3 m-auto col-11 col-md-7 order-2 order-md-1">
+    <div class="container d-flex">
+      <div>
+          <img src="{% static 'oficiais.gif'%}" alt="">
+      </div>
+  <div class="ms-2">
+  <h3>Meus Relatórios </h3>
+  <p>Fique atento ao abrir seus RM's, sempre verifique corretamente qual o Oficial responsável.
+  </p>
+</div>
+</div>
+<p class="d-inline-flex gap-1 m-sm-auto mb-3" >
+<a href="{% url 'RMAbrir'%}" style='background:silver;' class="btn m-sm-auto"> Abrir RM +</a>
+</p>
+{% if recrutamentos %}
+    {% for relatorio in recrutamentos %}
+        <a class="card m-1 p-3 text-light text-decoration-none mb-3" style="background-color: #2C4C00;" data-bs-toggle="collapse" href="#{{relatorio.pk}}" role="button" aria-expanded="false" aria-controls="{{relatorio.pk}}">
+            <div class="d-flex">
+                <div class="col-2 mt-md-3 mt-5 mb-2">
+                    <div class="rounded-circle m-auto px" style="background: url({% static 'auxilios.png'%}) center center no-repeat; width: 40px; height: 40px;transform: scale(2.0);">	
+                    </div> 
+                </div>
+                <div class="col-8">
+                    <div class="container text-light">
+                        <h5>Relatório de movimento</h5>
+                        <p>{{relatorio.ofc.patente}}, {{relatorio.ofc.username}} - {{relatorio.data}}</p>
+                      </div>
+                </div>
+            </div>
+        </a>
+      <div class="collapse" id="{{relatorio.pk}}">
+        <div class="card card-body text-dark">
+          <strong>Responsável:</strong> {{relatorio.ofc.patente}}, {{relatorio.ofc.username}} <br>
+          <hr>
+          <p>O RM foi feito às <strong>{{relatorio.hora}}</strong>.</p>
+          <strong>Link:</strong> {{relatorio.link}} <br>
+          <strong>Oficiais Presentes:</strong> {{relatorio.presentes}} <br>
+        </div>
+      </div>
+      {% endfor %}
+      {% else %}
+      <div class="alert alert-success mx-auto text-center mt-3" role="alert">
+        Nenhuma ação registrada!
+      </div>
+      {% endif %}
+</div>
+<div class='col-11 col-md-5 order-1 order-md-2 mx-auto'> 
+  <div class="container d-flex mt-4"> 
+    <div>
+      <img class="px" src="{% static 'dados.gif'%}" alt="">
+      </div>
+    <div class="ms-2 text-light">
+    <h3>Informações</h3>
+    </div>
+  </div>
+  <form class="input-group mt-3" method="get">
+      <input class='form-control' type="text" name="q" placeholder="Pesquisar por nickname">
+      <button class=" btn text-light" style="background:#2C4C00;" type=" submit">
+          <i class='icon'>
+              <img width="35px" src="{% static "lupa.gif" %}" alt="">
+            </i></button>
+  </form>
+  </div>
+</div>
+</div>
+{% endblock main %}

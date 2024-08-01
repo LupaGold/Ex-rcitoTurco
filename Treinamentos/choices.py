@@ -71,15 +71,17 @@ TREINAMENTOSLIMITADOS = (
     )
 
 SALA = (
-        ('CI', 'CI'),
-        ('CT', 'CT'),
+        ('Sala de T1', 'Sala de T1'),
+        ('Sala de T2', 'Sala de T2'),
+        ('Sala Robótica', 'Sala Robótica]'),
+        ('Centro de Instrução', 'Centro de Instrução'),
     )
 
 CATEGORIA = (
         ('Recruta(s)', 'Recruta(s)'),
         ('Soldado(s)', 'Soldado(s)'),
         ('Cabo(s)', 'Cabo(s)'),
-        ('Cabo(s) Estrela', 'Cabo(s) Estrela'),
+        ('Aluno', 'Aluno'),
 )
 
 PATENTESALL = (

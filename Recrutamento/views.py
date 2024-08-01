@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from ConAcs.views import PatenteRequiredMixin
 from django.views.generic import TemplateView, ListView, DetailView, View, CreateView
-from .models import Re, LogRE 
-from .forms import ReForm
+from .models import Re, LogRE, RM
+from .forms import ReForm, RMForm
 from django.utils import timezone
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -11,11 +11,12 @@ from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync
 from django.db.models import Count
 from django.shortcuts import get_object_or_404, redirect
-
+from django.utils import timezone
+from datetime import timedelta
 # View de relatórios
 User = get_user_model()
 
-class RePraça(PatenteRequiredMixin,TemplateView):
+class RePraça(PatenteRequiredMixin,ListView):
     allowed_groups = [] 
     allowed_patentes = [
             'Marechal ★★★★★',
@@ -26,10 +27,37 @@ class RePraça(PatenteRequiredMixin,TemplateView):
         ]
     model = Re
     template_name = 'RePraça.html'
+    context_object_name = 'recrutamentos'
 
+    def get_queryset(self):
+        q = self.request.GET.get('q')
+        queryset = Re.objects.all()
+
+        if q:
+            queryset = queryset.filter(militar__icontains=q)
+
+        return queryset.order_by('-data')
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['recrutamentos'] = Re.objects.filter(solicitante=self.request.user).order_by('-abertura')
+        data_atual = timezone.now()
+        # Calcular a data e hora da última segunda-feira
+        ultima_segunda = (data_atual - timedelta(days=data_atual.weekday())).replace(hour=0, minute=0, second=0, microsecond=0)
+        
+        # Calcular a data e hora da próxima segunda-feira
+        proxima_segunda = (ultima_segunda + timedelta(days=7))
+        ranking = (
+            Re.objects
+            .filter(
+            data__gte=ultima_segunda,
+            data__lt=proxima_segunda
+        )
+            .values('militar')
+            .annotate(total=Count('id'))
+            .order_by('-total')
+        )
+        context['ranking'] = ranking
+        context['recrutamentos'] = Re.objects.all().order_by('-data')
         return context
 
 class AbrirRE(PatenteRequiredMixin,CreateView):
@@ -68,7 +96,7 @@ class AbrirRE(PatenteRequiredMixin,CreateView):
         form = self.form_class(request.POST)
         if form.is_valid():
             form.instance.solicitante = self.request.user
-            form.instance.abertura = timezone.now()
+            form.instance.data = timezone.now()
             relatorio = form.save()
 
             # Incrementar moedas do solicitante
@@ -76,21 +104,6 @@ class AbrirRE(PatenteRequiredMixin,CreateView):
             solicitante.moedas += 1
             solicitante.save()
             
-            # Filtrar usuários com as patentes desejadas
-            patentes_desejadas = ['Aspirante-a-Oficial','Segundo Tenente','Primeiro Tenente','Capitão','Major', 'Tenente-Coronel']
-            usuarios = User.objects.filter(patente__in=patentes_desejadas)
-            
-            # Enviar notificações via Channels
-            channel_layer = get_channel_layer()
-            
-            for usuario in usuarios:
-                async_to_sync(channel_layer.group_send)(
-                    f"user_{usuario.id}",
-                    {
-                        "type": "send_notification",
-                        "message": f"Atenção um Recrutamento Externo foi aberto por {relatorio.solicitante.username} às."
-                    }
-                )
             log = LogRE.objects.create(
                     re=relatorio,
                     texto=f"{relatorio.solicitante} enviou abriu um Recrutamento Externo!",
@@ -102,3 +115,74 @@ class AbrirRE(PatenteRequiredMixin,CreateView):
             return HttpResponseRedirect(reverse('RePraça'))
         else:
             return self.get(request, *args, **kwargs)
+        
+class AbrirRM(PatenteRequiredMixin,CreateView):
+    allowed_groups = [] 
+    allowed_patentes = [
+            'Marechal ★★★★★',
+            'General-de-Exército ★★★★',
+            'General-de-Divisão ★★★',
+            'General-de-Brigada ★★',
+            'Coronel ★',
+            'Tenente-Coronel',
+            'Major',
+            'Capitão',
+            'Segundo Tenente',
+            'Primeiro Tenente',
+            'Aspirante-a-Oficial',
+        ]
+    form_class = RMForm
+    template_name = 'Form.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["titulo"] = 'Abrir Relatório de Movimento'
+        context["image"] = 'oficiais.gif'
+        context["descricao"] = 'Verifique todos os campos antes de enviar o relatório!'
+        return context
+    
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            form.instance.solicitante = self.request.user
+            form.instance.data = timezone.now()
+            form.save()
+
+
+            return HttpResponseRedirect(reverse('PrincipalPainel'))
+        else:
+            return self.get(request, *args, **kwargs)
+    
+class RMOficial(PatenteRequiredMixin,ListView):
+    allowed_groups = [] 
+    allowed_patentes = [
+            'Marechal ★★★★★',
+            'General-de-Exército ★★★★',
+            'General-de-Divisão ★★★',
+            'General-de-Brigada ★★',
+            'Coronel ★',
+            'Tenente-Coronel',
+            'Major',
+            'Capitão',
+            'Segundo Tenente',
+            'Primeiro Tenente',
+            'Aspirante-a-Oficial',
+        ]
+    model = RM
+    template_name = 'RM.html'
+    context_object_name = 'recrutamentos'
+
+    def get_queryset(self):
+        q = self.request.GET.get('q')
+        queryset = Re.objects.all()
+
+        if q:
+            queryset = queryset.filter(militar__icontains=q)
+
+        return queryset.order_by('-data')
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['recrutamentos'] = RM.objects.all().order_by('-data')
+        return context

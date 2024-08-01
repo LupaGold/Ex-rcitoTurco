@@ -82,21 +82,6 @@ class RegistrarAval(PatenteRequiredMixin,CreateView):
             form.instance.solicitante = self.request.user
             new_ja = form.save()
             
-            # Filtrar usuários com as patentes desejadas
-            patentes_desejadas = ['Major', 'Tenente-Coronel', 'Coronel ★', 'General-de-Brigada ★★', 'General-de-Divisão ★★★', 'General-de-Exército ★★★★']
-            usuarios = User.objects.filter(patente__in=patentes_desejadas)
-            
-            # Enviar notificações via Channels
-            channel_layer = get_channel_layer()
-            
-            for usuario in usuarios:
-                async_to_sync(channel_layer.group_send)(
-                    f"user_{usuario.id}",
-                    {
-                        "type": "send_notification",
-                        "message": f"Atenção um aval foi enviado por {new_ja.solicitante.username}."
-                    }
-                )
             log = LogJA.objects.create(
                     aval=new_ja,
                     texto=f"{new_ja.solicitante} enviou um aval!",
@@ -165,15 +150,6 @@ class AprovarJAView(PatenteRequiredMixin, View):
             datatime=timezone.now()
         )
         
-        # Enviar notificação
-        channel_layer = get_channel_layer()
-        async_to_sync(channel_layer.group_send)(
-            f"user_{ja.solicitante.id}",
-            {
-                "type": "send_notification",
-                "message": f"O seu JA foi aprovado."
-            }
-        )
 
         return HttpResponseRedirect(reverse('AvalAC'))
 
@@ -198,16 +174,6 @@ class RejeitarJAView(PatenteRequiredMixin, View):
             aval=ja,
             texto=f'O JA solicitado por {ja.solicitante.patente} {ja.solicitante.username} foi rejeitado por {request.user.username}.',
             datatime=timezone.now()
-        )
-
-        # Enviar notificação
-        channel_layer = get_channel_layer()
-        async_to_sync(channel_layer.group_send)(
-            f"user_{ja.solicitante.id}",
-            {
-                "type": "send_notification",
-                "message": f"O seu JA foi rejeitado."
-            }
         )
 
         return HttpResponseRedirect(reverse('AvalAC'))

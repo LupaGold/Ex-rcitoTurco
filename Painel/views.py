@@ -11,6 +11,7 @@ from django.views.generic.edit import FormMixin
 from Honrarias.models import HonrariaMilitar
 from ConAcs.views import PatenteRequiredMixin
 from Loja.models import EmblemasModel
+from .models import Documentos
 #View da página principal do site
 class PrincipalView(PatenteRequiredMixin,TemplateView, FormMixin):
     allowed_groups = [] 
@@ -80,4 +81,68 @@ class PrincipalView(PatenteRequiredMixin,TemplateView, FormMixin):
         }
         return self.render_to_response(context)
 
+class RegimentoView(PatenteRequiredMixin,TemplateView):
+    allowed_groups = [] 
+    allowed_patentes = [
+            'Marechal ★★★★★',
+            'General-de-Exército ★★★★',
+            'General-de-Divisão ★★★',
+            'General-de-Brigada ★★',
+            'Coronel ★',
+            'Tenente-Coronel',
+            'Major',
+            'Capitão',
+            'Primeiro Tenente',
+            'Segundo Tenente',
+            'Aspirante-a-Oficial'
+        ]
+    template_name = 'Guia.html'
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["guia"] = Documentos.objects.filter(categoria='Regimento').last()
+        return context
+
+class InfoView(PatenteRequiredMixin,TemplateView):
+    allowed_groups = [] 
+    allowed_patentes = [
+            'Marechal ★★★★★',
+            'General-de-Exército ★★★★',
+            'General-de-Divisão ★★★',
+            'General-de-Brigada ★★',
+            'Coronel ★',
+            'Tenente-Coronel',
+            'Major',
+            'Capitão',
+            'Primeiro Tenente',
+            'Segundo Tenente',
+            'Aspirante-a-Oficial'
+        ]
+    template_name = 'Guia.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["guia"] = Documentos.objects.filter(categoria='Informações').last()
+        return context
+    
+class FAQView(PatenteRequiredMixin,TemplateView):
+    allowed_groups = [] 
+    allowed_patentes = [
+            'Marechal ★★★★★',
+            'General-de-Exército ★★★★',
+            'General-de-Divisão ★★★',
+            'General-de-Brigada ★★',
+            'Coronel ★',
+            'Tenente-Coronel',
+            'Major',
+            'Capitão',
+            'Primeiro Tenente',
+            'Segundo Tenente',
+            'Aspirante-a-Oficial'
+        ]
+    template_name = 'Guia.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["guia"] = Documentos.objects.filter(categoria='FAQ').last()
+        return context

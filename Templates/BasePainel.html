@@ -89,7 +89,6 @@
                 {% if AC %}
                 <li><a href="{% url "CriarDestaquePraça" %}">Destaque Praça</a></li>
                 <li><a href="{% url "CriarDestaqueOficial" %}">Destaque Oficial</a></li>
-                <li><a href="#">RE's</a></li>
                 {% endif %}
               </ul>
             </li>
@@ -154,6 +153,27 @@
                 {% endif %}
               </ul>
             </li>
+            {% if OFC or AC %}
+            <li class="mt-2">
+              <div class="iocn-link">
+                <a href="#">
+                  <i class='bx'>
+                    <img class="px" width="41px" src="{% static "oficiais.gif" %}" alt="">
+                  </i>
+                  <span class="link_name">Oficiais</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow' ></i>
+              </div>
+              <ul class="sub-menu">
+                <li><a class="link_name" href="#">Oficiais</a></li>
+                <li><a href="{% url "Regimento" %}">Regimento</a></li>
+                <li><a href="{% url "Informações" %}">Informações</a></li>
+                <li><a href="{% url "FAQ" %}">FAQ</a></li>
+                <li><a href="{% url "RePraça"%}">RE's</a></li>
+                <li><a href="{% url "RMOficial"%}">RM</a></li>
+              </ul>
+            </li>
+            {% endif %}
             {% if MNT or RMNT or LMNT or AC %}
               <li class="mt-2">
                 <div class="iocn-link">
@@ -362,122 +382,6 @@
           {% endblock main %}
         </section>
         <script src="/static/django_ckeditor_5/dist/bundle.js"></script>
-        <script>
-          // Função para recuperar as notificações armazenadas no armazenamento local
-          function getStoredNotifications() {
-              const storedNotifications = localStorage.getItem('notifications');
-              return storedNotifications ? JSON.parse(storedNotifications) : [];
-          }
-      
-          // Função para salvar as notificações no armazenamento local
-          function saveNotifications(notifications) {
-              localStorage.setItem('notifications', JSON.stringify(notifications));
-          }
-      
-          // Array para armazenar as notificações não lidas
-          let unreadNotifications = getStoredNotifications();
-      
-          // Inicializa um objeto WebSocket com a URL adequada
-          const notifySocket = new WebSocket(
-              'ws://'
-              + window.location.host
-              + '/ws/notify/'
-          );
-      
-          // Função chamada quando a conexão do WebSocket é aberta
-          notifySocket.onopen = function (e) {
-              console.log('Socket conectado com sucesso.');
-          };
-      
-          // Função chamada quando a conexão do WebSocket é fechada inesperadamente
-          notifySocket.onclose = function (e) {
-              console.log('Socket fechado inesperadamente');
-          };
-      
-          // Função chamada ao receber uma mensagem através do WebSocket
-          notifySocket.onmessage = function (e) {
-              const data = JSON.parse(e.data);
-              const message = data.message;
-              const notificationSound = document.getElementById('notificationSound');
-              notificationSound.play();
-      
-              // Adiciona a nova mensagem à lista de notificações não lidas
-              unreadNotifications.push(message);
-      
-              // Salva as notificações no armazenamento local
-              saveNotifications(unreadNotifications);
-      
-              // Atualiza a interface do usuário para refletir a nova notificação
-              updateUI();
-          };
-      
-          // Função para atualizar a interface do usuário com as notificações não lidas
-          function updateUI() {
-              // Limpa a lista de notificações na interface do usuário
-              const notifyList = document.getElementById('notify');
-              notifyList.innerHTML = '';
-      
-              if (unreadNotifications.length === 0) {
-                  // Se não houver notificações, exibe o alerta
-                  const alertDiv = document.createElement('div');
-                  alertDiv.className = 'alert alert-secondary';
-                  alertDiv.setAttribute('role', 'alert');
-                  alertDiv.textContent = 'Nenhuma notificação encontrada!';
-                  notifyList.appendChild(alertDiv);
-      
-                  // Esconde o botão de limpar notificações
-                  document.getElementById('clearButton').style.display = 'none';
-              } else {
-                  // Adiciona cada notificação não lida à lista na interface do usuário
-                  unreadNotifications.forEach(function(message) {
-                      const newLi = document.createElement('div');
-                      const newAnchor = document.createElement('div');
-                      newAnchor.className = 'alert alert-secondary';
-                      newAnchor.href = '#';
-      
-                      // Adiciona a imagem padrão à notificação
-                      const img = document.createElement('img');
-                      img.src = '{% static 'aviso.png' %}';
-                      img.className = 'm-1 mb-2';
-                      img.alt = 'Imagem padrão';
-                      newAnchor.appendChild(img);
-      
-                      // Adiciona o texto da mensagem à notificação
-                      const messageText = document.createTextNode(message);
-                      newAnchor.appendChild(messageText);
-      
-                      newLi.appendChild(newAnchor);
-                      notifyList.appendChild(newLi);
-                  });
-      
-                  // Mostra o botão de limpar notificações
-                  document.getElementById('clearButton').style.display = 'block';
-              }
-      
-              // Atualiza o contador de notificações
-              document.getElementById('bellCount').setAttribute('data-count', unreadNotifications.length);
-          }
-      
-          // Função para limpar todas as notificações
-          function clearNotifications() {
-              // Limpa a lista de notificações não lidas
-              unreadNotifications = [];
-              saveNotifications(unreadNotifications);
-      
-              // Atualiza a interface do usuário
-              updateUI();
-          }
-      
-          // Ao carregar a página, atualiza a interface do usuário com as notificações armazenadas
-          window.addEventListener('load', function() {
-              updateUI();
-          });
-      
-          // Adiciona um evento de clique ao botão de limpar notificações
-          document.getElementById('clearButton').addEventListener('click', function() {
-              clearNotifications();
-          });
-      </script>
         <script>
         let arrow = document.querySelectorAll(".arrow");
         for (var i = 0; i < arrow.length; i++) {

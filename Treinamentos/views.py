@@ -5,12 +5,12 @@ from django.utils import timezone
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth import get_user_model
-from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync
 from django.db.models import Count
 from django.shortcuts import get_object_or_404, redirect
 from ConAcs.views import PatenteRequiredMixin
-
+from django.utils import timezone
+from datetime import timedelta
 
 # View de relatórios
 User = get_user_model()
@@ -89,21 +89,6 @@ class RegistrarRelatorio(PatenteRequiredMixin,CreateView):
             solicitante.moedas += 0.2
             solicitante.save()
             
-            # Filtrar usuários com as patentes desejadas
-            patentes_desejadas = ['Aspirante-a-Oficial','Segundo Tenente','Primeiro Tenente','Capitão','Major', 'Tenente-Coronel']
-            usuarios = User.objects.filter(patente__in=patentes_desejadas)
-            
-            # Enviar notificações via Channels
-            channel_layer = get_channel_layer()
-            
-            for usuario in usuarios:
-                async_to_sync(channel_layer.group_send)(
-                    f"user_{usuario.id}",
-                    {
-                        "type": "send_notification",
-                        "message": f"Atenção um relatório foi enviado por {relatorio.solicitante.username}."
-                    }
-                )
             log = LogRelatorio.objects.create(
                     relatorio=relatorio,
                     texto=f"{relatorio.solicitante} enviou um relatório de treinamento!",
@@ -147,8 +132,25 @@ class RelatorioOficial(PatenteRequiredMixin, ListView):
         return queryset
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        data_atual = timezone.now()
+        # Calcular a data e hora da última segunda-feira
+        ultima_segunda = (data_atual - timedelta(days=data_atual.weekday())).replace(hour=0, minute=0, second=0, microsecond=0)
+        
+        # Calcular a data e hora da próxima segunda-feira
+        proxima_segunda = (ultima_segunda + timedelta(days=7))
+        ranking = (
+            RelatoriosDeTreinamento.objects
+            .filter(
+            data__gte=ultima_segunda,
+            data__lt=proxima_segunda
+        )
+            .values('treinador')
+            .annotate(total=Count('id'))
+            .order_by('-total')
+        )
         context['contador'] = RelatoriosDeTreinamento.objects.all().values('treinamento').annotate(total=Count('treinamento'))
         context['total'] = RelatoriosDeTreinamento.objects.all().count()
+        context['ranking'] = ranking
         return context
     
 class AprovarRelatorio(PatenteRequiredMixin,View):
@@ -179,15 +181,6 @@ class AprovarRelatorio(PatenteRequiredMixin,View):
             datatime=timezone.now()
         )
         
-        # Enviar notificação
-        channel_layer = get_channel_layer()
-        async_to_sync(channel_layer.group_send)(
-            f"user_{relatorio.solicitante.id}",
-            {
-                "type": "send_notification",
-                "message": f"O seu relatório de treinamento foi aprovado."
-            }
-        )
 
         return HttpResponseRedirect(reverse('RelatoriosOficiais'))
 
@@ -219,14 +212,5 @@ class ReprovarRelatorio(PatenteRequiredMixin,View):
             datatime=timezone.now()
         )
         
-        # Enviar notificação
-        channel_layer = get_channel_layer()
-        async_to_sync(channel_layer.group_send)(
-            f"user_{relatorio.solicitante.id}",
-            {
-                "type": "send_notification",
-                "message": f"O seu relatório de treinamento foi reprovado."
-            }
-        )
 
         return HttpResponseRedirect(reverse('RelatoriosOficiais'))

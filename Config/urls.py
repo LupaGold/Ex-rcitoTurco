@@ -12,7 +12,7 @@ urlpatterns = [
     path('', include('ConAcs.urls')),
     path('painel/', include('Painel.urls')),
     path('painel/', include('Avais.urls')),
-    path('', include('Treinamentos.urls')),
+    path('painel/', include('Treinamentos.urls')),
     path('', include('Site.urls')),
     path('painel/', include('TerceiraCIA.urls')),
     path('painel/', include('SegundaCIA.urls')),
