@@ -1,5 +1,7 @@
 PATENTES = (
           ('', 'Selecione a Patente'),
+          ('Soldado', 'Soldado'),
+          ('Soldado Estrela', 'Soldado Estrela'),
           ('Cabo','Cabo'),
           ('Aluno','Aluno'),
           ('Terceiro Sargento','Terceiro Sargento'),

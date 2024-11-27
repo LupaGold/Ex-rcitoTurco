@@ -21,7 +21,7 @@
 </div>
 {% if militares %}
 {% for militar in militares %}
-            <div class="card mb-3 m-auto shadow col-11 bg-br text-light">
+            <div class="card mb-3 m-auto shadow col-11 bg-pt text-light">
                 <div class="row mb-3 g-0">
                   <div class="col-md-4 text-center" >
                     <img class="mb-auto" src="https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user={{ militar.username}}&direction=2&head_direction=2&size=l&action=std" class="img-fluid rounded-start" alt="...">
@@ -77,7 +77,7 @@
                     </div>
             {% endfor %}
             {% else %}
-    <div class="alert alert-success mx-auto text-center mt-3" role="alert">
+    <div class="alert alert-danger mx-auto text-center mt-3" role="alert">
         Sem resultado para a busca!
       </div>   
       {% endif %}
@@ -93,7 +93,7 @@
       </div>
       <form class="input-group mt-3" method="get">
         <input class='form-control' type="text" name="q" placeholder="Pesquisar por nickname">
-        <button class=" btn text-light" style="background:#2C4C00;" type=" submit">
+        <button class=" btn text-light" style="background:#93110e;" type=" submit">
             <i class='icon'>
                 <img width="35px" src="{% static "lupa.gif" %}" alt="">
               </i></button>

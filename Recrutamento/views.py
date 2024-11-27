@@ -17,13 +17,19 @@ from datetime import timedelta
 User = get_user_model()
 
 class RePraça(PatenteRequiredMixin,ListView):
-    allowed_groups = [] 
+    allowed_groups = []
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
             'General-de-Divisão ★★★',
             'General-de-Brigada ★★',
             'Coronel ★',
+            'Tenente-Coronel',
+            'Major',
+            'Capitão',
+            'Segundo Tenente',
+            'Primeiro Tenente',
+            'Aspirante-a-Oficial',
         ]
     model = Re
     template_name = 'RePraça.html'
@@ -37,13 +43,13 @@ class RePraça(PatenteRequiredMixin,ListView):
             queryset = queryset.filter(militar__icontains=q)
 
         return queryset.order_by('-data')
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         data_atual = timezone.now()
         # Calcular a data e hora da última segunda-feira
         ultima_segunda = (data_atual - timedelta(days=data_atual.weekday())).replace(hour=0, minute=0, second=0, microsecond=0)
-        
+
         # Calcular a data e hora da próxima segunda-feira
         proxima_segunda = (ultima_segunda + timedelta(days=7))
         ranking = (
@@ -61,7 +67,7 @@ class RePraça(PatenteRequiredMixin,ListView):
         return context
 
 class AbrirRE(PatenteRequiredMixin,CreateView):
-    allowed_groups = [] 
+    allowed_groups = []
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
@@ -90,7 +96,7 @@ class AbrirRE(PatenteRequiredMixin,CreateView):
         context["image"] = 're.gif'
         context["descricao"] = 'Verifique todos os campos antes de enviar o relatório!'
         return context
-    
+
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
@@ -103,7 +109,7 @@ class AbrirRE(PatenteRequiredMixin,CreateView):
             solicitante = relatorio.solicitante
             solicitante.moedas += 1
             solicitante.save()
-            
+
             log = LogRE.objects.create(
                     re=relatorio,
                     texto=f"{relatorio.solicitante} enviou abriu um Recrutamento Externo!",
@@ -115,9 +121,9 @@ class AbrirRE(PatenteRequiredMixin,CreateView):
             return HttpResponseRedirect(reverse('RePraça'))
         else:
             return self.get(request, *args, **kwargs)
-        
+
 class AbrirRM(PatenteRequiredMixin,CreateView):
-    allowed_groups = [] 
+    allowed_groups = []
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
@@ -140,7 +146,7 @@ class AbrirRM(PatenteRequiredMixin,CreateView):
         context["image"] = 'oficiais.gif'
         context["descricao"] = 'Verifique todos os campos antes de enviar o relatório!'
         return context
-    
+
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
@@ -153,9 +159,9 @@ class AbrirRM(PatenteRequiredMixin,CreateView):
             return HttpResponseRedirect(reverse('PrincipalPainel'))
         else:
             return self.get(request, *args, **kwargs)
-    
+
 class RMOficial(PatenteRequiredMixin,ListView):
-    allowed_groups = [] 
+    allowed_groups = []
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
@@ -181,7 +187,7 @@ class RMOficial(PatenteRequiredMixin,ListView):
             queryset = queryset.filter(militar__icontains=q)
 
         return queryset.order_by('-data')
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['recrutamentos'] = RM.objects.all().order_by('-data')

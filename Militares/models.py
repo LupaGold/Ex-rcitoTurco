@@ -38,7 +38,7 @@ class MilitarUsuario(AbstractUser):
         max_length=150,
         unique=True,
         validators=[RegexValidator(
-            regex=r'^[a-zA-Z0-9@_:.,\-!]+$',
+            regex=r'^[a-zA-Z0-9@_:.,\-!=]+$',
             message=_('Enter a valid username. This value may contain only letters (uppercase and lowercase), numbers, @, :, -, and _ characters.'),
             code='invalid_username',
         )],
@@ -66,7 +66,7 @@ class MilitarUsuario(AbstractUser):
     patente_order = models.IntegerField(default=0, editable=False)
     # Slug para URL amigável
     slug = models.SlugField(unique=True, blank=True, null=True)
-        
+
     def save(self, *args, **kwargs):
         patente_order_map = {
             'Marechal ★★★★★': 1,
@@ -83,10 +83,10 @@ class MilitarUsuario(AbstractUser):
             'Cadete': 12,
             'Subtenente': 13,
             'Primeiro Sargento': 14,
-            'Segundo Sargento': 15, 
+            'Segundo Sargento': 15,
             'Terceiro Sargento': 16,
-            'Aluno': 17, 
-            'Cabo': 18, 
+            'Aluno': 17,
+            'Cabo': 18,
             'Soldado Estrela': 19,
             'Soldado': 20,
         }

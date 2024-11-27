@@ -16,10 +16,10 @@ class UpdateLastAccessMiddleware:
             request.user.last_accessed = timezone.now()
             request.user.save()
         return response
-    
+
 class GroupContextMiddleware(MiddlewareMixin):
     def process_template_response(self, request, response):
-        
+
         patentes_ac = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
@@ -51,6 +51,16 @@ class GroupContextMiddleware(MiddlewareMixin):
         response.context_data['LAJD'] = request.user.groups.filter(name='LAJD').exists()
         response.context_data['RAJD'] = request.user.groups.filter(name='RAJD').exists()
         response.context_data['AJD'] = request.user.groups.filter(name='AJD').exists()
+
+        response.context_data['LMNT'] = request.user.groups.filter(name='LMNT').exists()
+        response.context_data['RMNT'] = request.user.groups.filter(name='RMNT').exists()
+        response.context_data['MNT'] = request.user.groups.filter(name='MNT').exists()
+
+        response.context_data['M2CIA'] = request.user.groups.filter(name='M2CIA').exists()
+        response.context_data['M3CIA'] = request.user.groups.filter(name='M3CIA').exists()
+        response.context_data['L2CIA'] = request.user.groups.filter(name='L2CIA').exists()
+        response.context_data['L3CIA'] = request.user.groups.filter(name='L3CIA').exists()
+
         response.context_data['ei'] = PaginaSite.objects.all().filter(categoria='Escolas e Institutos').order_by('ordenador')
         response.context_data['apostilas'] = PaginaSite.objects.all().filter(categoria='Apostilas').order_by('ordenador')
         response.context_data['grupos'] = PaginaSite.objects.all().filter(categoria='Grupos').order_by('ordenador')

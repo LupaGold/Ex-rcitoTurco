@@ -15,7 +15,7 @@ from django.views.generic import TemplateView, ListView, DetailView, View, Creat
 from django.db.models import Count
 from datetime import date
 from django.forms import ModelForm
-from django import forms 
+from django import forms
 from django.views.generic.edit import UpdateView
 from .forms import DestaqueOficialForm, DestaquePraçaForm
 from django.http import HttpResponseRedirect
@@ -76,6 +76,7 @@ PROMOCAO = {
 LIMITES_PROMOCAO = {
     'Segundo Tenente': 'Terceiro Sargento',
     'Primeiro Tenente': 'Segundo Sargento',
+    'Capitão': 'Segundo Sargento',
     'Major': 'Primeiro Sargento',
     'Tenente-Coronel': 'Subtenente',
     'Coronel ★': 'Primeiro Tenente',
@@ -126,7 +127,7 @@ class PatenteRequiredMixin(LoginRequiredMixin):
         if not request.user.is_authenticated:
             # Se o usuário não estiver autenticado, redirecione para a página de login
             return self.handle_no_permission()
-        
+
         user = request.user
 
         # Verifica se o usuário pertence a algum grupo permitido
@@ -154,7 +155,7 @@ class LoginViewModificada(LoginView):
     authentication_form = LoginForm
 
 class AlterarSenhaView(PatenteRequiredMixin, PasswordChangeView):
-    allowed_groups = [] 
+    allowed_groups = []
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
@@ -174,8 +175,8 @@ class AlterarSenhaView(PatenteRequiredMixin, PasswordChangeView):
             'Terceiro Sargento',
             'Aluno',
         ]
-    template_name = 'Form.html'  
-    success_url = reverse_lazy('AlterarSenha')  
+    template_name = 'Form.html'
+    success_url = reverse_lazy('AlterarSenha')
     form_class = CustomPasswordChangeForm
 
     def get_context_data(self, **kwargs):
@@ -183,7 +184,7 @@ class AlterarSenhaView(PatenteRequiredMixin, PasswordChangeView):
         context['players_data'] =  MilitarUsuario.objects.filter(username=self.request.user)
         context["titulo"] = 'Alterar Senha'
         context["image"] = 'cadeado.gif'
-        context["descricao"] = 'Uma senha segura envita acessos indesejados em sua conta!'
+        context["descricao"] = 'Uma senha segura evita acessos indesejados em sua conta!'
         return context
 
 class MilitaresLista(ListView):
@@ -210,32 +211,32 @@ class PromoverUsuarioView(LoginRequiredMixin, View):
     def post(self, request, user_id):
         user = get_object_or_404(MilitarUsuario, id=user_id)
         solicitante = request.user
-        
+
         # Verificar a patente do solicitante
         solicitante_patente = solicitante.patente
         limite_patente = LIMITES_PROMOCAO.get(solicitante_patente)
-        
+
         if not limite_patente:
             messages.error(request, 'Você não tem permissão para promover usuários.')
             return redirect('MilitaresLista')
-        
+
         # Verificar a próxima patente do usuário
         patente_atual = user.patente
         proxima_patente = PROMOCAO.get(patente_atual)
-        
+
         if not proxima_patente:
             messages.error(request, 'Não foi possível promover o usuário.')
             return redirect('MilitaresLista')
-        
+
         # Verificar se a promoção está dentro do limite
         patentes_ordenadas = [patente[0] for patente in PATENTES]
         indice_limite = patentes_ordenadas.index(limite_patente)
         indice_proxima = patentes_ordenadas.index(proxima_patente)
-        
+
         if indice_proxima > indice_limite:
             messages.error(request, 'Você não tem permissão para promover o usuário para essa patente.')
             return redirect('MilitaresLista')
-        
+
         # Promover o usuário
         user.patente = proxima_patente
         user.data = date.today()
@@ -243,36 +244,36 @@ class PromoverUsuarioView(LoginRequiredMixin, View):
         user.save()
         messages.success(request, f'Usuário {user.username} promovido para {proxima_patente}.')
         return redirect('MilitaresLista')
-    
+
 class RebaixarUsuarioView(LoginRequiredMixin, View):
     @method_decorator(csrf_protect)
     def post(self, request, user_id):
         user = get_object_or_404(MilitarUsuario, id=user_id)
         solicitante = request.user
-        
+
         # Verificar a patente do solicitante
         solicitante_patente = solicitante.patente
         limite_patente = LIMITES_REBAIXAMENTO.get(solicitante_patente)
-        
+
         if not limite_patente:
             messages.error(request, 'Você não tem permissão para rebaixar usuários.')
             return redirect('MilitaresLista')
-        
+
         # Verificar a patente atual do usuário
         patente_atual = user.patente
         patentes_ordenadas = [patente[0] for patente in PATENTES]
-        
+
         if patente_atual not in patentes_ordenadas:
             messages.error(request, 'Não foi possível rebaixar o usuário.')
             return redirect('MilitaresLista')
-        
+
         indice_atual = patentes_ordenadas.index(patente_atual)
         indice_limite = patentes_ordenadas.index(limite_patente)
-        
+
         if indice_atual >= indice_limite:
             messages.error(request, 'Você não tem permissão para rebaixar o usuário para essa patente.')
             return redirect('MilitaresLista')
-        
+
         # Rebaixar o usuário para a patente anterior
         proxima_patente = patentes_ordenadas[indice_atual - 1]
         user.patente = proxima_patente
@@ -286,15 +287,15 @@ class RebaixarUsuarioView(LoginRequiredMixin, View):
 class AlterarStatusView(View):
     def post(self, request, user_id, status):
         user = get_object_or_404(MilitarUsuario, id=user_id)
-        
+
         if status == 'Aposentado' and user.patente not in PATENTES_APOSENTADORIA:
             messages.error(request, "Apenas usuários com patente de Capitão ou superior podem se aposentar.")
             return redirect('MilitaresLista')
-        
+
         if request.user.patente != 'Marechal ★★★★★':
             messages.error(request, "Apenas Marechais podem alterar o status de outros usuários.")
             return redirect('MilitaresLista')
-        
+
         user.status = status
         if status == 'Aposentado':
             user.data = date.today()
@@ -306,11 +307,11 @@ class DemitirMilitarView(View):
     @method_decorator(csrf_protect)
     def post(self, request, user_id):
         user = get_object_or_404(MilitarUsuario, id=user_id)
-        
+
         if not self.user_tem_permissao(request.user, user):
             messages.error(request, "Você não tem permissão para demitir este usuário.")
             return redirect('MilitaresLista')  # Substitua pelo nome da sua URL de lista de militares
-        
+
         user.status = 'Demitido'
         user.data = date.today()
         user.responsavel_promocao = request.user.username
@@ -321,11 +322,11 @@ class DemitirMilitarView(View):
     def user_tem_permissao(self, request_user, user):
         if not request_user.patente:
             return False
-        
+
         # Verificar se o usuário tem uma patente que permite rebaixar outros usuários
         limites_rebaixamento = LIMITES_DEMISSAO.get(request_user.patente, [])
         return user.patente in limites_rebaixamento
-    
+
 class RegistroUsuarioView(CreateView):
     model = MilitarUsuario
     form_class = MilitarUsuarioCreationForm
@@ -334,7 +335,7 @@ class RegistroUsuarioView(CreateView):
 
     def form_valid(self, form):
         senha_padrao = 'padrão$!%#!#¨!#al14912948242'  # Aqui você define sua senha padrão
-        
+
         # Configurar o usuário com senha padrão
         user = form.save(commit=False)
         user.set_password(senha_padrao)
@@ -345,7 +346,7 @@ class RegistroUsuarioView(CreateView):
 
         messages.success(self.request, 'Usuário registrado com sucesso.')
         return super().form_valid(form)
-    
+
 class CriarDestaquePraça(CreateView):
     template_name = 'Form.html'
     form_class = DestaquePraçaForm
@@ -381,30 +382,30 @@ class ResetarSenha(LoginRequiredMixin, View):
     def post(self, request, user_id):
         user = get_object_or_404(MilitarUsuario, id=user_id)
         solicitante = request.user
-        
+
         # Verificar a patente do solicitante
         solicitante_patente = solicitante.patente
         limite_patente = LIMITES_REBAIXAMENTO.get(solicitante_patente)
-        
+
         if not limite_patente:
             messages.error(request, 'Você não tem permissão para resetar a senha desse usuários.')
             return redirect('MilitaresLista')
-        
+
         # Verificar a patente atual do usuário
         patente_atual = user.patente
         patentes_ordenadas = [patente[0] for patente in PATENTES]
-        
+
         if patente_atual not in patentes_ordenadas:
             messages.error(request, 'Não foi possível resetar a senha do usuário.')
             return redirect('MilitaresLista')
-        
+
         indice_atual = patentes_ordenadas.index(patente_atual)
         indice_limite = patentes_ordenadas.index(limite_patente)
-        
+
         if indice_atual >= indice_limite:
             messages.error(request, 'Você não tem permissão para resetar a senha desse usuário.')
             return redirect('MilitaresLista')
-        
+
         # Rebaixar o usuário para a patente anterior
         user.set_password('123')
         user.save()

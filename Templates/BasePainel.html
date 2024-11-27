@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel - Exército Brasileiro - Habbo Hotel ©</title>
+    <title>Painel - Exército Português - Habbo Hotel ©</title>
     <link rel="icon" type="img/x-icon" href="{% static 'aberto.gif' %}">
     <link href="{% static 'style.css' %}" rel="stylesheet">
     <link href="/static/django_ckeditor_5/dist/styles.css" media="all" rel="stylesheet">
@@ -13,6 +13,11 @@
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
+        figure {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
       .fa-solid {
         font-size: 26px;
     }
@@ -37,23 +42,20 @@
         color: white;
       }
       #notificationIcon.has-notifications {
-        color: red; 
+        color: red;
       }
-      .bg-br {
-        background-color: #2C4C00;
+      .bg-pt {
+        background-color: #93110e;
     }
     .bg-cubos {
-        background-color: #467c00;
-        background-image:  linear-gradient(30deg, #4a8100 12%, transparent 12.5%, transparent 87%, #4a8100 87.5%, #4a8100), linear-gradient(150deg, #4a8100 12%, transparent 12.5%, transparent 87%, #4a8100 87.5%, #4a8100), linear-gradient(30deg, #4a8100 12%, transparent 12.5%, transparent 87%, #4a8100 87.5%, #4a8100), linear-gradient(150deg, #4a8100 12%, transparent 12.5%, transparent 87%, #4a8100 87.5%, #4a8100), linear-gradient(60deg, #4a810077 25%, transparent 25.5%, transparent 75%, #4a810077 75%, #4a810077), linear-gradient(60deg, #4a810077 25%, transparent 25.5%, transparent 75%, #4a810077 75%, #4a810077);
-        background-size: 60px 105px;
-        background-position: 0 0, 0 0, 30px 53px, 30px 53px, 0 0, 30px 53px;
+      background-color: #6b0b0a;
     }
     </style>
     <body class="bg-cubos">
         <div class="sidebar close">
           <div class="logo-details">
             <div class="image-perfil">
-            <div class="rounded-circle border border-3 border-light m-auto" style="background: url(https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user={{ request.user.username}}&direction=2&head_direction=2&size=l&action=std) center 35% no-repeat, url({% static 'bgfloresta.png'%}) center center no-repeat; width: 90px; height: 90px;">	
+            <div class="rounded-circle border border-3 border-light m-auto" style="background: url(https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user={{ request.user.username}}&direction=2&head_direction=2&size=sm&action=std) center 35% no-repeat, url({% static 'bgfloresta.png'%}) center center no-repeat; width: 90px; height: 90px;">
             </div>
             <strong><p class="text-center text-light">{{ request.user.username}}</p></strong>
             <p class="text-center text-light" style="position: relative; top: -20px;">{{ request.user.patente}}</p>
@@ -148,7 +150,7 @@
                 {% if AC %}
                 <li><a href="{% url "RegistrarEmblema" %}">Registrar Emblema</a></li>
                 <li><a href="{% url "EditarEmblemas" %}">Editar Emblemas</a></li>
-                <li><a href="#">Saques</a></li>
+                {% comment %} <li><a href="#">Saques</a></li> {% endcomment %}
                 <li><a href="{% url "MoedasMilitares" %}">Moedas Militares</a></li>
                 {% endif %}
               </ul>
@@ -166,6 +168,7 @@
               </div>
               <ul class="sub-menu">
                 <li><a class="link_name" href="#">Oficiais</a></li>
+                <li><a href="{% url "Ranking" %}">Ranking</a></li>
                 <li><a href="{% url "Regimento" %}">Regimento</a></li>
                 <li><a href="{% url "Informações" %}">Informações</a></li>
                 <li><a href="{% url "FAQ" %}">FAQ</a></li>
@@ -233,7 +236,7 @@
                     <i class='bx'>
                       <img class="px" width="39px" src="{% static "ajudantes.gif" %}" alt="">
                     </i>
-                    <span class="link_name">Helpers</span>
+                    <span class="link_name">Ajudantes</span>
                   </a>
                   <i class='bx bxs-chevron-down arrow' ></i>
                 </div>
@@ -252,7 +255,7 @@
                 </ul>
               </li>
               {% endif %}
-              {% if R2CIA or L2CIA or AC %}
+              {% if M2CIA or L2CIA or AC %}
             <li class="mt-2">
               <div class="iocn-link">
                 <a href="#">
@@ -264,7 +267,7 @@
                 <i class='bx bxs-chevron-down arrow' ></i>
               </div>
               <ul class="sub-menu">
-                
+
                 <li><a class="link_name" href="#"></a></li>
                 <li><a href="{% url "Relatório2CIA" %}">Avaliações</a></li>
                 <li><a href="{% url "AvaliaçãoTP" %}">TP's</a></li>
@@ -286,7 +289,7 @@
                 <i class='bx bxs-chevron-down arrow' ></i>
               </div>
               <ul class="sub-menu">
-                
+
                 <li><a class="link_name" href="#"></a></li>
                 <li><a href="{% url "Relatório3CIA" %}">Relatórios</a></li>
                 <li><a href="{% url "Doação3CIA" %}">Doações</a></li>
@@ -345,7 +348,7 @@
               </li>
       </ul>
         </div>
-        
+
         <section class="home-section">
           <nav class="navbar bg-nav">
             <div class="container-fluid">
@@ -353,11 +356,6 @@
                   <i class='bx bx-menu text-light' ></i>
                 </div>
                 <div class="d-flex">
-                  <!-- <div class="container">
-                      <span class="fa fa-bell mt-4" id="notificationIcon" style="transform: scale(2);" data-bs-toggle="collapse" href="#notifyCollapse" role="button" aria-expanded="false" aria-controls="notifyCollapse">
-                        <i id="bellCount" class="fa-solid" data-count="0" ></i>
-                      </span>
-                  </div> -->
                   <div class="container mt-2 me-2">
                     <h4><span class="badge" style="background-color: gold; position: relative; left: 20px;">{{request.user.moedas}}  <img src="{% static 'carteira.gif' %}" alt="">
                     </span></h4>
@@ -365,19 +363,6 @@
                 </div>
             </div>
           </nav>
-          <audio id="notificationSound" src="{% static 'notify.mp3' %}" preload="auto"></audio>
-          <!-- <div class="container">
-            <div class="collapse" id="notifyCollapse">
-              <div class="card card-body col-12 shadow m-auto mt-3"tabindex="-1">
-              <div class="container text-center" id='notify'>
-              </div>
-              <hr class="text-light">
-              <button class="btn btn-danger" id="clearButton" style="display: none;">
-                Limpar Notificações
-              </button>
-            </div>
-          </div>
-          </div> -->
           {% block main %}
           {% endblock main %}
         </section>
@@ -417,7 +402,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div id="notify" class="modal-body">
-        
+
       </div>
       <div class="modal-footer">
         <button type="button" id="clearButton" class="btn btn-secondary">Limpar Notificações</button>

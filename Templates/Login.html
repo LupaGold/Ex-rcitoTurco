@@ -6,22 +6,21 @@
     <link rel="icon" type="img/x-icon" href="{% static 'aberto.gif' %}">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <title>Login - Exército Brasileiro ©</title>
+    <title>Login - Exército Português ©</title>
     <style>
         .bg-login {
-            background-color: #467c00;
-            background-image:  linear-gradient(30deg, #4a8100 12%, transparent 12.5%, transparent 87%, #4a8100 87.5%, #4a8100), linear-gradient(150deg, #4a8100 12%, transparent 12.5%, transparent 87%, #4a8100 87.5%, #4a8100), linear-gradient(30deg, #4a8100 12%, transparent 12.5%, transparent 87%, #4a8100 87.5%, #4a8100), linear-gradient(150deg, #4a8100 12%, transparent 12.5%, transparent 87%, #4a8100 87.5%, #4a8100), linear-gradient(60deg, #4a810077 25%, transparent 25.5%, transparent 75%, #4a810077 75%, #4a810077), linear-gradient(60deg, #4a810077 25%, transparent 25.5%, transparent 75%, #4a810077 75%, #4a810077);
-            background-size: 60px 105px;
-            background-position: 0 0, 0 0, 30px 53px, 30px 53px, 0 0, 30px 53px;
-        }
+            background-color: #6b0b0a;
+            opacity: 1;
+            background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #6b0b0a 40px ), repeating-linear-gradient( #93110e55, #93110e );
+          }
         .pixel-img {
             image-rendering: pixelated;
             image-rendering: -o-crisp-edges;
             image-rendering: -moz-crisp-edges;
             image-rendering: crisp-edges;
         }
-        .bg-br {
-            background-color: #2C4C00;
+        .bg-pt {
+            background-color: #93110e;
         }
     </style>
 </head>
@@ -30,7 +29,7 @@
         <div class="col-md-12 d-flex justify-content-center align-items-center" style="height: 100vh;">
             <div class="card col-md-4 col-10 p-2">
                 <img class="pixel-img m-auto mt-2" width="100px" src="{% static 'aberto.gif' %}" alt="">
-              <h2 class="text-center">Exército Brasileiro</h2>
+              <h2 class="text-center">Exército Português</h2>
               <p class="text-center">Faça o login para ter acesso ao painel.</p>
               <form class="col-12 col-md-10 m-auto mt-2" method="post">
                 {% csrf_token %}
@@ -54,7 +53,7 @@
                 <div class="d-flex justify-content-center">
                 {{form.captcha}}
             </div>
-            <button type="submit" class=" mt-3 mb-3 btn bg-br btn-dark text-light btn-lg col-12">Login</button>
+            <button type="submit" class=" mt-3 mb-3 btn bg-pt btn-dark border-0 text-light btn-lg col-12">Login</button>
               </form>
             </div>
     </div>

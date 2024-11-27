@@ -64,7 +64,7 @@
 </p>
     {% if relatorios %}
     {% for relatorio in relatorios %}
-        <a class="card m-1 p-3 text-light text-decoration-none mb-3" style="background-color: #2C4C00;" data-bs-toggle="collapse" href="#{{relatorio.pk}}" role="button" aria-expanded="false" aria-controls="{{relatorio.pk}}">
+        <a class="card m-1 p-3 text-light text-decoration-none mb-3" style="background-color: #93110e;" data-bs-toggle="collapse" href="#{{relatorio.pk}}" role="button" aria-expanded="false" aria-controls="{{relatorio.pk}}">
             <div class="d-flex">
                 <div class="col-2 mt-md-3 mt-5 mb-2">
                     <div class="rounded-circle m-auto px" style="background: url({% static 'auxilios.png'%}) center center no-repeat; width: 40px; height: 40px;transform: scale(2.0);">	
@@ -86,7 +86,7 @@
       </div>
       {% endfor %}
       {% else %}
-      <div class="alert alert-success text-center mx-auto mt-3" role="alert">
+      <div class="alert alert-danger text-center mx-auto mt-3" role="alert">
         Você não possue nenhum treinamento registrado.
       </div>
       {% endif %}
@@ -100,9 +100,9 @@
         <h3>Destaque</h3>
         </div>
       </div>
-      <div class="card col-12 col-md-12 shadow bg-br m-auto mt-1">
+      <div class="card col-12 col-md-12 shadow bg-pt m-auto mt-1">
         <div class="d-flex m-1">
-        <div class="card mt-2 mb-2 shadow ms-3 bg-br bg-opacity-50 bg-la">
+        <div class="card mt-2 mb-2 shadow ms-3 bg-pt bg-opacity-50 bg-la">
             <div class="rounded-circle m-auto" style="background: url(https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user={{destaque.militar.username}}&direction=2&head_direction=2&size=l&headonly=1) center center no-repeat; width: 80px; height: 80px;">	
             </div>                
         </div>
@@ -120,17 +120,17 @@
       <h3>Informações</h3>
       </div>
     </div>
-    <div class="card mt-3" style="background-color: #2C4C00;">
+    <div class="card mt-3" style="background-color: #93110e;">
       <div class="mt-2 mb-2 list-group list-group-flush text-center rounded m-auto col-10">
         <li class="list-group-item">Total de ações: 
             <span class="badge text-bg-dark text-light rounded-pill">{{ total }}</span></li>
     </div>
     <hr class="text-light m-auto col-10">
     <div class="m-auto mt-3 mb-3">
-    {% comment %} <li class='list-group-item text-light' style="background: #2C4C00"><p>Faltam <span id="dias">{{ dias_falta }}</span> dias, <span id="horas">{{ horas_falta }}</span> horas, <span id="minutos">{{ minutos_falta }}</span> minutos e <span id="segundos">{{ segundos_falta }}</span> segundos até o ranking resetar.</p></li> {% endcomment %}
+    {% comment %} <li class='list-group-item text-light' style="background: #93110e"><p>Faltam <span id="dias">{{ dias_falta }}</span> dias, <span id="horas">{{ horas_falta }}</span> horas, <span id="minutos">{{ minutos_falta }}</span> minutos e <span id="segundos">{{ segundos_falta }}</span> segundos até o ranking resetar.</p></li> {% endcomment %}
     {% for item in contador %}
-    <li class="list-group-item text-light mb-2" style="background: #2C4C00"> {{ item.palestra__titulo }}: 
-      <span class="badge text-bg-light  rounded-pill" style="background: #2C4C00">{{ item.total }}</span></li>
+    <li class="list-group-item text-light mb-2" style="background: #93110e"> {{ item.palestra__titulo }}: 
+      <span class="badge text-bg-light  rounded-pill" style="background: #93110e">{{ item.total }}</span></li>
     {% endfor %}
     </div>
   </div>
@@ -144,7 +144,7 @@
   </div>
   {% if ranking %}
   {% for item in ranking %}
-  <div class="d-flex card col-lg-12 col-md-12 col-12 shadow m-auto mt-1 action-text text-decoration-none" style="background-color: {% if forloop.counter == 1 %}gold{% elif forloop.counter == 2 %}silver{% elif forloop.counter == 3 %}#cd7f32 {% else %}#2C4C00{% endif %};" href="">
+  <div class="d-flex card col-lg-12 col-md-12 col-12 shadow m-auto mt-1 action-text text-decoration-none" style="background-color: {% if forloop.counter == 1 %}gold{% elif forloop.counter == 2 %}silver{% elif forloop.counter == 3 %}#cd7f32 {% else %}#93110e{% endif %};" href="">
     <div class="d-flex">
         <div class="col-2">
             <div class="ms-5 rounded-circle m-auto px" style="background: url({% if forloop.counter == 1 %}{% static 'primeiro.gif'%}{% elif forloop.counter == 2 %}{% static 'segundo.gif'%}{% elif forloop.counter == 3 %}{% static 'terceiro.gif'%}{% endif %}) center center no-repeat; width: 60px; height: 60px;">	
@@ -158,7 +158,7 @@
 </div>
   {% endfor %}
   {% else %}
-  <div class="alert alert-success text-center text-center mt-2 m-auto">
+  <div class="alert alert-danger text-center text-center mt-2 m-auto">
     Ranking zerado!
   </div>
   {% endif %}

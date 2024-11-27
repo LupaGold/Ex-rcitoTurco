@@ -18,12 +18,12 @@
 {% if messages %}
     <ul>
         {% for message in messages %}
-        <div class="alert alert-success text-center ">{{ message }}</div>
+        <div class="alert alert-danger text-center ">{{ message }}</div>
         {% endfor %}
 {% endif %}
 {% if militares %}
 {% for militar in militares %}
-            <div class="card mb-3 m-auto shadow col-11 text-light" style="background-color: #2C4C00;">
+            <div class="card mb-3 m-auto shadow col-11 text-light" style="background-color: #93110e;">
                 <div class="row mb-3 g-0">
                   <div class="col-md-4 text-center" >
                     <img class="mb-auto" src="https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user={{ militar.username}}&direction=2&head_direction=2&size=l&action=std" class="img-fluid rounded-start" alt="...">
@@ -51,7 +51,7 @@
                                   </form>
                                   <form class='col-4' action="{% url 'ResetarSenha' militar.id %}" method="post">
                                     {% csrf_token %}
-                                    <button class='m-1 btn btn-sm btn-secondary' type="submit">R/Senha</button>
+                                    <button class='m-1 btn btn-sm btn-secondary' type="submit">Painel</button>
                                 </form>
                                 {% if AC %}
                                 <form class='col-4' action="{% url 'AlterarStatus' militar.id 'Aposentado' %}" method="post">
@@ -82,7 +82,7 @@
       </div>
       <form class="input-group mt-3" method="get">
         <input class='form-control' type="text" name="q" placeholder="Pesquisar por nickname">
-        <button class=" btn text-light" style="background:#2C4C00;" type=" submit">
+        <button class=" btn text-light" style="background:#93110e;" type=" submit">
             <i class='icon'>
                 <img width="35px" src="{% static "lupa.gif" %}" alt="">
               </i></button>

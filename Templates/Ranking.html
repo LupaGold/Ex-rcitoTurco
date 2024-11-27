@@ -1,0 +1,205 @@
+{% extends "BasePainel.html" %}
+{% load static %}
+
+{% block main %}
+
+<div class="container m-auto mt-3 text-light"> 
+    <div class="container d-flex">
+        <div>
+            <img src="{% static 'destaque.png' %}" alt="">
+        </div>
+    <div class="ms-2">
+    <h3>Ranking Geral</h3>
+    <p>
+    </p>
+</div>
+</div>
+<hr class="text-light">
+    <div class="row mb-4">
+        <div class="col-md-4 col-12">
+            <div class="container d-flex mt-4"> 
+                <div>
+                  <img class="px" src="{% static 'relatorio.png'%}" alt="">
+                  </div>
+                <div class="ms-2 text-light">
+                <h3>Treinamentos</h3>
+                </div>
+              </div>
+              {% if rankingtreinamento %}
+              {% for item in rankingtreinamento %}
+              <div class="d-flex card col-lg-12 col-md-12 col-12 shadow m-auto mt-1 action-text text-decoration-none" style="background-color: {% if forloop.counter == 1 %}gold{% elif forloop.counter == 2 %}silver{% elif forloop.counter == 3 %}#cd7f32 {% else %}#93110e{% endif %};" href="">
+                <div class="d-flex">
+                    <div class="col-2">
+                        <div class="ms-5 rounded-circle m-auto px" style="background: url({% if forloop.counter == 1 %}{% static 'primeiro.gif'%}{% elif forloop.counter == 2 %}{% static 'segundo.gif'%}{% elif forloop.counter == 3 %}{% static 'terceiro.gif'%}{% endif %}) center center no-repeat; width: 60px; height: 60px;">	
+                        </div> 
+                    </div>
+                    <div class="text-light col-10">
+                        <p class="text-center me-4 mt-3">{{ item.treinador }} <span class="badge text-bg-light  rounded-pill">{{ item.total }}</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+              {% endfor %}
+              {% else %}
+              <div class="alert alert-danger text-center m-auto mt-3">
+                Ranking zerado!
+              </div>
+              {% endif %}
+        </div>
+        <div class="col-md-4 col-12">
+            <div class="container d-flex mt-4"> 
+                <div>
+                  <img class="px" src="{% static 'auxilios.png'%}" alt="">
+                  </div>
+                <div class="ms-2 text-light">
+                <h3>Auxílios</h3>
+                </div>
+              </div>
+              {% if rankingauxilio %}
+              {% for item in rankingauxilio %}
+              <div class="d-flex card col-lg-12 col-md-12 col-12 shadow m-auto mt-1 action-text text-decoration-none" style="background-color: {% if forloop.counter == 1 %}gold{% elif forloop.counter == 2 %}silver{% elif forloop.counter == 3 %}#cd7f32 {% else %}#93110e{% endif %};" href="">
+                <div class="d-flex">
+                    <div class="col-2">
+                        <div class="ms-5 rounded-circle m-auto px" style="background: url({% if forloop.counter == 1 %}{% static 'primeiro.gif'%}{% elif forloop.counter == 2 %}{% static 'segundo.gif'%}{% elif forloop.counter == 3 %}{% static 'terceiro.gif'%}{% endif %}) center center no-repeat; width: 60px; height: 60px;">	
+                        </div> 
+                    </div>
+                    <div class="text-light col-10">
+                        <p class="text-center me-4 mt-3">{{ item.auxiliar }} <span class="badge text-bg-light  rounded-pill">{{ item.total }}</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+              {% endfor %}
+              {% else %}
+              <div class="alert alert-danger text-center m-auto mt-3">
+                Ranking zerado!
+              </div>
+              {% endif %}
+              
+        </div>
+        <div class="col-md-4 col-12">
+          <div class="container d-flex mt-4"> 
+            <div>
+              <img class="px" src="{% static 're.gif'%}" alt="">
+              </div>
+            <div class="ms-2 text-light">
+            <h3>Recrutamentos</h3>
+            </div>
+          </div>
+          {% if rankingre %}
+          {% for item in rankingre %}
+          <div class="d-flex card col-lg-12 col-md-12 col-12 shadow m-auto mt-1 action-text text-decoration-none" style="background-color: {% if forloop.counter == 1 %}gold{% elif forloop.counter == 2 %}silver{% elif forloop.counter == 3 %}#cd7f32 {% else %}#93110e{% endif %};" href="">
+            <div class="d-flex">
+                <div class="col-2">
+                    <div class="ms-5 rounded-circle m-auto px" style="background: url({% if forloop.counter == 1 %}{% static 'primeiro.gif'%}{% elif forloop.counter == 2 %}{% static 'segundo.gif'%}{% elif forloop.counter == 3 %}{% static 'terceiro.gif'%}{% endif %}) center center no-repeat; width: 60px; height: 60px;">	
+                    </div> 
+                </div>
+                <div class="text-light col-10">
+                    <p class="text-center me-4 mt-3">{{ item.militar }} <span class="badge text-bg-light  rounded-pill">{{ item.total }}</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+          {% endfor %}
+          {% else %}
+          <div class="alert alert-danger text-center m-auto mt-3">
+            Ranking zerado!
+          </div>
+          {% endif %}
+        </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-md-4 col-12">
+        <div class="container d-flex mt-4"> 
+          <div>
+            <img class="px" src="{% static 'ajudantes.gif'%}" alt="">
+            </div>
+          <div class="ms-2">
+          <h3>Ajudantes</h3>
+          </div>
+        </div>
+        {% if rankingajd %}
+        {% for item in rankingajd %}
+        <div class="d-flex card col-lg-12 col-md-12 col-12 shadow m-auto mt-1 action-text text-decoration-none" style="background-color: {% if forloop.counter == 1 %}gold{% elif forloop.counter == 2 %}silver{% elif forloop.counter == 3 %}#cd7f32 {% else %}#93110e{% endif %};" href="">
+          <div class="d-flex">
+              <div class="col-2">
+                  <div class="ms-5 rounded-circle m-auto px" style="background: url({% if forloop.counter == 1 %}{% static 'primeiro.gif'%}{% elif forloop.counter == 2 %}{% static 'segundo.gif'%}{% elif forloop.counter == 3 %}{% static 'terceiro.gif'%}{% endif %}) center center no-repeat; width: 60px; height: 60px;">	
+                  </div> 
+              </div>
+              <div class="text-light col-10">
+                  <p class="text-center me-4 mt-3">{{ item.treinador }} <span class="badge text-bg-light  rounded-pill">{{ item.total_palestras }}</span>
+                  </p>
+              </div>
+          </div>
+      </div>
+        {% endfor %}
+        {% else %}
+        <div class="alert alert-danger text-center m-auto mt-2">
+          Ranking zerado!
+        </div>
+        {% endif %}
+      </div>
+      <div class="col-md-4 col-12">
+        <div class="container d-flex mt-4"> 
+          <div>
+            <img class="px" src="{% static 'supervisores.gif'%}" alt="">
+            </div>
+          <div class="ms-2">
+          <h3>Supervisores</h3>
+          </div>
+        </div>
+        {% if rankingsup %}
+        {% for item in rankingsup %}
+        <div class="d-flex card col-lg-12 col-md-12 col-12 shadow m-auto mt-1 action-text text-decoration-none" style="background-color: {% if forloop.counter == 1 %}gold{% elif forloop.counter == 2 %}silver{% elif forloop.counter == 3 %}#cd7f32 {% else %}#93110e{% endif %};" href="">
+          <div class="d-flex">
+              <div class="col-2">
+                  <div class="ms-5 rounded-circle m-auto px" style="background: url({% if forloop.counter == 1 %}{% static 'primeiro.gif'%}{% elif forloop.counter == 2 %}{% static 'segundo.gif'%}{% elif forloop.counter == 3 %}{% static 'terceiro.gif'%}{% endif %}) center center no-repeat; width: 60px; height: 60px;">	
+                  </div> 
+              </div>
+              <div class="text-light col-10">
+                  <p class="text-center me-4 mt-3">{{ item.treinador }} <span class="badge text-bg-light  rounded-pill">{{ item.total_palestras }}</span>
+                  </p>
+              </div>
+          </div>
+      </div>
+        {% endfor %}
+        {% else %}
+        <div class="alert alert-danger mt-2 text-center m-auto">
+          Ranking zerado!
+        </div>
+        {% endif %}
+      </div>
+      <div class="col-md-4 col-12">
+        <div class="container d-flex mt-4"> 
+          <div>
+            <img class="px" src="{% static 'monitores.gif'%}" alt="">
+            </div>
+          <div class="ms-2">
+          <h3>Monitores</h3>
+          </div>
+        </div>
+        {% if rankingmnt %}
+        {% for item in rankingmnt %}
+        <div class="d-flex card col-lg-12 col-md-12 col-12 shadow m-auto mt-1 action-text text-decoration-none" style="background-color: {% if forloop.counter == 1 %}gold{% elif forloop.counter == 2 %}silver{% elif forloop.counter == 3 %}#cd7f32 {% else %}#93110e{% endif %};" href="">
+          <div class="d-flex">
+              <div class="col-2">
+                  <div class="ms-5 rounded-circle m-auto px" style="background: url({% if forloop.counter == 1 %}{% static 'primeiro.gif'%}{% elif forloop.counter == 2 %}{% static 'segundo.gif'%}{% elif forloop.counter == 3 %}{% static 'terceiro.gif'%}{% endif %}) center center no-repeat; width: 60px; height: 60px;">	
+                  </div> 
+              </div>
+              <div class="text-light col-10">
+                  <p class="text-center me-4 mt-3">{{ item.treinador_nick }} <span class="badge text-bg-light  rounded-pill">{{ item.total_palestras }}</span>
+                  </p>
+              </div>
+          </div>
+      </div>
+        {% endfor %}
+        {% else %}
+        <div class="alert alert-danger text-center m-auto mt-3">
+          Ranking zerado!
+        </div>
+        {% endif %}
+      </div>
+    </div>
+</div>
+
+{% endblock main %}

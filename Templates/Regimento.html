@@ -1,0 +1,25 @@
+{% extends "BaseSite.html" %}
+{% load static %}
+
+{% block header %}
+<link rel="icon" type="img/x-icon" href="{% static 'brasil.png' %}">
+    <title>Regimento - Exército Português Habbo Hotel ©</title>
+{% endblock header %}
+
+{% block topo %}
+<div class="container  d-flex mt-3">
+    <div>
+        <img src="{% static 'brasil.png' %}" alt="">
+    </div>
+<div class="ms-2 text-light">
+<h3>Regimento interno</h3>
+<p>É seu dever ler todo o regimento da nossa instituição!</p>
+</div>
+</div>
+{% endblock topo %}
+
+{% block main %}
+<div class="container m-2 justify-content-center">
+<iframe src="https://docs.google.com/document/d/1ur5IhwjFLB4HAwjoZEcGuyYi9nqgfCtkTZSDLFCp22A/pub?embedded=true" width="100%" height="600"></iframe>
+</div>
+{% endblock main %}

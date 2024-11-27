@@ -20,7 +20,7 @@
 </p>
 {% if recrutamentos %}
     {% for relatorio in recrutamentos %}
-        <a class="card m-1 p-3 text-light text-decoration-none mb-3" style="background-color: #2C4C00;" data-bs-toggle="collapse" href="#{{relatorio.pk}}" role="button" aria-expanded="false" aria-controls="{{relatorio.pk}}">
+        <a class="card m-1 p-3 text-light text-decoration-none mb-3" style="background-color: #93110e;" data-bs-toggle="collapse" href="#{{relatorio.pk}}" role="button" aria-expanded="false" aria-controls="{{relatorio.pk}}">
             <div class="d-flex">
                 <div class="col-2 mt-md-3 mt-5 mb-2">
                     <div class="rounded-circle m-auto px" style="background: url({% static 'auxilios.png'%}) center center no-repeat; width: 40px; height: 40px;transform: scale(2.0);">	
@@ -44,7 +44,7 @@
       </div>
       {% endfor %}
       {% else %}
-      <div class="alert alert-success mx-auto text-center mt-3" role="alert">
+      <div class="alert alert-danger mx-auto text-center mt-3" role="alert">
         Nenhuma ação registrada!
       </div>
       {% endif %}
@@ -60,7 +60,7 @@
   </div>
   <form class="input-group mt-3" method="get">
       <input class='form-control' type="text" name="q" placeholder="Pesquisar por nickname">
-      <button class=" btn text-light" style="background:#2C4C00;" type=" submit">
+      <button class=" btn text-light" style="background:#93110e;" type=" submit">
           <i class='icon'>
               <img width="35px" src="{% static "lupa.gif" %}" alt="">
             </i></button>
@@ -75,7 +75,7 @@
 </div>
 {% if ranking %}
 {% for item in ranking %}
-<div class="d-flex card col-lg-12 col-md-12 col-12 shadow m-auto mt-1 action-text text-decoration-none" style="background-color: {% if forloop.counter == 1 %}gold{% elif forloop.counter == 2 %}silver{% elif forloop.counter == 3 %}#cd7f32 {% else %}#2C4C00{% endif %};" href="">
+<div class="d-flex card col-lg-12 col-md-12 col-12 shadow m-auto mt-1 action-text text-decoration-none" style="background-color: {% if forloop.counter == 1 %}gold{% elif forloop.counter == 2 %}silver{% elif forloop.counter == 3 %}#cd7f32 {% else %}#93110e{% endif %};" href="">
   <div class="d-flex">
       <div class="col-2">
           <div class="ms-5 rounded-circle m-auto px" style="background: url({% if forloop.counter == 1 %}{% static 'primeiro.gif'%}{% elif forloop.counter == 2 %}{% static 'segundo.gif'%}{% elif forloop.counter == 3 %}{% static 'terceiro.gif'%}{% endif %}) center center no-repeat; width: 60px; height: 60px;">	
@@ -89,7 +89,7 @@
 </div>
 {% endfor %}
 {% else %}
-<div class="alert alert-success text-center m-auto mt-3">
+<div class="alert alert-danger text-center m-auto mt-3">
   Ranking zerado!
 </div>
 {% endif %}

@@ -2,8 +2,19 @@
 {% load static %}
 
 {% block header %}
-<title>{{item.titulo}} - Exército Brasileiro - Habbo Hotel ©</title>
+<title>{{item.titulo}} - Exército Português - Habbo Hotel ©</title>
 <link rel="icon" type="img/x-icon" href="{{item.icone.url}}">
+<style>
+    figure {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              }
+    img {
+    max-width: 100%;
+    height: auto;
+}
+</style>
 {% endblock header %}
 
 {% block topo %}
@@ -19,7 +30,7 @@
 {% endblock topo %}
 
 {% block main %}
-<div class="container m-2 justify-content-center"> 
+<div class="container m-2 justify-content-center">
 {{item.texto | safe }}
 </div>
 {% endblock main %}
