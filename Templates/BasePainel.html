@@ -272,6 +272,7 @@
                 <li><a href="{% url "Relatório2CIA" %}">Avaliações</a></li>
                 <li><a href="{% url "AvaliaçãoTP" %}">TP's</a></li>
                 {% if AC or L2CIA %}
+                <li><a href="{% url "Permi2CIA" %}">Permissões</a></li>
                 <li><a href="{% url "CriarDestaque" %}">Alterar Destaque</a></li>
                 {% endif %}
               </ul>
@@ -294,6 +295,7 @@
                 <li><a href="{% url "Relatório3CIA" %}">Relatórios</a></li>
                 <li><a href="{% url "Doação3CIA" %}">Doações</a></li>
                 {% if AC or L3CIA %}
+                <li><a href="{% url "Permi3CIA" %}">Permissões</a></li>
                 <li><a href="{% url "CriarDestaque3CIA" %}">Alterar Destaque</a></li>
                 {% endif %}
               </ul>
