@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path
 from .views import (LoginViewModificada, AlterarSenhaView, MilitaresLista, PromoverUsuarioView, 
                     RebaixarUsuarioView, AlterarStatusView, DemitirMilitarView,RegistroUsuarioView,
-                    CriarDestaqueOficial, CriarDestaquePraça, ResetarSenha)
+                    CriarDestaqueOficial, CriarDestaquePraça, ResetarSenha, PasswordView)
 from django.urls import reverse_lazy
 from django.contrib.auth import logout
 from django.shortcuts import redirect
@@ -14,6 +14,7 @@ def custom_logout(request):
 urlpatterns = [
     path('login/', LoginViewModificada.as_view(), name='LoginPainel'),
     path('logout/', custom_logout, name ='Logout'),
+    path('alterar-senha/', PasswordView.as_view(), name='LoginPassword'),
     path('painel/alterar-senha/', AlterarSenhaView.as_view(), name='AlterarSenha'),
     path('painel/militares-lista/alterar-senha/<int:user_id>/', ResetarSenha.as_view(), name='ResetarSenha'),
     path('painel/militares-lista/', MilitaresLista.as_view(), name='MilitaresLista'),

@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
 from Militares.models import MilitarUsuario
-from .forms import CustomPasswordChangeForm, MilitarUsuarioCreationForm
+from .forms import CustomPasswordChangeForm, MilitarUsuarioCreationForm, CadastroForm
 from django.views import View
 from django.contrib import messages
 from django.utils.decorators import method_decorator
@@ -405,9 +405,76 @@ class ResetarSenha(LoginRequiredMixin, View):
         if indice_atual >= indice_limite:
             messages.error(request, 'Você não tem permissão para resetar a senha desse usuário.')
             return redirect('MilitaresLista')
-
+        senha = self.GerarCódigo()
         # Rebaixar o usuário para a patente anterior
-        user.set_password('123')
+        user.set_password(senha)
         user.save()
-        messages.success(request, f'Usuário {user.username} teve sua senha resetada para 123.')
+        messages.success(request, f'Usuário {user.username} teve sua senha resetada para {senha}.')
         return redirect('MilitaresLista')
+    
+    def GerarCódigo(self):
+        letters = string.ascii_uppercase
+        digits = ''.join(random.choice(string.digits) for _ in range(4))
+        return 'TURCO' + digits + 'SEC'
+    
+class PasswordView(TemplateView):
+    template_name = 'change_password.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        codigo_aleatorio = self.GerarCódigo()
+        context['form'] = CadastroForm()
+        context['codigo_aleatorio'] = codigo_aleatorio
+        return context
+
+    def get(self, request):
+        codigo_aleatorio = self.GerarCódigo()
+        request.session['codigo_aleatorio'] = codigo_aleatorio
+        form = CadastroForm(initial={'codigo_aleatorio': codigo_aleatorio})
+        return render(request, self.template_name, {'form': form, 'codigo_aleatorio': codigo_aleatorio})
+
+    def post(self, request, *args, **kwargs):
+        form = CadastroForm(request.POST)
+        codigo_aleatorio = request.session.get('codigo_aleatorio')
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            if not self.CheckarUsuario(username):
+                form.add_error(None, 'Policial não registrado!')
+            elif self.CheckarCódigo(username, codigo_aleatorio):
+                self.AlterarSenha(username, password)
+                return redirect('login_principal')
+            else:
+                form.add_error(None, 'Código aleatório inválido')
+        return render(request, self.template_name, {'form': form, 'codigo_aleatorio': codigo_aleatorio})
+
+
+    def GerarCódigo(self):
+        letters = string.ascii_uppercase
+        digits = ''.join(random.choice(string.digits) for _ in range(3))
+        return 'TURCO' + digits
+
+    def CheckarUsuario(self, username):
+        return MilitarUsuario.objects.filter(username__iexact=username).exists()
+
+    def CheckarCódigo(self, username, codigo_aleatorio):
+        try:
+            response = requests.get(f'https://www.habbo.com.br/api/public/users?name={username}')
+            if response.status_code == 200:
+                data = response.json()
+                motto = data.get('motto').strip()
+                if codigo_aleatorio == motto:
+                    return True
+                else:
+                    return False
+            else:
+                print(f"Erro na API: Status {response.status_code}")
+                return False
+        except requests.exceptions.RequestException as e:
+            print(f"Erro ao acessar a API: {e}")
+            return False
+
+    def AlterarSenha(self, username, password):
+        user = MilitarUsuario.objects.get(username__iexact=username)
+        user.set_password(password)
+        user.save()

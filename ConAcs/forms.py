@@ -11,6 +11,12 @@ class LoginForm(AuthenticationForm):
     password = forms.CharField(label='Senha',widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder':'Digite sua senha'}))
     # captcha = ReCaptchaField(label='')
 
+class CadastroForm(forms.Form):
+    username = forms.CharField(label='Nick:', widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Digite seu nick'}))
+    password = forms.CharField(label='Senha', widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder':'Digite sua senha'}))
+    confirm_password = forms.CharField(label='Confirme a senha', widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder':'Confirme sua senha'}))
+    codigo_aleatorio = forms.CharField(widget=forms.HiddenInput(),required=False)
+
 class CustomPasswordChangeForm(PasswordChangeForm):
     old_password = forms.CharField(label='Senha antiga',widget=forms.PasswordInput(attrs={'class': 'form-control'}))
     new_password1 = forms.CharField(label='Nova senha',widget=forms.PasswordInput(attrs={'class': 'form-control'}))
