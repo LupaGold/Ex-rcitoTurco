@@ -1,0 +1,88 @@
+{% extends "BasePainel.html" %}
+{% load static %}
+{% block main %}
+<style>
+    .silver {
+        background: silver;
+    }
+</style>
+<div class="container m-auto mt-3 text-light"> 
+    <div class="row">
+    <div class="col-12 col-md-7 order-2 order-md-1">
+    <div class="container mb-2 d-flex">
+        <div>
+            <img src="{% static '3cia.gif' %}" alt="">
+        </div>
+    <div class="ms-2">
+    <h3>Gerenciar Permissões</h3>
+    <p>Atenção ao setar permissões.
+    </p>
+</div>
+</div>
+{% if militares %}
+{% for militar in militares %}
+            <div class="card mb-3 m-auto shadow col-11 bg-pt text-light">
+                <div class="row mb-3 g-0">
+                  <div class="col-md-4 text-center" >
+                    <img class="mb-auto" src="https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user={{ militar.username}}&direction=2&head_direction=2&size=l&action=std" class="img-fluid rounded-start" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body mt-3">
+                    <p class="card-text"><strong> Militar: </strong>{{militar.patente}}, {{militar.username}}</p>
+                    <hr>
+                      <div class="d-flex">
+                        {% if not militar.ism3 %}
+                            <form class='m-1' method="post" action="{% url 'Adicionarm3cia' militar.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn silver btn-sm">Membro</button>
+                            </form>
+                            {% else %}
+                            <form class='m-1' method="post" action="{% url 'Removerm3cia' militar.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm">Membro</button>
+                            </form>
+                        {% endif %}
+                        {% if not militar.isl3 %}
+                            <form class='m-1' method="post" action="{% url 'Adicionarl3cia' militar.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn silver btn-sm">Líder</button>
+                            </form>
+                            {% else %}
+                            <form class='m-1' method="post" action="{% url 'Removerl3cia' militar.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm">Líder</button>
+                            </form>
+                            {% endif %}
+                    </div>
+                </div>
+                    </div>
+                    </div>
+                    </div>
+            {% endfor %}
+            {% else %}
+    <div class="alert alert-danger mx-auto text-center mt-3" role="alert">
+        Sem resultado para a busca!
+      </div>   
+      {% endif %}
+</div>
+<div class="col-md-5 col-11 order-1 order-md-2">
+    <div class="container mb-3 d-flex mt-4"> 
+        <div>
+          <img class="px" src="{% static 'lupa.gif'%}" alt="">
+          </div>
+        <div class="ms-2">
+        <h3>Informações</h3>
+        </div>
+      </div>
+      <form class="input-group mt-3" method="get">
+        <input class='form-control' type="text" name="q" placeholder="Pesquisar por nickname">
+        <button class=" btn text-light" style="background:#93110e;" type=" submit">
+            <i class='icon'>
+                <img width="35px" src="{% static "lupa.gif" %}" alt="">
+              </i></button>
+    </form>
+        </div>
+</div>
+</div>
+
+{% endblock main %}

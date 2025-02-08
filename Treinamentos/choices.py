@@ -73,7 +73,7 @@ TREINAMENTOSLIMITADOS = (
 SALA = (
         ('Sala de T1', 'Sala de T1'),
         ('Sala de T2', 'Sala de T2'),
-        ('Sala Robótica', 'Sala Robótica]'),
+        ('Sala Robótica', 'Sala Robótica'),
         ('Centro de Instrução', 'Centro de Instrução'),
     )
 

@@ -6,7 +6,7 @@ from .choices import PATENTESALL, DURACAO, PATENTES, STATUS, TREINAMENTOSLIMITAD
 from django.contrib.auth import get_user_model
 from Militares.models import MilitarUsuario
 from django.utils.functional import lazy
-from django_ckeditor_5.fields import CKEditor5Field
+# from django_ckeditor_5.fields import CKEditor5Field
 
 #Relatório de Treinamento Base (T1, T2, T3...)
 class RelatoriosDeTreinamento(models.Model): 

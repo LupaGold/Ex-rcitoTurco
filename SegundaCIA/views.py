@@ -9,6 +9,11 @@ from .forms import AvaliaçãoTPForm, Relatório2CIAForm, Destaque2CIAForm
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.views.decorators.csrf import csrf_protect
+from django.utils.decorators import method_decorator
+from django.contrib.auth.models import Group, User
+from django.shortcuts import get_object_or_404, redirect
+from Militares.models import MilitarUsuario
 
 class CriarDestaque2CIA(PatenteRequiredMixin,CreateView):
     allowed_groups = ['L2CIA'] 
@@ -231,3 +236,117 @@ class RegistrarRelatório2CIA(PatenteRequiredMixin,CreateView):
             return HttpResponseRedirect(reverse('Relatório2CIA'))
         else:
             return self.get(request, *args, **kwargs)
+
+@method_decorator(csrf_protect, name='dispatch')
+class AdicionarL2CIA(PatenteRequiredMixin,View):
+    allowed_groups = ['L2CIA'] 
+    allowed_patentes = [
+            'Marechal ★★★★★',
+            'General-de-Exército ★★★★',
+            'General-de-Divisão ★★★',
+            'General-de-Brigada ★★',
+            'Coronel ★',
+        ]
+    template_name = 'Guia.html'
+    def post(self, request, user_id):
+        user = get_object_or_404(MilitarUsuario, id=user_id)
+        group = Group.objects.get(name='L2CIA')
+        user.groups.add(group)
+        return redirect('Permi2CIA')
+    
+@method_decorator(csrf_protect, name='dispatch')
+class RemoverL2CIA(PatenteRequiredMixin,View):
+    allowed_groups = ['L2CIA'] 
+    allowed_patentes = [
+            'Marechal ★★★★★',
+            'General-de-Exército ★★★★',
+            'General-de-Divisão ★★★',
+            'General-de-Brigada ★★',
+            'Coronel ★',
+        ]
+    template_name = 'Guia.html'
+    def post(self, request, user_id):
+        user = get_object_or_404(MilitarUsuario, id=user_id)
+        group = Group.objects.get(name='L2CIA')
+        user.groups.remove(group)
+        return redirect('Permi2CIA')
+    
+@method_decorator(csrf_protect, name='dispatch')
+class AdicionarM2CIA(PatenteRequiredMixin,View):
+    allowed_groups = ['L2CIA'] 
+    allowed_patentes = [
+            'Marechal ★★★★★',
+            'General-de-Exército ★★★★',
+            'General-de-Divisão ★★★',
+            'General-de-Brigada ★★',
+            'Coronel ★',
+        ]
+    template_name = 'Guia.html'
+    def post(self, request, user_id):
+        user = get_object_or_404(MilitarUsuario, id=user_id)
+        group = Group.objects.get(name='M2CIA')
+        user.groups.add(group)
+        return redirect('Permi2CIA')
+
+@method_decorator(csrf_protect, name='dispatch')
+class RemoverM2CIA(PatenteRequiredMixin,View):
+    allowed_groups = ['L2CIA'] 
+    allowed_patentes = [
+            'Marechal ★★★★★',
+            'General-de-Exército ★★★★',
+            'General-de-Divisão ★★★',
+            'General-de-Brigada ★★',
+            'Coronel ★',
+        ]
+    template_name = 'Guia.html'
+    def post(self, request, user_id):
+        user = get_object_or_404(MilitarUsuario, id=user_id)
+        group = Group.objects.get(name='M2CIA')
+        user.groups.remove(group)
+        return redirect('Permi2CIA')
+    
+class Permissoes2ciaview(PatenteRequiredMixin, ListView):
+    allowed_groups = ['L2CIA'] 
+    allowed_patentes = [
+            'Marechal ★★★★★',
+            'General-de-Exército ★★★★',
+            'General-de-Divisão ★★★',
+            'General-de-Brigada ★★',
+            'Coronel ★',
+        ]
+    template_name = 'Guia.html'
+    model = MilitarUsuario
+    template_name = 'Permi2cia.html'
+    context_object_name = 'militares'
+    paginate_by = 5
+
+    def get_queryset(self):
+        q = self.request.GET.get('q')
+        queryset = MilitarUsuario.objects.exclude(
+            patente__in=[
+                'Marechal ★★★★★',
+                'General-de-Exército ★★★★',
+                'General-de-Divisão ★★★',
+                'General-de-Brigada ★★',
+                'Coronel ★',
+            ]
+        ).order_by('patente_order')
+
+        if q:
+            queryset = queryset.filter(username__icontains=q).order_by('patente_order')
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        grupos = Group.objects.all()
+
+        for militar in context['militares']:
+            militar.isl2 = 'L2CIA' in [group.name for group in militar.groups.all()]
+            militar.ism2 = 'M2CIA' in [group.name for group in militar.groups.all()]
+
+        context.update({
+            'groups': grupos,
+        })
+        return context

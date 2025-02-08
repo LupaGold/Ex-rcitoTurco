@@ -15,9 +15,9 @@ from Recrutamento.models import Re
 #Viw da página principal do site
 class SitePrincipal(TemplateView):
     template_name = 'Principal.html'
-    
+
     def get(self, request, *args, **kwargs):
-        search_term = request.GET.get('search', '') 
+        search_term = request.GET.get('search', '')
         militar = MilitarUsuario.objects.filter(username__icontains=search_term) if search_term else None
         honrarias = HonrariaMilitar.objects.filter(militar__username__icontains=search_term)
         patentes = ['Marechal ★★★★★',
@@ -35,7 +35,7 @@ class SitePrincipal(TemplateView):
             'militar': militar,
             'noticias': PostagemJornal.objects.last(),
             'militares': MilitarUsuario.objects.filter(patente__in=patentes, status='Ativo'),
-            'ultimosalistados': MilitarUsuario.objects.order_by('-id')[:5],
+            'ultimosalistados': MilitarUsuario.objects.order_by('-id')[:4],
             'busca': search_term,
             'honrarias': honrarias,
         }
@@ -64,10 +64,10 @@ class DemitidosSite(TemplateView):
                 'Cadete': 12,
                 'Subtenente': 13,
                 'Primeiro Sargento': 14,
-                'Segundo Sargento': 15, 
+                'Segundo Sargento': 15,
                 'Terceiro Sargento': 16,
-                'Aluno': 17, 
-                'Cabo': 18, 
+                'Aluno': 17,
+                'Cabo': 18,
                 'Soldado Estrela': 19,
                 'Soldado': 20,
             }
@@ -99,7 +99,7 @@ class DemitidosSite(TemplateView):
 
 #View da listagem de Praças e Oficiais
 class PraçasEOficiais(TemplateView):
-    template_name = 'PraçaseOficiais.html'
+    template_name = 'PraçasEOficiais.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -121,10 +121,10 @@ class PraçasEOficiais(TemplateView):
                 'Cadete': 12,
                 'Subtenente': 13,
                 'Primeiro Sargento': 14,
-                'Segundo Sargento': 15, 
+                'Segundo Sargento': 15,
                 'Terceiro Sargento': 16,
-                'Aluno': 17, 
-                'Cabo': 18, 
+                'Aluno': 17,
+                'Cabo': 18,
                 'Soldado Estrela': 19,
                 'Soldado': 20,
             }
@@ -160,7 +160,7 @@ class SegundaCIA(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         #Grupos Líder e Membro da 2CIA
-        lider = 'L2CIA'  
+        lider = 'L2CIA'
         membro = 'M2CIA'
         #Lógica para testar os Militares se fazem parte dos grupos
         try:
@@ -168,7 +168,7 @@ class SegundaCIA(TemplateView):
             context['lider'] = MilitarUsuario.objects.filter(groups=grupo_lider).first()
         except Group.DoesNotExist:
             context['lider'] = MilitarUsuario.objects.none()
-        
+
         try:
             grupo_membro = Group.objects.get(name=membro)
             context['membros'] = MilitarUsuario.objects.filter(groups=grupo_membro).order_by('patente_order')
@@ -187,7 +187,7 @@ class AposentadosSite(TemplateView):
         context["aposentados"] = MilitarUsuario.objects.filter(status='Aposentado').order_by('patente_order','-data')
         context["ultimosalistados"] = MilitarUsuario.objects.order_by('-id')[:5]
         return context
-    
+
 #View para ver as páginas individualmente
 class PaginasLoad(DetailView):
     model = PaginaSite
@@ -200,7 +200,7 @@ class PaginasLoad(DetailView):
         context = super().get_context_data(**kwargs)
         context["ultimosalistados"] = MilitarUsuario.objects.order_by('-id')[:5]
         return context
-    
+
 #View para ver o perfil do militar
 class PerfilMilitar(DetailView):
     model = MilitarUsuario
@@ -221,4 +221,11 @@ class PerfilMilitar(DetailView):
         context['emblemas'] = emblemas_comprados
         context["ultimosalistados"] = MilitarUsuario.objects.order_by('-id')[:5]
         return context
-    
+
+class RegimentoSite(TemplateView):
+    template_name = "Regimento.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["ultimosalistados"] = MilitarUsuario.objects.order_by('-id')[:5]
+        return context

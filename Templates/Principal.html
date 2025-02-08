@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exército Brasileiro - Habbo Hotel ©</title>
+    <title>Exército Turco - Habbo Hotel ©</title>
     <link rel="icon" type="img/x-icon" href="{% static 'aberto.gif' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    
+
     <style>
         .px {
             image-rendering: pixelated;
@@ -14,35 +14,17 @@
             image-rendering: -moz-crisp-edges;
             image-rendering: crisp-edges;
           }
-        .bg-br {
-            background-color: #2C4C00;
+        .bg-pt {
+            background-color: #93110e;
         }
         .bg-cubos {
-          background-color: #467c00;
-          background-image:  linear-gradient(30deg, #4a8100 12%, transparent 12.5%, transparent 87%, #4a8100 87.5%, #4a8100), linear-gradient(150deg, #4a8100 12%, transparent 12.5%, transparent 87%, #4a8100 87.5%, #4a8100), linear-gradient(30deg, #4a8100 12%, transparent 12.5%, transparent 87%, #4a8100 87.5%, #4a8100), linear-gradient(150deg, #4a8100 12%, transparent 12.5%, transparent 87%, #4a8100 87.5%, #4a8100), linear-gradient(60deg, #4a810077 25%, transparent 25.5%, transparent 75%, #4a810077 75%, #4a810077), linear-gradient(60deg, #4a810077 25%, transparent 25.5%, transparent 75%, #4a810077 75%, #4a810077);
-          background-size: 60px 105px;
-          background-position: 0 0, 0 0, 30px 53px, 30px 53px, 0 0, 30px 53px;
+          background-color: #6b0b0a;
+          opacity: 1;
+          background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #6b0b0a 40px ), repeating-linear-gradient( #93110e55, #93110e );
         }
         .dropdown-item:hover {
-            background-color: #2C4C00;
+            background-color: #93110e;
             color: black;
-        }
-        .dest-p {
-          background-color: #2C4C00;
-          background-image:  linear-gradient(30deg, #274300 12%, transparent 12.5%, transparent 87%, #274300 87.5%, #274300), linear-gradient(150deg, #274300 12%, transparent 12.5%, transparent 87%, #274300 87.5%, #274300), linear-gradient(30deg, #274300 12%, transparent 12.5%, transparent 87%, #274300 87.5%, #274300), linear-gradient(150deg, #274300 12%, transparent 12.5%, transparent 87%, #274300 87.5%, #274300), linear-gradient(60deg, #27430077 25%, transparent 25.5%, transparent 75%, #27430077 75%, #27430077), linear-gradient(60deg, #27430077 25%, transparent 25.5%, transparent 75%, #27430077 75%, #27430077);
-          background-size: 60px 105px;
-          background-position: 0 0, 0 0, 30px 53px, 30px 53px, 0 0, 30px 53px;
-        }
-        .dest-ofc {
-          background-color: #2C4C00;
-          background-image:  linear-gradient(30deg, #274300 12%, transparent 12.5%, transparent 87%, #274300 87.5%, #274300), linear-gradient(150deg, #274300 12%, transparent 12.5%, transparent 87%, #274300 87.5%, #274300), linear-gradient(30deg, #274300 12%, transparent 12.5%, transparent 87%, #274300 87.5%, #274300), linear-gradient(150deg, #274300 12%, transparent 12.5%, transparent 87%, #274300 87.5%, #274300), linear-gradient(60deg, #27430077 25%, transparent 25.5%, transparent 75%, #27430077 75%, #27430077), linear-gradient(60deg, #27430077 25%, transparent 25.5%, transparent 75%, #27430077 75%, #27430077);
-          background-size: 60px 105px;
-          background-position: 0 0, 0 0, 30px 53px, 30px 53px, 0 0, 30px 53px;
-        }
-        .card-br {
-            background-color: #2C4C00;
-        }
-        .img-br {
         }
         .icon-al {
             width: 0px;
@@ -66,10 +48,6 @@
           position:relative;
           right: -170px;
         }
-        .card-br {
-            background-color: #2C4C00;
-        
-        }
         .icon-al {
             width: 117px;
             height: 117px;
@@ -83,7 +61,7 @@
     </style>
 </head>
 <body class="bg-cubos">
-    <nav class="navbar navbar-expand-lg" data-bs-theme="dark" style="background-color: #2C4C00; border-bottom: #274300 2px solid;">
+    <nav class="navbar navbar-expand-lg" data-bs-theme="dark" style="background-color: #6b0b0a; border-bottom: #560907 2px solid;">
         <div class="container-fluid">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon text-light"></span>
@@ -103,7 +81,7 @@
                 <a class="active nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Escolas e Institutos
                 </a>
-                <ul class="dropdown-menu bg-br">
+                <ul class="dropdown-menu bg-pt">
                   {% if ei %}
                   {% for pag in ei %}
                   <li><a class="dropdown-item text-light" href="{% url "PaginaUrl" pag.slug %}">{{pag.titulo}}</a></li>
@@ -117,7 +95,7 @@
                 <a class="active nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Companhias
                 </a>
-                <ul class="dropdown-menu bg-br">
+                <ul class="dropdown-menu bg-pt">
                   {% comment %} <li><a class="dropdown-item text-light" href="#">1° Companhia</a></li> {% endcomment %}
                     <li><a class="dropdown-item text-light" href="{% url "SegundaCIA" %}">Segunda Companhia</a></li>
                     {% comment %} <li><a class="dropdown-item text-light" href="#">3° Companhia</a></li> {% endcomment %}
@@ -127,7 +105,7 @@
                 <a class="active nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Honrados
                 </a>
-                <ul class="dropdown-menu bg-br">
+                <ul class="dropdown-menu bg-pt">
                   <li><a class="dropdown-item text-light" href="{% url 'Aposentados'%}">Aposentados</a></li>
                 </ul>
               </li>
@@ -135,7 +113,7 @@
                 <a class="active nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Apostilas
                 </a>
-                <ul class="dropdown-menu bg-br">
+                <ul class="dropdown-menu bg-pt">
                   {% if apostilas %}
                   {% for pag in apostilas %}
                   <li><a class="dropdown-item text-light" href="{% url "PaginaUrl" pag.slug %}">{{pag.titulo}}</a></li>
@@ -149,7 +127,7 @@
                 <a class="active nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Alistados
                 </a>
-                <ul class="dropdown-menu bg-br">
+                <ul class="dropdown-menu bg-pt">
                   <li><a class="dropdown-item text-light" href="{% url "PraçasEOficiais" %}">Praças e Oficiais</a></li>
                   <li><a class="dropdown-item text-light" href="{% url "Demitidos" %}">Demitidos</a></li>
                 </ul>
@@ -158,40 +136,98 @@
                 <a class="active nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Grupos
                 </a>
-                <ul class="dropdown-menu bg-br">
+                <ul class="dropdown-menu bg-pt">
                   {% if grupos %}
                   {% for pag in grupos %}
                   <li><a class="dropdown-item text-light" href="{% url "PaginaUrl" pag.slug %}">{{pag.titulo}}</a></li>
                   {% endfor %}
                   {% endif %}
-                  <li><a class="dropdown-item text-light" href="{% url "JornalAlemao" %}">Jornal Militar</a></li>
+                  <li><a class="dropdown-item text-light" href="{% url "JornalAlemao" %}">Correio Militar
+                  </a></li>
                 </ul>
               </li>
-              <div class="d-flex ms-5">
+              <div class="d-flex ms-md-5 ms-0">
                 <a class="btn text-black" style="background-color: silver;" href="{% url 'PrincipalPainel' %}">Painel</a>
             </div>
             </ul>
           </div>
         </div>
       </nav>
-      <div class="container d-flex mt-3">
-        <div>
-            <img src="{% static 'brasil-bandeira.png'%}" alt="">
+      <div class="row m-auto mt-3 col-md-11 col-12 mb-3">
+        <div class="col-12 col-md-3">
+          <div class="container d-flex">
+              <div>
+                  <img src="{% static 'trofeu.png'%}" alt="">
+              </div>
+          <div class="ms-2 text-light">
+          <h3>Destaques</h3>
+          <p>Parabéns aos destaques semanais!</p>
+      </div>
+  </div>
+  <div class="container">
+  <div class="card col-12 col-md-12 shadow m-auto mt-1 bg-pt shadow" style="background-color: #93110e;">
+      <div class="d-flex m-1">
+      <div class="card mt-2 mb-2 shadow ms-3 bg-pt bg-opacity-50" style="background-color: #6b0b0a;">
+          <div class="rounded-circle m-auto" style="background: url(https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user={{destofc.militar.username}}&direction=2&head_direction=2&size=l&headonly=1) center center no-repeat; width: 80px; height: 80px;">
+          </div>
+      </div>
+      <div class="text-center text-light m-auto">
+          <strong><p class="text-center mt-2" style="font-size:20px;">Oficial Destaque</p></strong>
+      <strong><p class="text-center" style="position: relative; top: -10px; font-size:15px;">{{destofc.militar.username}}</p></strong>
+      </div>
+  </div>
+  </div>
+  <div class="card col-12 col-md-12 shadow m-auto mt-1 bg-pt shadow" style="background-color: #93110e;">
+      <div class="d-flex m-1"> 
+      <div class="card mt-2 mb-2 shadow ms-3 bg-pt bg-opacity-50" style="background-color: #6b0b0a;">
+          <div class="rounded-circle m-auto" style="background: url(https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user={{destpraca.militar.username}}&direction=2&head_direction=2&size=l&headonly=1) center center no-repeat; width: 80px; height: 80px;">
+          </div>
+      </div>
+      <div class="text-light text-center m-auto">
+          <strong><p class="text-center mt-2" style="font-size:20px;">Praça Destaque</p></strong>
+      <strong><p class="text-center" style="position: relative; top: -10px; font-size:15px;">{{destpraca.militar.username}}</p></strong>
+      </div>
+  </div>
+  </div>
+</div>
+
+  <div class="container d-flex mt-4">
+    <div>
+        <img src="{% static 'cofre.gif'%}" alt="">
+    </div>
+<div class="ms-2 text-light">
+<h3>Exclusivo</h3>
+<p>Adquira pacotes e tenha acesso a itens exclusivos!</p>
+</div>
         </div>
-    <div class="ms-2 text-light">
-    <h3> Página Principal</h3>
-    <p>"Braço forte, mão amiga"</p>
-</div>
-</div>
-      <div class="row m-auto col-md-10 col-12 mb-3">
-        <div class="col-12 col-md-8">
-            <div class="col-12 text-center">
-                <div class="card-br rounded col-12 text-center m-auto p-3">
-                    <img src="{% static 'aberto.gif'%}" class="px m-auto mb-3 icon-al" alt="..." >
-                    <h1 class="text-light text-al">EXÉRCITO BRASILEIRO</h1>
-                <img src="{% static 'banner-ex.png'%}" class="px img-br m-auto ms-3 mb-3" alt="..." >
+        <div class="container">
+        <div class="d-flex card col-lg-12 col-md-12 col-12 shadow m-auto mt-1 action-text text-decoration-none bg-pt" href="">
+          <div class="d-flex mb-2">
+              <div class="col-4 mt-5 mb-2 m-auto">
+                  <div class="rounded-circle m-auto px" style="background: url({% static 'privilegios.gif'%}) center center no-repeat; width: 40px; height: 40px; transform:scale(2.0); position: relative; top:35px">
+                  </div>
+              </div>
+              <div class="text-light col-6 m-auto">
+                  <h5 class="mt-2">ADQUIRA PRIVILÉGIOS!</h5>
+                  <p class="card-text mb-1"><small>Garanta acesso exclusivo a salas durante eventos externos do Exército Turco.</small></p>
+              </div>
+          </div>
+      </div>
+      <div class="d-flex card col-lg-12 col-md-12 col-12 shadow m-auto mt-1 action-text text-decoration-none bg-pt" href="">
+        <div class="d-flex mb-2">
+            <div class="col-4 mt-2 mb-2 m-auto">
+                <div class="rounded-circle m-auto px" style="background: url({% static 'patrocinadores.gif'%}) center center no-repeat; width: 60px; height: 60px; transform:scale(2.0); position: relative; top:40px">
+                </div>
             </div>
+            <div class="text-light col-6 m-auto">
+                <h5 class="mt-2">SEJA PATRO!</h5>
+                <p class="card-text mb-1"><small>Apoie o Exército Turco por 25 câmbios e ganhe acesso a fardamentos, grupos e mais.</small></p>
             </div>
+        </div>
+    </div>
+        </div>
+    </div>
+        <div class="col-12 col-md-6">
             <div class="container d-flex mb-1 mb-lg-0 mt-4 ">
                 <div>
                     <img src="{% static 'busca.gif'%}" alt="">
@@ -201,10 +237,10 @@
             <p>Você pode pesquisar em nossos registros aqui.</p>
         </div>
     </div>
-    <div class="container card m-auto shadow mb-3" style="background: #2C4C00">
+    <div class="container card m-auto shadow mb-3" style="background: #6b0b0a">
         <form class='input-group mt-2 mb-2' method="get">
             <input class='form-control' type="text" name="search" style='background:#f8f9fa;' placeholder="Digite o nick do militar">
-            <button style="background: #1c2f00" class='btn' type="submit">
+            <button style="background: #4f0807" class='btn' type="submit">
                 <i>
                     <img width="35px" src="{% static "lupa.gif" %}" alt="">
                   </i>
@@ -212,17 +248,17 @@
         </form>
 </div>
   {% if busca %}
-  <div class='container card bg-br shadown'>
+  <div class='container card bg-pt shadown'>
   {% if militar %}
   <p class="m-1 text-light"><strong> Resultado da Busca: </strong></p>
-  
+
       {% for user in militar %}
       <div class="card mb-3 bg-cubos shadow">
           <div class="row g-0">
             <div class="col-xl-4 m-auto align-items-center">
               <div>
-              <div class="rounded-circle m-auto border border-3 border-dark m-1" style="background: url(https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user={{user.username}}&direction=2&head_direction=3&size=l&action=std) center 35% no-repeat, url({% static 'bgfloresta.png'%}) center center no-repeat; width: 140px; height: 140px;">	
-              </div></div>              
+              <div class="rounded-circle m-auto border border-3 border-light m-1" style="background: url(https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user={{user.username}}&direction=2&head_direction=3&size=l&action=std) center 35% no-repeat, url({% static 'bgfloresta.png'%}) center center no-repeat; width: 140px; height: 140px;">
+              </div></div>
       </div>
             <div class="col-md-8">
               <div class="card-body text-light">
@@ -247,17 +283,17 @@
                     {% endfor %}
                   </div>
                   {% endif %}
-                  <a class="btn m-1 text-light" style="background-color: #2C4C00;" href="{% url "PerfilMilitar" user.slug %}">Acessar Perfil</a>
+                  <a class="btn m-1 text-dark" style="background-color: silver;" href="{% url "PerfilMilitar" user.slug %}">Acessar Perfil</a>
               </div>
             </div>
           </div>
         </div>
       {% endfor %}
       {% else %}
-      <div class="alert alert-success m-auto mt-3 mb-3 col-12 text-center" role="alert">
+      <div class="alert alert-danger m-auto mt-3 mb-3 col-12 text-center" role="alert">
         Militar não encontrado!
       </div>
-        
+
 {% endif %}
 </div>
 {% endif %}
@@ -267,149 +303,28 @@
     </div>
         <div class="ms-2 text-light">
         <h3>Notícias</h3>
-        <p>Fica antenado as notícias do Exército Brasileiro!</p>
+        <p>Fica antenado as notícias do Exército Turco!</p>
         </div>
         </div>
         {% if noticias %}
-        <div class="card col-12 bg-br mb-3">
+        <div class="card col-12 bg-pt mb-3">
           <img src="{{ noticias.imagem.url }}" class="card-img-top" alt="...">
           <div class="card-body text-light">
             <h5 class="card-title">{{noticias.titulo}}</h5>
             <p class="card-text">{{noticias.descricao}}</p>
             <p class="card-text"><small class="text-light"> Postado em {{noticias.datatime}} por {{noticias.solicitante.patente}} {{noticias.solicitante.username}}.</small></p>
+          <a  href="{% url "PostagensJornal" noticias.slug %}" style="background:silver;" class="btn">Ler mais...</a>
           </div>
         </div>
         {% else %}
-        <div class="alert alert-success m-auto text-center mt-3" role="alert">
+        <div class="alert alert-danger m-auto text-center mt-3" role="alert">
           Sem postagens recentes!
         </div>
         {% endif %}
-        <nav class="col-12 card bg-br mt-3 mb-3 shadow text-center">
-          <div class="container" style="position: relative; top: 50px;">
-            <div class="card-header" > <div style="position: relative; top: -30px;"><img class="px mt-3" src="{% static 'oficiais.gif'%}" alt="" width="78px" height="78px">
-        <strong><h3 class="text-light " aria-current="page">Oficiais</h3></strong> </div></div>
-        <div class="mt-2">
-          {% if militares %}
-              {% for militar in militares %}
-              {% if militar.patente == 'Marechal ★★★★★' %}
-              <a ><img data-bs-toggle="tooltip" data-bs-placement="bottom"
-                data-bs-custom-class="custom-tooltip" data-bs-title="{{militar.patente}}, {{militar.username}}" src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{militar.username}}' /></a>
-              {% endif %}
-              {% endfor %}
-              <div style="position: relative; top: -50px;">
-              {% for militar in militares %}
-              {% if militar.patente == 'General-de-Exército ★★★★' %}
-              <a ><img data-bs-toggle="tooltip" data-bs-placement="bottom"
-                data-bs-custom-class="custom-tooltip" data-bs-title="{{militar.patente}}, {{militar.username}}" src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{militar.username}}' /></a>
-              {% endif %}
-              {% endfor %}
-              {% for militar in militares %}
-              {% if militar.patente == 'General-de-Divisão ★★★' %}
-              <a ><img data-bs-toggle="tooltip" data-bs-placement="bottom"
-                data-bs-custom-class="custom-tooltip" data-bs-title="{{militar.patente}}, {{militar.username}}" src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{militar.username}}' /></a>
-              {% endif %}
-              {% endfor %}
-              {% for militar in militares %}
-              {% if militar.patente == 'General-de-Brigada ★★' %}
-              <a ><img data-bs-toggle="tooltip" data-bs-placement="bottom"
-                data-bs-custom-class="custom-tooltip" data-bs-title="{{militar.patente}}, {{militar.username}}" src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{militar.username}}' /></a>
-              {% endif %}
-              {% endfor %}
-              </div>
-              <div style="position: relative; top: -100px;">
-              {% for militar in militares %}
-              {% if militar.patente == 'Coronel ★' %}
-              <a ><img data-bs-toggle="tooltip" data-bs-placement="bottom"
-                data-bs-custom-class="custom-tooltip" data-bs-title="{{militar.patente}}, {{militar.username}}" src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{militar.username}}' /></a>
-              {% endif %}
-              {% endfor %}
-              {% for militar in militares %}
-              {% if militar.patente == 'Tenente-Coronel' %}
-              <a ><img data-bs-toggle="tooltip" data-bs-placement="bottom"
-                data-bs-custom-class="custom-tooltip" data-bs-title="{{militar.patente}}, {{militar.username}}"  src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{militar.username}}' /></a>
-              {% endif %}
-              {% endfor %}
-            </div>
-            <div style="position: relative; top: -150px;">
-              {% for militar in militares %}
-              {% if militar.patente == 'Major' %}
-              <a ><img  data-bs-toggle="tooltip" data-bs-placement="bottom"
-                data-bs-custom-class="custom-tooltip" data-bs-title="{{militar.patente}}, {{militar.username}}" src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{militar.username}}' /></a>
-              {% endif %}
-              {% endfor %}
-              {% for militar in militares %}
-              {% if militar.patente == 'Capitão' %}
-              <a ><img  data-bs-toggle="tooltip" data-bs-placement="bottom"
-                data-bs-custom-class="custom-tooltip" data-bs-title="{{militar.patente}}, {{militar.username}}" src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{militar.username}}' /></a>
-              {% endif %}
-              {% endfor %}
-            </div>
-              <div style="position: relative; top: -200px;">
-              {% for militar in militares %}
-              {% if militar.patente == 'Primeiro Tenente' %}
-              <a ><img  data-bs-toggle="tooltip" data-bs-placement="bottom"
-                data-bs-custom-class="custom-tooltip" data-bs-title="{{militar.patente}}, {{militar.username}}" src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{militar.username}}' /></a>
-              {% endif %}
-              {% endfor %}
-              {% for militar in militares %}
-              {% if militar.patente == 'Segundo Tenente' %}
-              <a ><img data-bs-toggle="tooltip" data-bs-placement="bottom"
-                data-bs-custom-class="custom-tooltip" data-bs-title="{{militar.patente}}, {{militar.username}}" src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{militar.username}}' /></a>
-              {% endif %}
-              {% endfor %}
-              {% for militar in militares %}
-              {% if militar.patente == 'Aspirante-a-Oficial' %}
-              <a ><img  data-bs-toggle="tooltip" data-bs-placement="bottom"
-                data-bs-custom-class="custom-tooltip" data-bs-title="{{militar.patente}}, {{militar.username}}" src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{militar.username}}' /></a>
-              {% endif %}
-              {% endfor %}
-              </div>
-              {% else %}
-              <div class="alert alert-success m-auto mt-3" role="alert">
-                Sem Oficiais registrados!
-              </div>
-              {% endif %}
-      </div>
-      </div>
-      </nav>
-        </div>
         
-        <div class="col-12 col-md-4">
-            <div class="container d-flex">
-                <div>
-                    <img src="{% static 'trofeu.png'%}" alt="">
-                </div>
-            <div class="ms-2 text-light">
-            <h3>Destaques</h3>
-            <p>Parabéns aos destaques semanais!</p>
         </div>
-    </div>
-    <div class="container">
-    <div class="card col-12 col-md-12 shadow m-auto mt-1 bg-br shadow dest-ofc">
-        <div class="d-flex m-1">
-        <div class="card mt-2 mb-2 shadow ms-3 bg-br bg-opacity-50" style="background-color: #2C4C00;">
-            <div class="rounded-circle m-auto" style="background: url(https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user={{destofc.militar.username}}&direction=2&head_direction=2&size=l&headonly=1) center center no-repeat; width: 80px; height: 80px;">	
-            </div>                
-        </div>
-        <div class="text-center text-light m-auto">
-            <strong><p class="text-center mt-2" style="font-size:20px;">Oficial Destaque</p></strong>
-        <strong><p class="text-center" style="position: relative; top: -10px; font-size:15px;">{{destofc.militar.username}}</p></strong>
-        </div>
-    </div>
-    </div>
-    <div class="card col-12 col-md-12 shadow m-auto mt-1 bg-br shadow dest-p" >
-        <div class="d-flex m-1">
-        <div class="card mt-2 mb-2 shadow ms-3 bg-br bg-opacity-50" style="background-color: #2C4C00;">
-            <div class="rounded-circle m-auto" style="background: url(https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user={{destpraca.militar.username}}&direction=2&head_direction=2&size=l&headonly=1) center center no-repeat; width: 80px; height: 80px;">	
-            </div>                
-        </div>
-        <div class="text-light text-center m-auto">
-            <strong><p class="text-center mt-2" style="font-size:20px;">Praça Destaque</p></strong>
-        <strong><p class="text-center" style="position: relative; top: -10px; font-size:15px;">{{destpraca.militar.username}}</p></strong>
-        </div>
-    </div>
-    </div>
-</div>
+
+        <div class="col-12 col-md-3">
 <div class="container d-flex mt-4">
     <div>
         <img src="{% static 'atalhos.png'%}" alt="">
@@ -420,33 +335,33 @@
 </div>
         </div>
         <div class="container">
-            <a class="d-flex card col-lg-12 col-md-12 col-12 shadow m-auto mt-1 action-text text-decoration-none bg-br" href="{% url "SegundaCIA" %}">
+            <a class="d-flex card col-lg-12 col-md-12 col-12 shadow m-auto mt-1 action-text text-decoration-none bg-pt" href="{% url "SegundaCIA" %}">
                 <div class="d-flex">
                     <div class="col-4 mt-2 mb-2">
-                        <div class="rounded-circle m-auto px" style="background: url({% static 'relt.png'%}) center center no-repeat; width: 60px; height: 60px;">	
-                        </div> 
+                        <div class="rounded-circle m-auto px" style="background: url({% static 'relt.png'%}) center center no-repeat; width: 60px; height: 60px;">
+                        </div>
                     </div>
                     <div class="text-light col-8">
                         <h5 class="text-center mt-4 me-5">Treinamentos</h5>
                     </div>
                 </div>
             </a>
-            <a class="d-flex card col-lg-12 col-md-12 col-12 shadow m-auto mt-1 action-text text-decoration-none bg-br" href="">
+            <a class="d-flex card col-lg-12 col-md-12 col-12 shadow m-auto mt-1 action-text text-decoration-none bg-pt" href="{% url "JornalAlemao" %}">
                 <div class="d-flex">
                     <div class="col-4 mt-2 mb-2">
-                        <div class="rounded-circle m-auto px" style="background: url({% static 'usaveis.gif'%}) center center no-repeat; width: 60px; height: 60px;">	
-                        </div> 
+                        <div class="rounded-circle m-auto px" style="background: url({% static 'jornal.png'%}) center center no-repeat; width: 60px; height: 60px;">
+                        </div>
                     </div>
                     <div class="text-light col-8">
-                        <h5 class="text-center mt-4 me-5">Fardamentos</h5>
+                        <h5 class="text-center mt-2 me-5">Correio Militar</h5>
                     </div>
                 </div>
             </a>
-            <a class="d-flex card col-lg-12 col-md-12 col-12 shadow m-auto mt-1 action-text text-decoration-none bg-br" href="{% url "LoginPainel" %}">
+            <a class="d-flex card col-lg-12 col-md-12 col-12 shadow m-auto mt-1 action-text text-decoration-none bg-pt" href="{% url "LoginPainel" %}">
                 <div class="d-flex">
                     <div class="col-4 mt-2 mb-2">
-                        <div class="rounded-circle m-auto px" style="background: url({% static 'cadeado.gif'%}) center center no-repeat; width: 60px; height: 60px;">	
-                        </div> 
+                        <div class="rounded-circle m-auto px" style="background: url({% static 'cadeado.gif'%}) center center no-repeat; width: 60px; height: 60px;">
+                        </div>
                     </div>
                     <div class="text-light col-8">
                         <h5 class="text-center mt-4 me-5">Login</h5>
@@ -454,71 +369,25 @@
                 </div>
             </a>
     </div>
-    <div class="container d-flex mt-4">
-      <div>
-          <img src="{% static 'cofre.gif'%}" alt="">
-      </div>
-  <div class="ms-2 text-light">
-  <h3>Exclusivo</h3>
-  <p>Adquira pacotes e tenha acesso a itens exclusivos!</p>
-  </div>
-          </div>
-          <div class="container">
-            <div class="d-flex card col-lg-12 col-md-12 col-12 shadow m-auto mt-1 action-text text-decoration-none bg-br" href="">
-              <div class="d-flex mb-2">
-                  <div class="col-4 mt-2 mb-2">
-                      <div class="rounded-circle m-auto px" style="background: url({% static 'vip.gif'%}) center center no-repeat; width: 60px; height: 60px; transform:scale(2.0); position: relative; top:50px">	
-                      </div> 
-                  </div>
-                  <div class="text-light col-7">
-                      <h5 class="mt-2">SEJA VIP</h5>
-                      <p class="card-text mb-1"><small>Adquira uma sala particular no TeamSpeak 3 do Exército Brasileiro, acesso VIP a eventos e mais. Fale com o Alto Comando para obter essa exclusividade.</small></p>
-                  </div>
-              </div>
-          </div>
-          <div class="d-flex card col-lg-12 col-md-12 col-12 shadow m-auto mt-1 action-text text-decoration-none bg-br" href="">
-            <div class="d-flex mb-2">
-                <div class="col-4 mt-5 mb-2">
-                    <div class="rounded-circle m-auto px" style="background: url({% static 'privilegios.gif'%}) center center no-repeat; width: 60px; height: 60px; transform:scale(2.0); position: relative; top:35px">	
-                    </div> 
-                </div>
-                <div class="text-light col-7">
-                    <h5 class="mt-2">ADQUIRA PRIVILÉGIOS!</h5>
-                    <p class="card-text mb-1"><small>Garanta acesso exclusivo a salas durante eventos externos do Exército Brasileiro, evite filas e receba imunidade em alguns jogos, além de apoiar diretamente a 3ª Companhia.</small></p>
-                </div>
-            </div>
-        </div>
-        <div class="d-flex card col-lg-12 col-md-12 col-12 shadow m-auto mt-1 action-text text-decoration-none bg-br" href="">
-          <div class="d-flex mb-2">
-              <div class="col-4 mt-2 mb-2">
-                  <div class="rounded-circle m-auto px" style="background: url({% static 'patrocinadores.gif'%}) center center no-repeat; width: 60px; height: 60px; transform:scale(2.0); position: relative; top:40px">	
-                  </div> 
-              </div>
-              <div class="text-light col-8">
-                  <h5 class="mt-2">ADQUIRA PATROCINADOR!</h5>
-                  <p class="card-text mb-1"><small>Apoie o Exército Brasileiro por 25 câmbios e ganhe acesso a fardamentos, grupos e mais. Fale com um membro do Alto Comando.</small></p>
-              </div>
-          </div>
-      </div>
-          </div>
+
           <div class="container d-flex mt-4">
             <div>
                 <img src="{% static 'frank.png'%}" alt="">
             </div>
         <div class="ms-2 text-light">
         <h3>Novos membros</h3>
-        <p>Sejam bem-vindos ao Exército Brasileiro!</p>
+        <p>Sejam bem-vindos ao Exército Turco!</p>
         </div>
                 </div>
-        <div class="card bg-br">
+        <div class="card bg-pt">
           <div class="mb-3 m-auto">
             {% if ultimosalistados %}
           {% for novosmembros in ultimosalistados %}
-          <a><img data-bs-toggle="tooltip" data-bs-placement="bottom"
+          <a href="{% url "PerfilMilitar" novosmembros.slug %}"><img data-bs-toggle="tooltip" data-bs-placement="bottom"
             data-bs-custom-class="custom-tooltip" data-bs-title="{{novosmembros.patente}}, {{novosmembros.username}}" src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{novosmembros.username}}'/></a>
           {% endfor %}
           {% else %}
-          <div class="alert alert-success m-auto mt-3" role="alert">
+          <div class="alert alert-danger m-auto mt-3" role="alert">
             Sem alistamentos recentes!
           </div>
               {% endif %}
@@ -526,29 +395,102 @@
         </div>
       </div>
     </div>
-    <footer class="py-2 text-center bg-br shadow">
+    <footer class="py-2 text-center shadow" style="background-color: #6b0b0a;">
+      <div class="container mt-4">
+        <div class="card-header" > <div><img class="px mt-3" src="{% static 'ofc.gif'%}" alt="" width="78px" height="78px">
+    <strong><h3 class="text-light " aria-current="page">Corpo de Oficiais</h3></strong> </div></div>
+    <div class="mt-1">
+      {% if militares %}
+          {% for militar in militares %}
+          {% if militar.patente == 'Marechal ★★★★★' %}
+          <a href="{% url "PerfilMilitar" militar.slug %}"><img data-bs-toggle="tooltip" data-bs-placement="bottom"
+            data-bs-custom-class="custom-tooltip" data-bs-title="{{militar.patente}}, {{militar.username}}" src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{militar.username}}' /></a>
+          {% endif %}
+          {% endfor %}
+          <div style="position: relative; top: -30px;">
+          {% for militar in militares %}
+          {% if militar.patente == 'General-de-Exército ★★★★' %}
+          <a href="{% url "PerfilMilitar" militar.slug %}"><img data-bs-toggle="tooltip" data-bs-placement="bottom"
+            data-bs-custom-class="custom-tooltip" data-bs-title="{{militar.patente}}, {{militar.username}}" src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{militar.username}}' /></a>
+          {% endif %}
+          {% endfor %}
+          {% for militar in militares %}
+          {% if militar.patente == 'General-de-Divisão ★★★' %}
+          <a href="{% url "PerfilMilitar" militar.slug %}"><img data-bs-toggle="tooltip" data-bs-placement="bottom"
+            data-bs-custom-class="custom-tooltip" data-bs-title="{{militar.patente}}, {{militar.username}}" src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{militar.username}}' /></a>
+          {% endif %}
+          {% endfor %}
+          {% for militar in militares %}
+          {% if militar.patente == 'General-de-Brigada ★★' %}
+          <a href="{% url "PerfilMilitar" militar.slug %}"><img data-bs-toggle="tooltip" data-bs-placement="bottom"
+            data-bs-custom-class="custom-tooltip" data-bs-title="{{militar.patente}}, {{militar.username}}" src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{militar.username}}' /></a>
+          {% endif %}
+          {% endfor %}
+          </div>
+          <div style="position: relative; top: -60px;">
+          {% for militar in militares %}
+          {% if militar.patente == 'Coronel ★' %}
+          <a href="{% url "PerfilMilitar" militar.slug %}"><img data-bs-toggle="tooltip" data-bs-placement="bottom"
+            data-bs-custom-class="custom-tooltip" data-bs-title="{{militar.patente}}, {{militar.username}}" src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{militar.username}}' /></a>
+          {% endif %}
+          {% endfor %}
+          {% for militar in militares %}
+          {% if militar.patente == 'Tenente-Coronel' %}
+          <a href="{% url "PerfilMilitar" militar.slug %}"><img data-bs-toggle="tooltip" data-bs-placement="bottom"
+            data-bs-custom-class="custom-tooltip" data-bs-title="{{militar.patente}}, {{militar.username}}"  src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{militar.username}}' /></a>
+          {% endif %}
+          {% endfor %}
+          {% for militar in militares %}
+          {% if militar.patente == 'Major' %}
+          <a href="{% url "PerfilMilitar" militar.slug %}"><img  data-bs-toggle="tooltip" data-bs-placement="bottom"
+            data-bs-custom-class="custom-tooltip" data-bs-title="{{militar.patente}}, {{militar.username}}" src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{militar.username}}' /></a>
+          {% endif %}
+          {% endfor %}
+          {% for militar in militares %}
+          {% if militar.patente == 'Capitão' %}
+          <a href="{% url "PerfilMilitar" militar.slug %}"><img  data-bs-toggle="tooltip" data-bs-placement="bottom"
+            data-bs-custom-class="custom-tooltip" data-bs-title="{{militar.patente}}, {{militar.username}}" src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{militar.username}}' /></a>
+          {% endif %}
+          {% endfor %}
+        </div>
+          <div style="position: relative; top: -90px;">
+          {% for militar in militares %}
+          {% if militar.patente == 'Primeiro Tenente' %}
+          <a href="{% url "PerfilMilitar" militar.slug %}"><img  data-bs-toggle="tooltip" data-bs-placement="bottom"
+            data-bs-custom-class="custom-tooltip" data-bs-title="{{militar.patente}}, {{militar.username}}" src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{militar.username}}' /></a>
+          {% endif %}
+          {% endfor %}
+          {% for militar in militares %}
+          {% if militar.patente == 'Segundo Tenente' %}
+          <a href="{% url "PerfilMilitar" militar.slug %}"><img data-bs-toggle="tooltip" data-bs-placement="bottom"
+            data-bs-custom-class="custom-tooltip" data-bs-title="{{militar.patente}}, {{militar.username}}" src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{militar.username}}' /></a>
+          {% endif %}
+          {% endfor %}
+          {% for militar in militares %}
+          {% if militar.patente == 'Aspirante-a-Oficial' %}
+          <a href="{% url "PerfilMilitar" militar.slug %}"><img  data-bs-toggle="tooltip" data-bs-placement="bottom"
+            data-bs-custom-class="custom-tooltip" data-bs-title="{{militar.patente}}, {{militar.username}}" src='https://www.habbo.com.br/habbo-imaging/avatarimage?user={{militar.username}}' /></a>
+          {% endif %}
+          {% endfor %}
+          </div>
+          {% else %}
+          <div class="alert alert-danger m-auto mt-3" role="alert">
+            Sem Oficiais registrados!
+          </div>
+          {% endif %}
+  </div>
+  </div>
+    </footer>
+    <footer class="py-2 text-center shadow" style="background-color: #93110e;">
       <img src="{% static 'aberto.gif'%}" class="px m-auto mt-3" alt="..." width="80px" height="80px" >
       <hr class="text-light m-auto col-10 mt-3 mb-3">
       <p class="text-light col-10 m-auto">Este site não é de propriedade ou operado pela Sulake Corporation Oy e não é parte do Habbo Hotel ®.</p>
       <p class="text-light col-10 m-auto mb-3">
-        Desenvolvido por ,Lucasz. © 2024 Exército Brasileiro Habbo - Marechal D.Pedro - Habbo.com.br.
+        Desenvolvido por ,Natan. © 2024 Exército Turco Habbo - Marechal Muzik - Habbo.com.br.
     </p>
     </footer>
-    
-    <audio id="stream" controls="" autoplay src="https://sv13.hdradios.net:7770/stream" style="width: 0px; height: 0px;"></audio>
+
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-      <script>
-        player = document.getElementById('stream');
-		
-		const playerTimeOut = window.setInterval(() => {
-            if(player.played.length !== 1 || player.paused) {
-                //player.setAttribute('src', `http://sonic.dedicado.stream:8040/stream?cache=${Date.now()}`);
-                player.setAttribute('src', 'https://sv13.hdradios.net:7770/stream?cache=${Date.now()}');
-                player.load();
-                player.play();
-            }
-        },3000);
-    </script>
     <script>
       const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
       const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
