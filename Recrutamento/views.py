@@ -21,15 +21,15 @@ class RePraça(PatenteRequiredMixin,ListView):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
+            'Coronel',
             'Tenente-Coronel',
             'Major',
             'Capitão',
             'Segundo Tenente',
             'Primeiro Tenente',
-            'Aspirante-a-Oficial',
         ]
     model = Re
     template_name = 'RePraça.html'
@@ -71,20 +71,20 @@ class AbrirRE(PatenteRequiredMixin,CreateView):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
+            'Coronel',
             'Tenente-Coronel',
             'Major',
             'Capitão',
             'Segundo Tenente',
             'Primeiro Tenente',
-            'Aspirante-a-Oficial',
             'Cadete',
-            'Subtenente',
-            'Primeiro Sargento',
-            'Segundo Sargento',
-            'Terceiro Sargento',
+            'Sargento Major',
+            'Sargento Mestre',
+            'Sargento Staff',
+            'Sargento',
             'Aluno',
         ]
     form_class = ReForm
@@ -127,15 +127,15 @@ class AbrirRM(PatenteRequiredMixin,CreateView):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
+            'Coronel',
             'Tenente-Coronel',
             'Major',
             'Capitão',
             'Segundo Tenente',
             'Primeiro Tenente',
-            'Aspirante-a-Oficial',
         ]
     form_class = RMForm
     template_name = 'Form.html'
@@ -165,15 +165,15 @@ class RMOficial(PatenteRequiredMixin,ListView):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
+            'Coronel',
             'Tenente-Coronel',
             'Major',
             'Capitão',
             'Segundo Tenente',
             'Primeiro Tenente',
-            'Aspirante-a-Oficial',
         ]
     model = RM
     template_name = 'RM.html'

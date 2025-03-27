@@ -5,6 +5,8 @@ from Supervisores.models import GuiaSupervisores
 from Ajudantes.models import GuiaAjudantes
 from Painel.models import DestaqueOficial, DestaquePraça
 from Monitores.models import GuiaMonitores
+from django.contrib.auth import logout
+from django.shortcuts import redirect
 
 class UpdateLastAccessMiddleware:
     def __init__(self, get_response):
@@ -40,6 +42,9 @@ class GroupContextMiddleware(MiddlewareMixin):
             'Segundo Tenente',
             'Primeiro Tenente',
         ]
+        if request.user.is_authenticated:
+            if request.user.status != 'Ativo':
+                return redirect('Logout')
         user = request.user.patente if request.user.is_authenticated else None
         response.context_data['OFC'] = user in patentes_ofc if patentes_ofc else False
         response.context_data['AC'] = user in patentes_ac if patentes_ac else False

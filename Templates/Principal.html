@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exército Turco - Habbo Hotel ©</title>
+    <title>Exército Americano - Habbo Hotel ©</title>
     <link rel="icon" type="img/x-icon" href="{% static 'aberto.gif' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -15,15 +15,14 @@
             image-rendering: crisp-edges;
           }
         .bg-pt {
-            background-color: #93110e;
+            background-color: #0458aa;
         }
         .bg-cubos {
-          background-color: #6b0b0a;
-          opacity: 1;
-          background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #6b0b0a 40px ), repeating-linear-gradient( #93110e55, #93110e );
+          background-color: #046ccc;
+          background: repeating-linear-gradient( 45deg, #0458aa, #0458aa 5px, #046ccc 5px, #046ccc 25px );
         }
         .dropdown-item:hover {
-            background-color: #93110e;
+            background-color: #0458aa;
             color: black;
         }
         .icon-al {
@@ -61,7 +60,7 @@
     </style>
 </head>
 <body class="bg-cubos">
-    <nav class="navbar navbar-expand-lg" data-bs-theme="dark" style="background-color: #6b0b0a; border-bottom: #560907 2px solid;">
+    <nav class="navbar navbar-expand-lg" data-bs-theme="dark" style="background-color: #0458aa; border-bottom:rgb(2, 62, 123) 2px solid;">
         <div class="container-fluid">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon text-light"></span>
@@ -165,9 +164,9 @@
       </div>
   </div>
   <div class="container">
-  <div class="card col-12 col-md-12 shadow m-auto mt-1 bg-pt shadow" style="background-color: #93110e;">
+  <div class="card col-12 col-md-12 shadow m-auto mt-1 bg-pt shadow" style="background-color: #046ccc;">
       <div class="d-flex m-1">
-      <div class="card mt-2 mb-2 shadow ms-3 bg-pt bg-opacity-50" style="background-color: #6b0b0a;">
+      <div class="card mt-2 mb-2 shadow ms-3 bg-pt bg-opacity-50" style="background-color: #0458aa;">
           <div class="rounded-circle m-auto" style="background: url(https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user={{destofc.militar.username}}&direction=2&head_direction=2&size=l&headonly=1) center center no-repeat; width: 80px; height: 80px;">
           </div>
       </div>
@@ -177,9 +176,9 @@
       </div>
   </div>
   </div>
-  <div class="card col-12 col-md-12 shadow m-auto mt-1 bg-pt shadow" style="background-color: #93110e;">
+  <div class="card col-12 col-md-12 shadow m-auto mt-1 bg-pt shadow" style="background-color: #046ccc;">
       <div class="d-flex m-1"> 
-      <div class="card mt-2 mb-2 shadow ms-3 bg-pt bg-opacity-50" style="background-color: #6b0b0a;">
+      <div class="card mt-2 mb-2 shadow ms-3 bg-pt bg-opacity-50" style="background-color: #0458aa;">
           <div class="rounded-circle m-auto" style="background: url(https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user={{destpraca.militar.username}}&direction=2&head_direction=2&size=l&headonly=1) center center no-repeat; width: 80px; height: 80px;">
           </div>
       </div>
@@ -209,7 +208,7 @@
               </div>
               <div class="text-light col-6 m-auto">
                   <h5 class="mt-2">ADQUIRA PRIVILÉGIOS!</h5>
-                  <p class="card-text mb-1"><small>Garanta acesso exclusivo a salas durante eventos externos do Exército Turco.</small></p>
+                  <p class="card-text mb-1"><small>Garanta acesso exclusivo a salas durante eventos externos do Exército Americano.</small></p>
               </div>
           </div>
       </div>
@@ -221,7 +220,7 @@
             </div>
             <div class="text-light col-6 m-auto">
                 <h5 class="mt-2">SEJA PATRO!</h5>
-                <p class="card-text mb-1"><small>Apoie o Exército Turco por 25 câmbios e ganhe acesso a fardamentos, grupos e mais.</small></p>
+                <p class="card-text mb-1"><small>Apoie o Exército Americano por 25 câmbios e ganhe acesso a fardamentos, grupos e mais.</small></p>
             </div>
         </div>
     </div>
@@ -237,10 +236,10 @@
             <p>Você pode pesquisar em nossos registros aqui.</p>
         </div>
     </div>
-    <div class="container card m-auto shadow mb-3" style="background: #6b0b0a">
+    <div class="container card m-auto shadow mb-3" style="background: #0458aa">
         <form class='input-group mt-2 mb-2' method="get">
             <input class='form-control' type="text" name="search" style='background:#f8f9fa;' placeholder="Digite o nick do militar">
-            <button style="background: #4f0807" class='btn' type="submit">
+            <button style="background: #046ccc" class='btn' type="submit">
                 <i>
                     <img width="35px" src="{% static "lupa.gif" %}" alt="">
                   </i>
@@ -303,7 +302,7 @@
     </div>
         <div class="ms-2 text-light">
         <h3>Notícias</h3>
-        <p>Fica antenado as notícias do Exército Turco!</p>
+        <p>Fica antenado as notícias do Exército Americano!</p>
         </div>
         </div>
         {% if noticias %}
@@ -376,7 +375,7 @@
             </div>
         <div class="ms-2 text-light">
         <h3>Novos membros</h3>
-        <p>Sejam bem-vindos ao Exército Turco!</p>
+        <p>Sejam bem-vindos ao Exército Americano!</p>
         </div>
                 </div>
         <div class="card bg-pt">
@@ -395,9 +394,9 @@
         </div>
       </div>
     </div>
-    <footer class="py-2 text-center shadow" style="background-color: #6b0b0a;">
+    <footer class="py-2 text-center shadow" style="background-color: #0458aa;">
       <div class="container mt-4">
-        <div class="card-header" > <div><img class="px mt-3" src="{% static 'ofc.gif'%}" alt="" width="78px" height="78px">
+        <div class="card-header" > <div><img class="px mt-3" src="{% static 'oficiais.gif'%}" alt="" width="78px" height="78px">
     <strong><h3 class="text-light " aria-current="page">Corpo de Oficiais</h3></strong> </div></div>
     <div class="mt-1">
       {% if militares %}
@@ -481,12 +480,12 @@
   </div>
   </div>
     </footer>
-    <footer class="py-2 text-center shadow" style="background-color: #93110e;">
+    <footer class="py-2 text-center shadow" style="background-color: #046ccc;">
       <img src="{% static 'aberto.gif'%}" class="px m-auto mt-3" alt="..." width="80px" height="80px" >
       <hr class="text-light m-auto col-10 mt-3 mb-3">
       <p class="text-light col-10 m-auto">Este site não é de propriedade ou operado pela Sulake Corporation Oy e não é parte do Habbo Hotel ®.</p>
       <p class="text-light col-10 m-auto mb-3">
-        Desenvolvido por ,Natan. © 2024 Exército Turco Habbo - Marechal Muzik - Habbo.com.br.
+        Desenvolvido por ,Natan. © 2024 Exército Americano Habbo - Marechal Eleanor-R - Habbo.com.br.
     </p>
     </footer>
 

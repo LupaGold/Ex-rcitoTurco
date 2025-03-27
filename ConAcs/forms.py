@@ -24,10 +24,28 @@ class CustomPasswordChangeForm(PasswordChangeForm):
 
 class MilitarUsuarioCreationForm(forms.ModelForm):
     PATENTE_CHOICES = [
-        ('Soldado', 'Soldado'),
-        ('Cabo', 'Cabo'),
-        ('Aluno', 'Aluno'),
-        ('Terceiro Sargento', 'Terceiro Sargento'),
+          ('', 'Selecione a Patente'),
+            ('Soldado', 'Soldado'),
+            ('Soldado de 1ª Classe', 'Soldado de 1ª Classe'),
+            ('Especialista', 'Especialista'),
+            ('Cabo', 'Cabo'),
+            ('Aluno', 'Aluno'),
+            ('Sargento', 'Sargento'),
+            ('Sargento Staff', 'Sargento Staff'),
+            ('Sargento Mestre', 'Sargento Mestre'),
+            ('Sargento Major', 'Sargento Major'),
+            ('Cadete', 'Cadete'),
+            ('Aspirante-a-Oficial', 'Aspirante-a-Oficial'),
+            ('Segundo Tenente', 'Segundo Tenente'),
+            ('Primeiro Tenente', 'Primeiro Tenente'),
+            ('Capitão', 'Capitão'),
+            ('Major', 'Major'),
+            ('Tenente-Coronel', 'Tenente-Coronel'),
+            ('Coronel', 'Coronel'),
+            ('Brigadeiro-General ★', 'Brigadeiro-General ★'),
+            ('Major-General ★★', 'Major-General ★★'),
+            ('Tenente-General ★★★', 'Tenente-General ★★★'),
+            ('General-de-Exército ★★★★', 'General-de-Exército ★★★★'),
     ]
 
     patente = forms.ChoiceField(choices=PATENTE_CHOICES, widget=forms.Select(attrs={'class': 'form-control'}))

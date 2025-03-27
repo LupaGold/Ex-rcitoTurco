@@ -1,7 +1,11 @@
 {% extends "BasePainel.html" %}
 {% load static %}
 {% block main %}
-
+<style>
+  .silver {
+      background: silver;
+  }
+</style>
 <div class="container text-light m-auto mt-3"> 
     <div class="row">
     <div class="col-12 col-md-7 order-2 order-md-1">
@@ -23,7 +27,7 @@
 {% endif %}
 {% if militares %}
 {% for militar in militares %}
-            <div class="card mb-3 m-auto shadow col-11 text-light" style="background-color: #93110e;">
+            <div class="card mb-3 m-auto shadow col-11 text-light" style="background-color: #0458aa;">
                 <div class="row mb-3 g-0">
                   <div class="col-md-4 text-center" >
                     <img class="mb-auto" src="https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user={{ militar.username}}&direction=2&head_direction=2&size=l&action=std" class="img-fluid rounded-start" alt="...">
@@ -39,24 +43,24 @@
                         
                         <form class='col-4' method="post" action="{% url 'PromoverMilitar' militar.id %}">
                             {% csrf_token %}
-                            <button class='m-1 btn btn-sm btn-success' type="submit">Promover</button>
+                            <button class='m-1 btn btn silver btn-sm' type="submit">Promover</button>
                         </form>
                                 <form class='col-4' action="{% url 'RebaixarMilitar' militar.id %}" method="post">
                                     {% csrf_token %}
-                                    <button class='m-1 btn btn-sm btn-danger' type="submit">Rebaixar</button>
+                                    <button class='m-1 btn silver btn-sm' type="submit">Rebaixar</button>
                                 </form>
                                 <form class='col-4' action="{% url 'DemitirMilitar' militar.id %}" method="post">
                                     {% csrf_token %}
-                                    <button type="submit" class="m-1 btn btn-danger btn-sm">Demitir</button>
+                                    <button type="submit" class="m-1 btn silver btn-sm">Demitir</button>
                                   </form>
                                   <form class='col-4' action="{% url 'ResetarSenha' militar.id %}" method="post">
                                     {% csrf_token %}
-                                    <button class='m-1 btn btn-sm btn-secondary' type="submit">Painel</button>
+                                    <button class='m-1 btn silver btn-sm' type="submit">Painel</button>
                                 </form>
                                 {% if AC %}
                                 <form class='col-4' action="{% url 'AlterarStatus' militar.id 'Aposentado' %}" method="post">
                                     {% csrf_token %}
-                                    <button class='m-1 btn btn-sm btn-secondary' type="submit">Aposentar</button>
+                                    <button class='m-1 btn silver btn-sm' type="submit">Aposentar</button>
                                 </form>
                                 {% endif %}
                                 </div>
@@ -82,7 +86,7 @@
       </div>
       <form class="input-group mt-3" method="get">
         <input class='form-control' type="text" name="q" placeholder="Pesquisar por nickname">
-        <button class=" btn text-light" style="background:#93110e;" type=" submit">
+        <button class=" btn text-light" style="background:#0458aa;" type=" submit">
             <i class='icon'>
                 <img width="35px" src="{% static "lupa.gif" %}" alt="">
               </i></button>

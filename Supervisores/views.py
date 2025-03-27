@@ -27,9 +27,9 @@ class SupervisoresPraça(PatenteRequiredMixin,TemplateView):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
         ]
     model = SupervisorRelatorio
     template_name = 'SupervisoresPraça.html'
@@ -90,9 +90,9 @@ class RegistrarRelatorioSupervisor(PatenteRequiredMixin,CreateView):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
         ]
     form_class = SupervisorForm
     template_name = 'Form.html'
@@ -117,9 +117,9 @@ class SupSite(PatenteRequiredMixin,TemplateView):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
         ]
     model = PalestraSupervisores
     template_name = 'SupervisoresPalestras.html'
@@ -150,9 +150,9 @@ class SupervisoresOficial(PatenteRequiredMixin,ListView):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
         ]
     model = SupervisorRelatorio
     template_name = 'SupervisoresOficial.html'
@@ -220,9 +220,9 @@ class PalestraSupervisoresUpdateView(PatenteRequiredMixin,UpdateView):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
         ]
     model = PalestraSupervisores
     form_class = PalestraSupervisoresForm
@@ -234,9 +234,9 @@ class GuiaSupervisoresEdit(PatenteRequiredMixin,UpdateView):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
         ]
     model = GuiaSupervisores
     form_class = GuiaSupervisoresForm
@@ -248,9 +248,9 @@ class GuiaSupervisoresView(PatenteRequiredMixin,TemplateView):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
         ]
     template_name = 'Guia.html'
     
@@ -264,9 +264,9 @@ class CriarDestaque(PatenteRequiredMixin,CreateView):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
         ]
     template_name = 'Guia.html'
     template_name = 'Form.html'
@@ -287,9 +287,9 @@ class PermissoesSupView(PatenteRequiredMixin, ListView):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
         ]
     template_name = 'Guia.html'
     model = MilitarUsuario
@@ -335,9 +335,9 @@ class AdicionarSupView(PatenteRequiredMixin,View):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
         ]
     template_name = 'Guia.html'
     def post(self, request, user_id):
@@ -352,9 +352,9 @@ class RemoverSupView(PatenteRequiredMixin,View):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
         ]
     template_name = 'Guia.html'
     def post(self, request, user_id):
@@ -369,9 +369,9 @@ class AdicionarRSupView(PatenteRequiredMixin,View):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
         ]
     template_name = 'Guia.html'
     def post(self, request, user_id):
@@ -386,9 +386,9 @@ class RemoverRSupView(PatenteRequiredMixin,View):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
         ]
     template_name = 'Guia.html'
     def post(self, request, user_id):
@@ -403,9 +403,9 @@ class AdicionarLSupView(PatenteRequiredMixin,View):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
         ]
     template_name = 'Guia.html'
     def post(self, request, user_id):
@@ -420,9 +420,9 @@ class RemoverLSupView(PatenteRequiredMixin,View):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
         ]
     template_name = 'Guia.html'
     def post(self, request, user_id):

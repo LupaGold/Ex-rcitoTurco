@@ -28,13 +28,14 @@ import string
 PATENTES = (
     ('', 'Selecione a Patente'),
     ('Soldado', 'Soldado'),
-    ('Soldado Estrela', 'Soldado Estrela'),
+    ('Soldado de 1ª Classe', 'Soldado de 1ª Classe'),
+    ('Especialista', 'Especialista'),
     ('Cabo', 'Cabo'),
     ('Aluno', 'Aluno'),
-    ('Terceiro Sargento', 'Terceiro Sargento'),
-    ('Segundo Sargento', 'Segundo Sargento'),
-    ('Primeiro Sargento', 'Primeiro Sargento'),
-    ('Subtenente', 'Subtenente'),
+    ('Sargento', 'Sargento'),
+    ('Sargento Staff', 'Sargento Staff'),
+    ('Sargento Mestre', 'Sargento Mestre'),
+    ('Sargento Major', 'Sargento Major'),
     ('Cadete', 'Cadete'),
     ('Aspirante-a-Oficial', 'Aspirante-a-Oficial'),
     ('Segundo Tenente', 'Segundo Tenente'),
@@ -42,79 +43,84 @@ PATENTES = (
     ('Capitão', 'Capitão'),
     ('Major', 'Major'),
     ('Tenente-Coronel', 'Tenente-Coronel'),
-    ('Coronel ★', 'Coronel ★'),
-    ('General-de-Brigada ★★', 'General-de-Brigada ★★'),
-    ('General-de-Divisão ★★★', 'General-de-Divisão ★★★'),
+    ('Coronel', 'Coronel'),
+    ('Brigadeiro-General ★', 'Brigadeiro-General ★'),
+    ('Major-General ★★', 'Major-General ★★'),
+    ('Tenente-General ★★★', 'Tenente-General ★★★'),
     ('General-de-Exército ★★★★', 'General-de-Exército ★★★★'),
     ('Marechal ★★★★★', 'Marechal ★★★★★'),
 )
 
 # Mapeamento de patente atual para próxima patente
 PROMOCAO = {
-    'Soldado': 'Soldado Estrela',
-    'Soldado Estrela': 'Cabo',
+    'Soldado': 'Soldado de 1ª Classe',
+    'Soldado de 1ª Classe': 'Cabo',
     'Cabo': 'Aluno',
-    'Aluno': 'Terceiro Sargento',
-    'Terceiro Sargento': 'Segundo Sargento',
-    'Segundo Sargento': 'Primeiro Sargento',
-    'Primeiro Sargento': 'Subtenente',
-    'Subtenente': 'Cadete',
+    'Aluno': 'Sargento',
+    'Sargento': 'Sargento Staff',
+    'Sargento Staff': 'Sargento Mestre',
+    'Sargento Mestre': 'Sargento Major',
+    'Sargento Major': 'Cadete',
     'Cadete': 'Aspirante-a-Oficial',
     'Aspirante-a-Oficial': 'Segundo Tenente',
     'Segundo Tenente': 'Primeiro Tenente',
     'Primeiro Tenente': 'Capitão',
     'Capitão': 'Major',
     'Major': 'Tenente-Coronel',
-    'Tenente-Coronel': 'Coronel ★',
-    'Coronel ★': 'General-de-Brigada ★★',
-    'General-de-Brigada ★★': 'General-de-Divisão ★★★',
-    'General-de-Divisão ★★★': 'General-de-Exército ★★★★',
+    'Tenente-Coronel': 'Coronel',
+    'Coronel': 'Brigadeiro-General ★',
+    'Brigadeiro-General ★': 'Major-General ★★',
+    'Major-General ★★': 'Tenente-General ★★★',
+    'Tenente-General ★★★': 'General-de-Exército ★★★★',
     'General-de-Exército ★★★★': 'Marechal ★★★★★',
 }
 
 # Limites de promoção com base na patente do solicitante
 LIMITES_PROMOCAO = {
-    'Segundo Tenente': 'Terceiro Sargento',
-    'Primeiro Tenente': 'Segundo Sargento',
-    'Capitão': 'Segundo Sargento',
-    'Major': 'Primeiro Sargento',
-    'Tenente-Coronel': 'Subtenente',
-    'Coronel ★': 'Primeiro Tenente',
-    'General-de-Brigada ★★': 'Capitão',
-    'General-de-Divisão ★★★': 'Major',
+    'Segundo Tenente': 'Sargento',
+    'Primeiro Tenente': 'Sargento Staff',
+    'Capitão': 'Sargento Staff',
+    'Major': 'Sargento Mestre',
+    'Tenente-Coronel': 'Sargento Major',
+    'Coronel': 'Sargento Major',
+    'Brigadeiro-General ★': 'Primeiro Tenente',
+    'Major-General ★★': 'Capitão',
+    'Tenente-General ★★★': 'Major',
     'General-de-Exército ★★★★': 'Tenente-Coronel',
     'Marechal ★★★★★': 'General-de-Exército ★★★★',
 }
 
 LIMITES_REBAIXAMENTO = {
-    'Segundo Tenente': 'Terceiro Sargento',
-    'Primeiro Tenente': 'Segundo Sargento',
-    'Capitão': 'Primeiro Sargento',
-    'Major': 'Subtenente',
+    'Segundo Tenente': 'Sargento',
+    'Primeiro Tenente': 'Sargento Staff',
+    'Capitão': 'Sargento Mestre',
+    'Major': 'Sargento Major',
     'Tenente-Coronel': 'Cadete',
-    'Coronel ★': 'Capitão',
-    'General-de-Brigada ★★': 'Major',
-    'General-de-Divisão ★★★': 'Tenente-Coronel',
-    'General-de-Exército ★★★★': 'Coronel ★',
+    'Coronel': 'Cadete',
+    'Brigadeiro-General ★': 'Capitão',
+    'Major-General ★★': 'Major',
+    'Tenente-General ★★★': 'Tenente-Coronel',
+    'General-de-Exército ★★★★': 'Brigadeiro-General ★',
     'Marechal ★★★★★': 'Marechal ★★★★★',
 }
 
 LIMITES_DEMISSAO = {
-    'Segundo Tenente': ['Soldado', 'Soldado Estrela', 'Cabo', 'Aluno'],
-    'Primeiro Tenente': ['Soldado', 'Soldado Estrela', 'Cabo', 'Aluno', 'Terceiro Sargento'],
-    'Capitão': ['Soldado', 'Soldado Estrela', 'Cabo', 'Aluno', 'Terceiro Sargento', 'Segundo Sargento'],
-    'Major': ['Soldado', 'Soldado Estrela', 'Cabo', 'Aluno', 'Terceiro Sargento', 'Segundo Sargento', 'Primeiro Sargento'],
-    'Tenente-Coronel': ['Soldado', 'Soldado Estrela', 'Cabo', 'Aluno', 'Terceiro Sargento', 'Segundo Sargento', 'Primeiro Sargento', 'Subtenente'],
-    'Coronel ★': ['Soldado', 'Soldado Estrela', 'Cabo', 'Aluno', 'Terceiro Sargento', 'Segundo Sargento', 'Primeiro Sargento', 'Subtenente', 'Cadete','Aspirante-a-Oficial', 'Segundo Tenente', 'Primeiro Tenente'],
-    'General-de-Brigada ★★': ['Soldado', 'Soldado Estrela', 'Cabo', 'Aluno', 'Terceiro Sargento', 'Segundo Sargento', 'Primeiro Sargento', 'Subtenente', 'Cadete','Aspirante-a-Oficial', 'Segundo Tenente', 'Primeiro Tenente', 'Capitão', 'Major'],
-    'General-de-Divisão ★★★': ['Soldado', 'Soldado Estrela', 'Cabo', 'Aluno', 'Terceiro Sargento', 'Segundo Sargento', 'Primeiro Sargento', 'Subtenente', 'Cadete','Aspirante-a-Oficial', 'Segundo Tenente', 'Primeiro Tenente', 'Capitão', 'Major', 'Tenente-Coronel'],
-    'General-de-Exército ★★★★': ['Soldado', 'Soldado Estrela', 'Cabo', 'Aluno', 'Terceiro Sargento', 'Segundo Sargento', 'Primeiro Sargento', 'Subtenente', 'Cadete','Aspirante-a-Oficial', 'Segundo Tenente', 'Primeiro Tenente', 'Capitão', 'Major', 'Tenente-Coronel', 'Coronel ★'],
-    'Marechal ★★★★★': ['Soldado', 'Soldado Estrela', 'Cabo', 'Aluno', 'Terceiro Sargento', 'Segundo Sargento', 'Primeiro Sargento', 'Subtenente', 'Cadete','Aspirante-a-Oficial', 'Segundo Tenente', 'Primeiro Tenente', 'Capitão', 'Major', 'Tenente-Coronel', 'Coronel ★', 'General-de-Brigada ★★', 'General-de-Divisão ★★★', 'General-de-Exército ★★★★'],
+    'Segundo Tenente': ['Soldado', 'Soldado de 1ª Classe', 'Especialista','Cabo', 'Aluno'],
+    'Primeiro Tenente': ['Soldado', 'Soldado de 1ª Classe', 'Especialista','Cabo', 'Aluno', 'Sargento'],
+    'Capitão': ['Soldado', 'Soldado de 1ª Classe', 'Especialista','Cabo', 'Aluno', 'Sargento', 'Sargento Staff'],
+    'Major': ['Soldado', 'Soldado de 1ª Classe', 'Especialista','Cabo', 'Aluno', 'Sargento', 'Sargento Staff', 'Sargento Mestre'],
+    'Tenente-Coronel': ['Soldado', 'Soldado de 1ª Classe', 'Cabo', 'Aluno', 'Sargento', 'Sargento Staff', 'Sargento Mestre', 'Sargento Major'],
+    'Coronel': ['Soldado', 'Soldado de 1ª Classe', 'Especialista','Cabo', 'Aluno', 'Sargento', 'Sargento Staff', 'Sargento Mestre'],
+    'Brigadeiro-General ★': ['Soldado', 'Soldado de 1ª Classe', 'Especialista','Cabo', 'Aluno', 'Sargento', 'Sargento Staff', 'Sargento Mestre', 'Sargento Major', 'Cadete','Aspirante-a-Oficial', 'Segundo Tenente', 'Primeiro Tenente'],
+    'Major-General ★★': ['Soldado', 'Soldado de 1ª Classe', 'Especialista','Cabo', 'Aluno', 'Sargento', 'Sargento Staff', 'Sargento Mestre', 'Sargento Major', 'Cadete','Aspirante-a-Oficial', 'Segundo Tenente', 'Primeiro Tenente', 'Capitão', 'Major'],
+    'Tenente-General ★★★': ['Soldado', 'Soldado de 1ª Classe', 'Especialista','Cabo', 'Aluno', 'Sargento', 'Sargento Staff', 'Sargento Mestre', 'Sargento Major', 'Cadete','Aspirante-a-Oficial', 'Segundo Tenente', 'Primeiro Tenente', 'Capitão', 'Major', 'Tenente-Coronel'],
+    'General-de-Exército ★★★★': ['Soldado', 'Soldado de 1ª Classe', 'Especialista','Cabo', 'Aluno', 'Sargento', 'Sargento Staff', 'Sargento Mestre', 'Sargento Major', 'Cadete','Aspirante-a-Oficial', 'Segundo Tenente', 'Primeiro Tenente', 'Capitão', 'Major', 'Tenente-Coronel', 'Brigadeiro-General ★'],
+    'Marechal ★★★★★': ['Soldado', 'Soldado de 1ª Classe', 'Especialista','Cabo', 'Aluno', 'Sargento', 'Sargento Staff', 'Sargento Mestre', 'Sargento Major', 'Cadete','Aspirante-a-Oficial', 'Segundo Tenente', 'Primeiro Tenente', 'Capitão', 'Major', 'Tenente-Coronel', 'Brigadeiro-General ★', 'Major-General ★★', 'Tenente-General ★★★', 'General-de-Exército ★★★★'],
 }
 
 PATENTES_APOSENTADORIA = [
-    'Capitão', 'Major', 'Tenente-Coronel', 'Coronel ★',
-    'General-de-Brigada ★★', 'General-de-Divisão ★★★',
+    'Capitão', 'Major', 'Tenente-Coronel', 'Coronel','Brigadeiro-General ★',
+    'Major-General ★★', 'Tenente-General ★★★',
     'General-de-Exército ★★★★', 'Marechal ★★★★★'
 ]
 
@@ -159,20 +165,20 @@ class AlterarSenhaView(PatenteRequiredMixin, PasswordChangeView):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
+            'Coronel',
             'Tenente-Coronel',
             'Major',
             'Capitão',
             'Segundo Tenente',
             'Primeiro Tenente',
-            'Aspirante-a-Oficial',
             'Cadete',
-            'Subtenente',
-            'Primeiro Sargento',
-            'Segundo Sargento',
-            'Terceiro Sargento',
+            'Sargento Major',
+            'Sargento Mestre',
+            'Sargento Staff',
+            'Sargento',
             'Aluno',
         ]
     template_name = 'Form.html'
@@ -415,7 +421,7 @@ class ResetarSenha(LoginRequiredMixin, View):
     def GerarCódigo(self):
         letters = string.ascii_uppercase
         digits = ''.join(random.choice(string.digits) for _ in range(4))
-        return 'TURCO' + digits + 'SEC'
+        return 'USA' + digits + 'SEC'
     
 class PasswordView(TemplateView):
     template_name = 'change_password.html'
@@ -452,7 +458,7 @@ class PasswordView(TemplateView):
     def GerarCódigo(self):
         letters = string.ascii_uppercase
         digits = ''.join(random.choice(string.digits) for _ in range(3))
-        return 'TURCO' + digits
+        return 'USA' + digits
 
     def CheckarUsuario(self, username):
         return MilitarUsuario.objects.filter(username__iexact=username).exists()

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block header %}
-<title>{{perfil.username}} - Exército Turco - Habbo Hotel ©</title>
+<title>{{perfil.username}} - Exército Americano - Habbo Hotel ©</title>
 <link rel="icon" type="img/x-icon" href="{% static 'aberto.gif'%} ">
 {% endblock header %}
 
@@ -19,31 +19,31 @@
 {% endblock topo %}
 
 {% block main %}
-<div class="card mb-3 m-2" style="background: #6b0b0a">
+<div class="card mb-3 m-2" style="background: #046ccc">
     <div class="container m-auto">
         <div class=" col-md-10 mb-3 mt-3 m-auto col-12 ">
-            <div class="card m-1" style='background:#93110e;'>
+            <div class="card m-1" style='background:#0458aa;'>
                 <div class="row">
                 <div class="col-md-4 col-4 text-center">
                     <img class="px" width="140px" src="http://www.habbo.com.br/habbo-imaging/avatarimage?&user={{ perfil.username }}&action=std&direction=2&head_direction=3&img_format=png&gesture=sml&frame=1&headonly=0&size=l" style="position: relative; top: -20px; " alt="...">
                 </div>
                     <div class="m-auto col-md-8 col-8">
                 <ul class="list-group m-1">
-                    <li class="list-group-item text-light border-0" style="background: #6b0b0a">Patente: {{perfil.patente}}</li>
+                    <li class="list-group-item text-light border-0" style="background: #046ccc">Patente: {{perfil.patente}}</li>
                     </ul>
                     {% if perfil.siglas %}
-                                <ul class="list-group m-1" style="background: #6b0b0a">
-                                    <li class="list-group-item text-light border-0" style="background: #6b0b0a">Sigla: {{ perfil.siglas }}</li>
+                                <ul class="list-group m-1" style="background: #046ccc">
+                                    <li class="list-group-item text-light border-0" style="background: #046ccc">Sigla: {{ perfil.siglas }}</li>
                                 </ul>
                             {% endif %}
-                    <ul class="list-group m-1" style="background: #6b0b0a">
-                        <li class="list-group-item text-light border-0" style="background: #6b0b0a">Status: {{perfil.status}}</li>
+                    <ul class="list-group m-1" style="background: #046ccc">
+                        <li class="list-group-item text-light border-0" style="background: #046ccc">Status: {{perfil.status}}</li>
                         </ul>
-                        <ul class="list-group m-1" style="background: #6b0b0a">
-                            <li class="list-group-item text-light border-0" style="background: #6b0b0a">Data: {{perfil.data}}</li>
+                        <ul class="list-group m-1" style="background: #046ccc">
+                            <li class="list-group-item text-light border-0" style="background: #046ccc">Data: {{perfil.data}}</li>
                             </ul>
-                            <ul class="list-group m-1" style="background: #6b0b0a">
-                                <li class="list-group-item text-light border-0" style="background: #6b0b0a">Responsável: {{perfil.responsavel_promocao}}</li>
+                            <ul class="list-group m-1" style="background: #046ccc">
+                                <li class="list-group-item text-light border-0" style="background: #046ccc">Responsável: {{perfil.responsavel_promocao}}</li>
                                 </ul>
             </div>
         </div>
@@ -53,7 +53,7 @@
 </div>
 <div class='row mb-3 col-12 m-auto'>
         {% if emblemas %}
-        <div class="card col-md-6 col-11 m-auto" style="background: #6b0b0a">
+        <div class="card col-md-6 col-11 m-auto" style="background: #046ccc">
             <!-- <div class="container d-flex mt-4">
                 <div>
                   <img class="px" width="13px" height="20.5px" src="{% static 'emblema.png'%}" alt="">
@@ -64,7 +64,7 @@
         </div> -->
         <div class="row mt-2">
             {% for emblema in emblemas %}
-    <div class="card col-2 col-md-2 mb-3 m-1" style="background-color: #93110e;" alt="{{ emblema.emblema.titulo }}">
+    <div class="card col-2 col-md-2 mb-3 m-1" style="background-color: #0458aa;" alt="{{ emblema.emblema.titulo }}">
         <img data-bs-toggle="tooltip" data-bs-placement="bottom"
             data-bs-custom-class="custom-tooltip" data-bs-title="{{emblema.emblema.titulo}}" src="{{ emblema.emblema.icone.url }}" class="m-auto mt-2 px" width="40px" alt="...">
       </div>
@@ -72,10 +72,10 @@
         </div>
     </div>
         {% endif %}
-        <div class="card m-2 col-md-5 col-11 m-auto" style="background: #6b0b0a">
-            <div class="card col-11 shadow m-auto m-2 mt-2"  style="background-color: #93110e;">
+        <div class="card m-2 col-md-5 col-11 m-auto" style="background: #046ccc">
+            <div class="card col-11 shadow m-auto m-2 mt-2"  style="background-color: #0458aa;">
                 <div class="d-flex m-1">
-                <div class="card col-4 mt-1 mb-1" style="background-color: #6b0b0a;">
+                <div class="card col-4 mt-1 mb-1" style="background-color: #046ccc;">
                     <div class="rounded-circle m-auto px" style="background: url({% static 're.gif'%}) center center no-repeat; width: 40px; height: 40px;transform: scale(1);">
                     </div>
                 </div>
@@ -84,9 +84,9 @@
                 </div>
             </div>
             </div>
-            <div class="card col-11 shadow m-auto m-2 mb-2 mt-1"  style="background-color: #93110e;">
+            <div class="card col-11 shadow m-auto m-2 mb-2 mt-1"  style="background-color: #0458aa;">
                 <div class="d-flex m-1">
-                <div class="card col-4 mt-2 mb-2" style="background-color: #6b0b0a;">
+                <div class="card col-4 mt-2 mb-2" style="background-color: #046ccc;">
                     <div class="rounded-circle m-auto px" style="background: url({% static 'relatorio.png'%}) center center no-repeat; width: 40px; height: 40px;transform: scale(1);">
                     </div>             </div>
                 <div class="text-light col-8">

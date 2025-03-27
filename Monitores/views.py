@@ -28,9 +28,9 @@ class MonitorPraça(PatenteRequiredMixin,TemplateView):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
         ]
     model = MonitorRelatorio
     template_name = 'MonitoresPraças.html'
@@ -91,9 +91,9 @@ class GuiaMonitoresEdit(PatenteRequiredMixin,UpdateView):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
         ]
     model = GuiaMonitores
     form_class = GuiaMonitoresForm
@@ -105,9 +105,9 @@ class GuiaMonitoresView(PatenteRequiredMixin,TemplateView):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
         ]
     template_name = 'Guia.html'
     
@@ -121,9 +121,9 @@ class CriarDestaqueMonitores(PatenteRequiredMixin,CreateView):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
         ]
     template_name = 'Form.html'
     form_class = DestaqueMonitoresForm
@@ -144,9 +144,9 @@ class AdicionarMNTView(PatenteRequiredMixin,View):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
         ]
     def post(self, request, user_id):
         user = get_object_or_404(MilitarUsuario, id=user_id)
@@ -160,9 +160,9 @@ class RemoverMNTView(PatenteRequiredMixin,View):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
         ]
     def post(self, request, user_id):
         user = get_object_or_404(MilitarUsuario, id=user_id)
@@ -176,9 +176,9 @@ class AdicionarRMNTView(PatenteRequiredMixin,View):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
         ]
     def post(self, request, user_id):
         user = get_object_or_404(MilitarUsuario, id=user_id)
@@ -192,9 +192,9 @@ class RemoverRMNTView(PatenteRequiredMixin,View):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
         ]
     def post(self, request, user_id):
         user = get_object_or_404(MilitarUsuario, id=user_id)
@@ -208,9 +208,9 @@ class AdicionarLMNTView(PatenteRequiredMixin,View):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
         ]
     def post(self, request, user_id):
         user = get_object_or_404(MilitarUsuario, id=user_id)
@@ -224,9 +224,9 @@ class RemoverLMNTView(PatenteRequiredMixin,View):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
         ]
     def post(self, request, user_id):
         user = get_object_or_404(MilitarUsuario, id=user_id)
@@ -239,9 +239,9 @@ class RegistrarRelatorioMonitores(PatenteRequiredMixin,CreateView):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
         ]
     form_class = MonitorForm
     template_name = 'Form.html'
@@ -267,9 +267,9 @@ class MonitorOficial(PatenteRequiredMixin,ListView):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
         ]
     model = MonitorRelatorio
     template_name = 'MonitoresOficiais.html'
@@ -337,9 +337,9 @@ class PermissoesMNTView(PatenteRequiredMixin ,ListView):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
         ]
     model = MilitarUsuario
     template_name = 'PermissõesMonitores.html'

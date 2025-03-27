@@ -13,10 +13,10 @@
   image-rendering: crisp-edges;
 }
 .bg-cinza {
-  background-color: #93110e;
+  background-color: #0458aa;
 }
 .bg-nav {
-  background-color: #6b0b0a;
+  background-color: #046ccc;
 }
 .sidebar{
   position: fixed;
@@ -24,9 +24,9 @@
   left: 0;
   height: 100%;
   width: 260px;
-  background: #93110e;
-  border-right: solid #6b0b0a 3px;
-  border-left: solid #93110e 3px;
+  background: #0458aa;
+  border-right: solid rgb(2, 62, 123) 3px;
+  border-left: solid #0458aa 3px;
   z-index: 100;
   transition: all 0.5s ease;
 }
@@ -36,11 +36,11 @@
 }
 .sidebar.close{
   width: 78px;
-  background: #93110e;
+  background: #0458aa;
   transition: all 0.4s ease;
 }
 .sidebar .logo-details{
-  background-color: #93110e;
+  background-color: #0458aa;
   height: 160px;
   width: 100%;
   position: relative;
@@ -48,7 +48,7 @@
   transition: all 0.4s ease;
 }
 .sidebar.close .logo-details{
-  background-color: #93110e;
+  background-color: #0458aa;
   height: 80px;
   width: 100%;
   position: relative;
@@ -79,7 +79,7 @@
   transition: all 0.4s ease;
 }
 .sidebar .nav-links li:hover{
-  background: #93110e;
+  background: #0458aa;
 }
 .sidebar .nav-links li .iocn-link{
   display: flex;
@@ -123,7 +123,7 @@
 .sidebar .nav-links li .sub-menu{
   padding: 6px 6px 14px 80px;
   margin-top: -10px;
-  background: #93110e;
+  background: #0458aa;
   display: none;
 }
 .sidebar .nav-links li.showMenu .sub-menu{

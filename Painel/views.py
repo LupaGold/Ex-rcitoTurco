@@ -25,20 +25,20 @@ class PrincipalView(PatenteRequiredMixin,TemplateView, FormMixin):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
+            'Coronel',
             'Tenente-Coronel',
             'Major',
             'Capitão',
             'Segundo Tenente',
             'Primeiro Tenente',
-            'Aspirante-a-Oficial',
             'Cadete',
-            'Subtenente',
-            'Primeiro Sargento',
-            'Segundo Sargento',
-            'Terceiro Sargento',
+            'Sargento Major',
+            'Sargento Mestre',
+            'Sargento Staff',
+            'Sargento',
             'Aluno',
         ]
     template_name = 'PrincipalPainel.html'
@@ -95,15 +95,15 @@ class RegimentoView(PatenteRequiredMixin,TemplateView):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
+            'Coronel',
             'Tenente-Coronel',
             'Major',
             'Capitão',
-            'Primeiro Tenente',
             'Segundo Tenente',
-            'Aspirante-a-Oficial'
+            'Primeiro Tenente',
         ]
     template_name = 'Guia.html'
 
@@ -117,15 +117,15 @@ class InfoView(PatenteRequiredMixin,TemplateView):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
+            'Coronel',
             'Tenente-Coronel',
             'Major',
             'Capitão',
-            'Primeiro Tenente',
             'Segundo Tenente',
-            'Aspirante-a-Oficial'
+            'Primeiro Tenente',
         ]
     template_name = 'Guia.html'
 
@@ -139,15 +139,15 @@ class FAQView(PatenteRequiredMixin,TemplateView):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
+            'Coronel',
             'Tenente-Coronel',
             'Major',
             'Capitão',
-            'Primeiro Tenente',
             'Segundo Tenente',
-            'Aspirante-a-Oficial'
+            'Primeiro Tenente',
         ]
     template_name = 'Guia.html'
 
@@ -161,15 +161,15 @@ class Ranking(PatenteRequiredMixin,TemplateView):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
+            'Coronel',
             'Tenente-Coronel',
             'Major',
             'Capitão',
-            'Primeiro Tenente',
             'Segundo Tenente',
-            'Aspirante-a-Oficial'
+            'Primeiro Tenente',
         ]
     template_name = 'Ranking.html'
     def get_context_data(self, **kwargs):

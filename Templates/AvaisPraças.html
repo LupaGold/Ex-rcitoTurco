@@ -20,7 +20,7 @@
     <a href="{% url 'RegistrarAval'%}" class="btn m-sm-auto" style='background:silver;'> Registrar Aval</a>
   </p>
   <div class="collapse" id="collapseExample" >
-    <div class="card card-body m-auto text-light mb-3 mt-2" style="background-color: #93110e;">
+    <div class="card card-body m-auto text-light mb-3 mt-2" style="background-color: #0458aa;">
         Insira seus dados corretamente para concluir o aval.
         Caso você insira sem precisar estará sujeito a punições. <br>
         O dia de ida e de retorno também deve ser cumprido, caso contrário o militar está sujeito a ser retirado de todos os grupos externos participantes. <br>
@@ -31,7 +31,7 @@
   <div class="mt-3">
     {% if avais %}
     {% for aval in avais %}
-    <div class="card text-light mb-3 m-auto shadow col-12" style="background-color: #93110e;">
+    <div class="card text-light mb-3 m-auto shadow col-12" style="background-color: #0458aa;">
         <div class="row g-0">
           <div class="col-md-4 text-center" >
             <img class="mb-auto" src="https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user={{ aval.solicitante.username}}&direction=2&head_direction=2&size=l&action=std" class="img-fluid rounded-start" alt="...">

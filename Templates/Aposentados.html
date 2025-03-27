@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block header %}
-<title>Aposentados - Exército Turco - Habbo Hotel ©</title>
+<title>Aposentados - Exército Americano - Habbo Hotel ©</title>
     <link rel="icon" type="img/x-icon" href="{% static 'aposentados.gif' %}">
 {% endblock header %}
 
@@ -24,7 +24,7 @@
     <div class="container mt-5 mb-4 text-light">
         <div class="row">
             {% for aposentado in aposentados %}
-            <div class=' col-5 rounded mb-2 m-auto text-center shadow' style="background-color: #467c00;">
+            <div class=' col-5 rounded mb-2 m-auto text-center shadow' style="background-color: #046ccc;">
                 <img data-bs-toggle="tooltip" data-bs-placement="top" title="{{aposentado.patente}} {{aposentado.username}}" width="64" height="110" src="https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user={{ aposentado.username}}&direction=2&head_direction=2&size=sm&action=std" class="rounded-start px m-auto" >
                 <strong><p style="font-size:25px; position: relative; top: 20px;"> {{aposentado.username}}</p></strong> <br>
                 <p style="font-size:20px; position: relative; top: -20px;"> {{aposentado.patente}}</p>

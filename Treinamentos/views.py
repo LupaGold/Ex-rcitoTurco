@@ -20,20 +20,20 @@ class RelatorioPraça(PatenteRequiredMixin,TemplateView):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
+            'Coronel',
             'Tenente-Coronel',
             'Major',
             'Capitão',
             'Segundo Tenente',
             'Primeiro Tenente',
-            'Aspirante-a-Oficial',
             'Cadete',
-            'Subtenente',
-            'Primeiro Sargento',
-            'Segundo Sargento',
-            'Terceiro Sargento',
+            'Sargento Major',
+            'Sargento Mestre',
+            'Sargento Staff',
+            'Sargento',
             'Aluno',
         ]
     model = RelatoriosDeTreinamento
@@ -51,20 +51,20 @@ class RegistrarRelatorio(PatenteRequiredMixin,CreateView):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
+            'Coronel',
             'Tenente-Coronel',
             'Major',
             'Capitão',
             'Segundo Tenente',
             'Primeiro Tenente',
-            'Aspirante-a-Oficial',
             'Cadete',
-            'Subtenente',
-            'Primeiro Sargento',
-            'Segundo Sargento',
-            'Terceiro Sargento',
+            'Sargento Major',
+            'Sargento Mestre',
+            'Sargento Staff',
+            'Sargento',
             'Aluno',
         ]
     form_class = RelatorioDeTreinamentoForm
@@ -106,15 +106,15 @@ class RelatorioOficial(PatenteRequiredMixin, ListView):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
+            'Coronel',
             'Tenente-Coronel',
             'Major',
             'Capitão',
             'Segundo Tenente',
             'Primeiro Tenente',
-            'Aspirante-a-Oficial',
         ]
     model = RelatoriosDeTreinamento
     template_name = 'RelatoriosOficiais.html'
@@ -158,15 +158,15 @@ class AprovarRelatorio(PatenteRequiredMixin,View):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
+            'Coronel',
             'Tenente-Coronel',
             'Major',
             'Capitão',
             'Segundo Tenente',
             'Primeiro Tenente',
-            'Aspirante-a-Oficial',
         ]
     def post(self, request, *args, **kwargs):
         relatorio_id = kwargs.get('relatorio_id')
@@ -189,15 +189,15 @@ class ReprovarRelatorio(PatenteRequiredMixin,View):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
+            'Coronel',
             'Tenente-Coronel',
             'Major',
             'Capitão',
             'Segundo Tenente',
             'Primeiro Tenente',
-            'Aspirante-a-Oficial',
         ]
     def post(self, request, *args, **kwargs):
         relatorio_id = kwargs.get('relatorio_id')

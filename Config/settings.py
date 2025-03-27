@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-^95gb$4s%m2u(rlh_hzdg=6b9pl&9h0@98mpr&-$9!^(1(14$+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['extchabbo.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -164,13 +164,8 @@ LOGIN_REDIRECT_URL = 'PrincipalPainel'
 LOGIN_URL = 'LoginPainel'
 LOGOUT_REDIRECT_URL = 'LoginPainel'
 MEDIA_URL = '/media/'
-if DEBUG:
-
-    STATICFILES_DIRS = [os.path.join(BASE_DIR, 'Arquivos')]
-
-else:
-
-    STATIC_ROOT = os.path.join(BASE_DIR, 'ArquivosLoad')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'Arquivos')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 

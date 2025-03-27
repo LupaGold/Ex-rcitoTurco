@@ -203,9 +203,9 @@ class AdicionarL3CIA(PatenteRequiredMixin,View):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
         ]
     template_name = 'Guia.html'
     def post(self, request, user_id):
@@ -220,9 +220,9 @@ class RemoverL3CIA(PatenteRequiredMixin,View):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
         ]
     template_name = 'Guia.html'
     def post(self, request, user_id):
@@ -237,9 +237,9 @@ class AdicionarM3CIA(PatenteRequiredMixin,View):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
         ]
     template_name = 'Guia.html'
     def post(self, request, user_id):
@@ -254,9 +254,9 @@ class RemoverM3CIA(PatenteRequiredMixin,View):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
         ]
     template_name = 'Guia.html'
     def post(self, request, user_id):
@@ -270,9 +270,9 @@ class Permissoes3ciaview(PatenteRequiredMixin, ListView):
     allowed_patentes = [
             'Marechal ★★★★★',
             'General-de-Exército ★★★★',
-            'General-de-Divisão ★★★',
-            'General-de-Brigada ★★',
-            'Coronel ★',
+            'Tenente-General ★★★',
+            'Major-Brigadeiro ★★',
+            'Brigadeiro-General ★',
         ]
     template_name = 'Guia.html'
     model = MilitarUsuario
