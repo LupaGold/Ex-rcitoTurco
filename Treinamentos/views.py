@@ -19,9 +19,9 @@ class RelatorioPraça(PatenteRequiredMixin,TemplateView):
     allowed_groups = [] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
             'Coronel',
             'Tenente-Coronel',
@@ -50,9 +50,9 @@ class RegistrarRelatorio(PatenteRequiredMixin,CreateView):
     allowed_groups = [] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
             'Coronel',
             'Tenente-Coronel',
@@ -105,9 +105,9 @@ class RelatorioOficial(PatenteRequiredMixin, ListView):
     allowed_groups = [] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
             'Coronel',
             'Tenente-Coronel',
@@ -157,9 +157,9 @@ class AprovarRelatorio(PatenteRequiredMixin,View):
     allowed_groups = [] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
             'Coronel',
             'Tenente-Coronel',
@@ -188,9 +188,9 @@ class ReprovarRelatorio(PatenteRequiredMixin,View):
     allowed_groups = [] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
             'Coronel',
             'Tenente-Coronel',

@@ -27,9 +27,9 @@ class MonitorPraça(PatenteRequiredMixin,TemplateView):
     allowed_groups = ['MNT', 'RMNT', 'LMNT'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
         ]
     model = MonitorRelatorio
@@ -90,9 +90,9 @@ class GuiaMonitoresEdit(PatenteRequiredMixin,UpdateView):
     allowed_groups = ['RMNT', 'LMNT'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
         ]
     model = GuiaMonitores
@@ -104,9 +104,9 @@ class GuiaMonitoresView(PatenteRequiredMixin,TemplateView):
     allowed_groups = ['MNT', 'RMNT', 'LMNT'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
         ]
     template_name = 'Guia.html'
@@ -120,9 +120,9 @@ class CriarDestaqueMonitores(PatenteRequiredMixin,CreateView):
     allowed_groups = ['LMNT'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
         ]
     template_name = 'Form.html'
@@ -143,9 +143,9 @@ class AdicionarMNTView(PatenteRequiredMixin,View):
     allowed_groups = ['RMNT', 'LMNT'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
         ]
     def post(self, request, user_id):
@@ -159,9 +159,9 @@ class RemoverMNTView(PatenteRequiredMixin,View):
     allowed_groups = ['RMNT', 'RMNT'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
         ]
     def post(self, request, user_id):
@@ -175,9 +175,9 @@ class AdicionarRMNTView(PatenteRequiredMixin,View):
     allowed_groups = ['LMNT'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
         ]
     def post(self, request, user_id):
@@ -191,9 +191,9 @@ class RemoverRMNTView(PatenteRequiredMixin,View):
     allowed_groups = ['LMNT'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
         ]
     def post(self, request, user_id):
@@ -207,9 +207,9 @@ class AdicionarLMNTView(PatenteRequiredMixin,View):
     allowed_groups = ['LMNT'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
         ]
     def post(self, request, user_id):
@@ -223,9 +223,9 @@ class RemoverLMNTView(PatenteRequiredMixin,View):
     allowed_groups = ['LMNT'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
         ]
     def post(self, request, user_id):
@@ -238,9 +238,9 @@ class RegistrarRelatorioMonitores(PatenteRequiredMixin,CreateView):
     allowed_groups = ['MNT', 'RMNT', 'LMNT'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
         ]
     form_class = MonitorForm
@@ -266,9 +266,9 @@ class MonitorOficial(PatenteRequiredMixin,ListView):
     allowed_groups = ['RMNT', 'LMNT'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
         ]
     model = MonitorRelatorio
@@ -336,9 +336,9 @@ class PermissoesMNTView(PatenteRequiredMixin ,ListView):
     allowed_groups = ['RMNT', 'LMNT'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
         ]
     model = MilitarUsuario
@@ -351,7 +351,7 @@ class PermissoesMNTView(PatenteRequiredMixin ,ListView):
         queryset = MilitarUsuario.objects.exclude(
             patente__in=[
                 'Marechal ★★★★★',
-                'General-de-Exército ★★★★',
+                'General ★★★★',
                 'General-de-Divisão ★★★',
                 'General-de-Brigada ★★',
                 'Coronel ★',

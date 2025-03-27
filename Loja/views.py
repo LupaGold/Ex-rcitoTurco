@@ -24,9 +24,9 @@ class LojaEmblemasView(PatenteRequiredMixin, TemplateView):
     allowed_groups = [] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
             'Coronel',
             'Tenente-Coronel',
@@ -56,7 +56,7 @@ class EditarEmblemas(PatenteRequiredMixin, ListView):
     allowed_groups = [] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'General-de-Divisão ★★★',
             'General-de-Brigada ★★',
             'Coronel ★',
@@ -81,7 +81,7 @@ class EditarEmblemaView(PatenteRequiredMixin,UpdateView):
     allowed_groups = [] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'General-de-Divisão ★★★',
             'General-de-Brigada ★★',
             'Coronel ★',
@@ -108,7 +108,7 @@ class RegistrarEmblema(PatenteRequiredMixin,CreateView):
     allowed_groups = [] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'General-de-Divisão ★★★',
             'General-de-Brigada ★★',
             'Coronel ★',
@@ -135,9 +135,9 @@ class ComprarEmblemaView(PatenteRequiredMixin, View):
     allowed_groups = [] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
             'Coronel',
             'Tenente-Coronel',
@@ -182,7 +182,7 @@ class MoedasMilitaresView(PatenteRequiredMixin, ListView):
     allowed_groups = [] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'General-de-Divisão ★★★',
             'General-de-Brigada ★★',
             'Coronel ★',
@@ -214,7 +214,7 @@ class AddMoedasView(PatenteRequiredMixin, View):
     allowed_groups = [] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'General-de-Divisão ★★★',
             'General-de-Brigada ★★',
             'Coronel ★',
@@ -245,7 +245,7 @@ class RemoveMoedasView(PatenteRequiredMixin, View):
     allowed_groups = [] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'General-de-Divisão ★★★',
             'General-de-Brigada ★★',
             'Coronel ★',
@@ -278,9 +278,9 @@ class MoedasLoja(PatenteRequiredMixin, TemplateView):
     allowed_groups = [] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
             'Coronel',
             'Tenente-Coronel',
@@ -306,9 +306,9 @@ class SaqueMoedas(PatenteRequiredMixin, View):
     allowed_groups = [] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
             'Coronel',
             'Tenente-Coronel',

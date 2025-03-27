@@ -47,7 +47,7 @@ PATENTES = (
     ('Brigadeiro-General ★', 'Brigadeiro-General ★'),
     ('Major-General ★★', 'Major-General ★★'),
     ('Tenente-General ★★★', 'Tenente-General ★★★'),
-    ('General-de-Exército ★★★★', 'General-de-Exército ★★★★'),
+    ('General ★★★★', 'General ★★★★'),
     ('Marechal ★★★★★', 'Marechal ★★★★★'),
 )
 
@@ -71,8 +71,8 @@ PROMOCAO = {
     'Coronel': 'Brigadeiro-General ★',
     'Brigadeiro-General ★': 'Major-General ★★',
     'Major-General ★★': 'Tenente-General ★★★',
-    'Tenente-General ★★★': 'General-de-Exército ★★★★',
-    'General-de-Exército ★★★★': 'Marechal ★★★★★',
+    'Tenente-General ★★★': 'General ★★★★',
+    'General ★★★★': 'Marechal ★★★★★',
 }
 
 # Limites de promoção com base na patente do solicitante
@@ -86,8 +86,8 @@ LIMITES_PROMOCAO = {
     'Brigadeiro-General ★': 'Primeiro Tenente',
     'Major-General ★★': 'Capitão',
     'Tenente-General ★★★': 'Major',
-    'General-de-Exército ★★★★': 'Tenente-Coronel',
-    'Marechal ★★★★★': 'General-de-Exército ★★★★',
+    'General ★★★★': 'Tenente-Coronel',
+    'Marechal ★★★★★': 'General ★★★★',
 }
 
 LIMITES_REBAIXAMENTO = {
@@ -100,7 +100,7 @@ LIMITES_REBAIXAMENTO = {
     'Brigadeiro-General ★': 'Capitão',
     'Major-General ★★': 'Major',
     'Tenente-General ★★★': 'Tenente-Coronel',
-    'General-de-Exército ★★★★': 'Brigadeiro-General ★',
+    'General ★★★★': 'Brigadeiro-General ★',
     'Marechal ★★★★★': 'Marechal ★★★★★',
 }
 
@@ -114,14 +114,14 @@ LIMITES_DEMISSAO = {
     'Brigadeiro-General ★': ['Soldado', 'Soldado de 1ª Classe', 'Especialista','Cabo', 'Aluno', 'Sargento', 'Sargento Staff', 'Sargento Mestre', 'Sargento Major', 'Cadete','Aspirante-a-Oficial', 'Segundo Tenente', 'Primeiro Tenente'],
     'Major-General ★★': ['Soldado', 'Soldado de 1ª Classe', 'Especialista','Cabo', 'Aluno', 'Sargento', 'Sargento Staff', 'Sargento Mestre', 'Sargento Major', 'Cadete','Aspirante-a-Oficial', 'Segundo Tenente', 'Primeiro Tenente', 'Capitão', 'Major'],
     'Tenente-General ★★★': ['Soldado', 'Soldado de 1ª Classe', 'Especialista','Cabo', 'Aluno', 'Sargento', 'Sargento Staff', 'Sargento Mestre', 'Sargento Major', 'Cadete','Aspirante-a-Oficial', 'Segundo Tenente', 'Primeiro Tenente', 'Capitão', 'Major', 'Tenente-Coronel'],
-    'General-de-Exército ★★★★': ['Soldado', 'Soldado de 1ª Classe', 'Especialista','Cabo', 'Aluno', 'Sargento', 'Sargento Staff', 'Sargento Mestre', 'Sargento Major', 'Cadete','Aspirante-a-Oficial', 'Segundo Tenente', 'Primeiro Tenente', 'Capitão', 'Major', 'Tenente-Coronel', 'Brigadeiro-General ★'],
-    'Marechal ★★★★★': ['Soldado', 'Soldado de 1ª Classe', 'Especialista','Cabo', 'Aluno', 'Sargento', 'Sargento Staff', 'Sargento Mestre', 'Sargento Major', 'Cadete','Aspirante-a-Oficial', 'Segundo Tenente', 'Primeiro Tenente', 'Capitão', 'Major', 'Tenente-Coronel', 'Brigadeiro-General ★', 'Major-General ★★', 'Tenente-General ★★★', 'General-de-Exército ★★★★'],
+    'General ★★★★': ['Soldado', 'Soldado de 1ª Classe', 'Especialista','Cabo', 'Aluno', 'Sargento', 'Sargento Staff', 'Sargento Mestre', 'Sargento Major', 'Cadete','Aspirante-a-Oficial', 'Segundo Tenente', 'Primeiro Tenente', 'Capitão', 'Major', 'Tenente-Coronel', 'Brigadeiro-General ★'],
+    'Marechal ★★★★★': ['Soldado', 'Soldado de 1ª Classe', 'Especialista','Cabo', 'Aluno', 'Sargento', 'Sargento Staff', 'Sargento Mestre', 'Sargento Major', 'Cadete','Aspirante-a-Oficial', 'Segundo Tenente', 'Primeiro Tenente', 'Capitão', 'Major', 'Tenente-Coronel', 'Brigadeiro-General ★', 'Major-General ★★', 'Tenente-General ★★★', 'General ★★★★'],
 }
 
 PATENTES_APOSENTADORIA = [
     'Capitão', 'Major', 'Tenente-Coronel', 'Coronel','Brigadeiro-General ★',
     'Major-General ★★', 'Tenente-General ★★★',
-    'General-de-Exército ★★★★', 'Marechal ★★★★★'
+    'General ★★★★', 'Marechal ★★★★★'
 ]
 
 class PatenteRequiredMixin(LoginRequiredMixin):
@@ -164,9 +164,9 @@ class AlterarSenhaView(PatenteRequiredMixin, PasswordChangeView):
     allowed_groups = []
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
             'Coronel',
             'Tenente-Coronel',

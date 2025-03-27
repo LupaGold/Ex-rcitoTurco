@@ -18,9 +18,9 @@ PATENTES = (
           ('Tenente-Coronel','Tenente-Coronel'),
           ('Coronel','Coronel'),
           ('Brigadeiro-General ★','Brigadeiro-General ★'),
-          ('Major-Brigadeiro ★★','Major-Brigadeiro ★★'),
+          ('Major-General ★★','Major-General ★★'),
           ('Tenente-General ★★★','Tenente-General ★★★'),
-          ('General-de-Exército ★★★★','General-de-Exército ★★★★'),
+          ('General ★★★★','General ★★★★'),
           ('Marechal ★★★★★','Marechal ★★★★★'),
       )
 

@@ -26,7 +26,7 @@ class AjudantePraça(PatenteRequiredMixin,TemplateView):
     allowed_groups = ['AJD', 'RAJD', 'LAJD'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'General-de-Divisão ★★★',
             'General-de-Brigada ★★',
             'Coronel ★',
@@ -89,7 +89,7 @@ class RegistrarRelatorioAjudante(PatenteRequiredMixin,CreateView):
     allowed_groups = ['AJD', 'RAJD', 'LAJD'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'General-de-Divisão ★★★',
             'General-de-Brigada ★★',
             'Coronel ★',
@@ -142,7 +142,7 @@ class AjudanteOficial(PatenteRequiredMixin,ListView):
     allowed_groups = ['RAJD', 'LAJD'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'General-de-Divisão ★★★',
             'General-de-Brigada ★★',
             'Coronel ★',
@@ -218,7 +218,7 @@ class GuiaAjudantesEdit(PatenteRequiredMixin,UpdateView):
     allowed_groups = ['RAJD', 'LAJD'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'General-de-Divisão ★★★',
             'General-de-Brigada ★★',
             'Coronel ★',
@@ -232,7 +232,7 @@ class GuiaAjudantesView(PatenteRequiredMixin,TemplateView):
     allowed_groups = ['AJD', 'RAJD', 'LAJD'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'General-de-Divisão ★★★',
             'General-de-Brigada ★★',
             'Coronel ★',
@@ -248,7 +248,7 @@ class CriarDestaqueAjd(PatenteRequiredMixin,CreateView):
     allowed_groups = ['LAJD'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'General-de-Divisão ★★★',
             'General-de-Brigada ★★',
             'Coronel ★',
@@ -270,7 +270,7 @@ class PermissoesAjdView(PatenteRequiredMixin ,ListView):
     allowed_groups = ['RAJD', 'LAJD'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'General-de-Divisão ★★★',
             'General-de-Brigada ★★',
             'Coronel ★',
@@ -285,7 +285,7 @@ class PermissoesAjdView(PatenteRequiredMixin ,ListView):
         queryset = MilitarUsuario.objects.exclude(
             patente__in=[
                 'Marechal ★★★★★',
-                'General-de-Exército ★★★★',
+                'General ★★★★',
                 'General-de-Divisão ★★★',
                 'General-de-Brigada ★★',
                 'Coronel ★',
@@ -317,7 +317,7 @@ class AdicionarAjdView(PatenteRequiredMixin,View):
     allowed_groups = ['RAJD', 'LAJD'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'General-de-Divisão ★★★',
             'General-de-Brigada ★★',
             'Coronel ★',
@@ -333,7 +333,7 @@ class RemoverAjdView(PatenteRequiredMixin,View):
     allowed_groups = ['RAJD', 'LAJD'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'General-de-Divisão ★★★',
             'General-de-Brigada ★★',
             'Coronel ★',
@@ -349,7 +349,7 @@ class AdicionarRAjdView(PatenteRequiredMixin,View):
     allowed_groups = ['LAJD'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'General-de-Divisão ★★★',
             'General-de-Brigada ★★',
             'Coronel ★',
@@ -365,7 +365,7 @@ class RemoverRAjdView(PatenteRequiredMixin,View):
     allowed_groups = ['LAJD'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'General-de-Divisão ★★★',
             'General-de-Brigada ★★',
             'Coronel ★',
@@ -381,7 +381,7 @@ class AdicionarLAjdView(PatenteRequiredMixin,View):
     allowed_groups = ['LAJD'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'General-de-Divisão ★★★',
             'General-de-Brigada ★★',
             'Coronel ★',
@@ -397,7 +397,7 @@ class RemoverLAjdView(PatenteRequiredMixin,View):
     allowed_groups = ['LAJD'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'General-de-Divisão ★★★',
             'General-de-Brigada ★★',
             'Coronel ★',

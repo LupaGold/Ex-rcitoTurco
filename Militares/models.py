@@ -70,16 +70,16 @@ class MilitarUsuario(AbstractUser):
     def save(self, *args, **kwargs):
         patente_order_map = {
             'Marechal ★★★★★': 1,
-            'General-de-Exército ★★★★': 2,
-            'General-de-Divisão ★★★': 3,
-            'General-de-Brigada ★★': 4,
-            'Coronel ★': 5,
-            'Tenente-Coronel': 6,
-            'Major': 7,
-            'Capitão': 8,
-            'Primeiro Tenente': 9,
-            'Segundo Tenente': 10,
-            'Aspirante-a-Oficial': 11,
+            'General ★★★★': 2,
+            'Tenente-General ★★★': 3,
+            'Major-General ★★': 4,
+            'Brigadeiro-General ★': 5,
+            'Coronel': 6,
+            'Tenente-Coronel': 7,
+            'Major': 8,
+            'Capitão': 9,
+            'Primeiro Tenente': 10,
+            'Segundo Tenente': 11,
             'Cadete': 12,
             'Subtenente': 13,
             'Primeiro Sargento': 14,
@@ -87,8 +87,9 @@ class MilitarUsuario(AbstractUser):
             'Terceiro Sargento': 16,
             'Aluno': 17,
             'Cabo': 18,
-            'Soldado Estrela': 19,
-            'Soldado': 20,
+            'Especialista': 19,
+            'Soldado 1ª Classe': 20,
+            'Soldado': 21,
         }
         # Definir a ordem da patente com base no mapa
         self.patente_order = patente_order_map.get(self.patente, 99)

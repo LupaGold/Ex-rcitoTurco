@@ -20,9 +20,9 @@ class RePraça(PatenteRequiredMixin,ListView):
     allowed_groups = []
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
             'Coronel',
             'Tenente-Coronel',
@@ -70,9 +70,9 @@ class AbrirRE(PatenteRequiredMixin,CreateView):
     allowed_groups = []
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
             'Coronel',
             'Tenente-Coronel',
@@ -126,9 +126,9 @@ class AbrirRM(PatenteRequiredMixin,CreateView):
     allowed_groups = []
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
             'Coronel',
             'Tenente-Coronel',
@@ -164,9 +164,9 @@ class RMOficial(PatenteRequiredMixin,ListView):
     allowed_groups = []
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
             'Coronel',
             'Tenente-Coronel',

@@ -202,9 +202,9 @@ class AdicionarL3CIA(PatenteRequiredMixin,View):
     allowed_groups = ['L3CIA'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
         ]
     template_name = 'Guia.html'
@@ -219,9 +219,9 @@ class RemoverL3CIA(PatenteRequiredMixin,View):
     allowed_groups = ['L3CIA'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
         ]
     template_name = 'Guia.html'
@@ -236,9 +236,9 @@ class AdicionarM3CIA(PatenteRequiredMixin,View):
     allowed_groups = ['L3CIA'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
         ]
     template_name = 'Guia.html'
@@ -253,9 +253,9 @@ class RemoverM3CIA(PatenteRequiredMixin,View):
     allowed_groups = ['L3CIA'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
         ]
     template_name = 'Guia.html'
@@ -269,9 +269,9 @@ class Permissoes3ciaview(PatenteRequiredMixin, ListView):
     allowed_groups = ['L3CIA'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
         ]
     template_name = 'Guia.html'
@@ -285,7 +285,7 @@ class Permissoes3ciaview(PatenteRequiredMixin, ListView):
         queryset = MilitarUsuario.objects.exclude(
             patente__in=[
                 'Marechal ★★★★★',
-                'General-de-Exército ★★★★',
+                'General ★★★★',
                 'General-de-Divisão ★★★',
                 'General-de-Brigada ★★',
                 'Coronel ★',

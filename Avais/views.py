@@ -20,9 +20,9 @@ class AvalPraça(PatenteRequiredMixin,TemplateView):
     allowed_groups = [] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
             'Coronel',
             'Tenente-Coronel',
@@ -49,9 +49,9 @@ class RegistrarAval(PatenteRequiredMixin,CreateView):
     allowed_groups = [] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
             'Coronel',
             'Tenente-Coronel',
@@ -98,7 +98,7 @@ class AvalAC(PatenteRequiredMixin, ListView):
     allowed_groups = [] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'General-de-Divisão ★★★',
             'General-de-Brigada ★★',
             'Coronel ★',
@@ -131,7 +131,7 @@ class AprovarJAView(PatenteRequiredMixin, View):
     allowed_groups = [] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'General-de-Divisão ★★★',
             'General-de-Brigada ★★',
             'Coronel ★',
@@ -157,7 +157,7 @@ class RejeitarJAView(PatenteRequiredMixin, View):
     allowed_groups = [] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'General-de-Divisão ★★★',
             'General-de-Brigada ★★',
             'Coronel ★',

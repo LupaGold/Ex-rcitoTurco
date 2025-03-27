@@ -19,9 +19,9 @@ class CriarDestaque2CIA(PatenteRequiredMixin,CreateView):
     allowed_groups = ['L2CIA'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
         ]
     template_name = 'Form.html'
@@ -41,9 +41,9 @@ class AvaliaçãoTPView(PatenteRequiredMixin,ListView):
     allowed_groups = ['L2CIA', 'M2CIA'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
         ]
     model = AvaliaçãoTP
@@ -113,9 +113,9 @@ class Relatório2CIAView(PatenteRequiredMixin,ListView):
     allowed_groups = ['L2CIA', 'M2CIA'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
         ]
     model = Relatório2CIA
@@ -182,9 +182,9 @@ class RegistrarTP(PatenteRequiredMixin,CreateView):
     allowed_groups = ['L2CIA', 'M2CIA'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
         ]
     form_class = AvaliaçãoTPForm
@@ -212,9 +212,9 @@ class RegistrarRelatório2CIA(PatenteRequiredMixin,CreateView):
     allowed_groups = ['L2CIA', 'M2CIA'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
         ]
     form_class = Relatório2CIAForm
@@ -242,9 +242,9 @@ class AdicionarL2CIA(PatenteRequiredMixin,View):
     allowed_groups = ['L2CIA'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
         ]
     template_name = 'Guia.html'
@@ -259,9 +259,9 @@ class RemoverL2CIA(PatenteRequiredMixin,View):
     allowed_groups = ['L2CIA'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
         ]
     template_name = 'Guia.html'
@@ -276,9 +276,9 @@ class AdicionarM2CIA(PatenteRequiredMixin,View):
     allowed_groups = ['L2CIA'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
         ]
     template_name = 'Guia.html'
@@ -293,9 +293,9 @@ class RemoverM2CIA(PatenteRequiredMixin,View):
     allowed_groups = ['L2CIA'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
         ]
     template_name = 'Guia.html'
@@ -309,9 +309,9 @@ class Permissoes2ciaview(PatenteRequiredMixin, ListView):
     allowed_groups = ['L2CIA'] 
     allowed_patentes = [
             'Marechal ★★★★★',
-            'General-de-Exército ★★★★',
+            'General ★★★★',
             'Tenente-General ★★★',
-            'Major-Brigadeiro ★★',
+            'Major-General ★★',
             'Brigadeiro-General ★',
         ]
     template_name = 'Guia.html'
@@ -325,7 +325,7 @@ class Permissoes2ciaview(PatenteRequiredMixin, ListView):
         queryset = MilitarUsuario.objects.exclude(
             patente__in=[
                 'Marechal ★★★★★',
-                'General-de-Exército ★★★★',
+                'General ★★★★',
                 'General-de-Divisão ★★★',
                 'General-de-Brigada ★★',
                 'Coronel ★',
